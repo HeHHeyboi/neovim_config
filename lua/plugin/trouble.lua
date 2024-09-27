@@ -1,1 +1,2 @@
-require("trouble").setup()
+require("trouble").setup {
+}

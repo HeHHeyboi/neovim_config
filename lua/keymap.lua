@@ -84,7 +84,6 @@ keymap("n", "<A-m>", telescope.diagnostics, {})
 --vim.cmd('copen')
 --end
 --end, {})
-
 --CHADtree
 keymap("n", "<C-b>", ":CHADopen<CR>", { desc = "Open File explorer on right(CHADtree)" })
 
@@ -92,6 +91,7 @@ keymap("n", "<C-b>", ":CHADopen<CR>", { desc = "Open File explorer on right(CHAD
 keymap("n", "<A-'>", ":Trouble diagnostics toggle focus=true<cr>", { desc = "Toggle diagnostics" })
 --keymap("n", "<leader>'", ":Trouble diagnostics toggle focus=true<cr>", {})
 keymap("n", "<leader>tq", ":Trouble qflist toggle focus=true<cr>", { desc = "Trouble quickfix" })
+keymap("n", "vtd", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" })
 
 --delete mark
 keymap("n", "dm", function()

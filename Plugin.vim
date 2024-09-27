@@ -34,6 +34,7 @@ else
 
 
 	Plug 'folke/trouble.nvim'
+	Plug 'folke/todo-comments.nvim'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 	Plug 'nvim-lua/plenary.nvim'

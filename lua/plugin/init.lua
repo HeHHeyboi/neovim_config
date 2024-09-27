@@ -11,5 +11,5 @@ else
 	require('plugin.treesitter')
 	require('plugin.trouble')
 	require('plugin.comment')
-	-- ordinary Neovim
+	require('plugin.todo-comment')
 end
