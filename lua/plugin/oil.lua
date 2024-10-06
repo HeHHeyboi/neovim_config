@@ -24,4 +24,7 @@ require("oil").setup({
 		-- "size",
 		-- "atime",
 	},
+	keymaps = {
+		["cd"] = { "actions.cd", desc = ":Change working directory", mode = "n" }
+	}
 })

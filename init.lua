@@ -24,10 +24,10 @@ else
 	opt.swapfile = false
 	opt.cursorline = true
 
-	-- Set colorscheme
+	-- NOTE: Select colorscheme
 	cmd.colorscheme("kanagawa-wave")
-	--vim.g.ayucolor = "dark" -- or "mirage" or "dark"
-	--vim.cmd("colorscheme ayu")
+	-- vim.g.ayucolor = "mirage" -- or "mirage" or "dark"
+	-- vim.cmd("colorscheme ayu")
 
 	cmd("set mouse=a")
 	-- Highlight LineNr
@@ -50,28 +50,30 @@ else
 	-- 	vim.fn.serverstart(addr)
 	-- end
 
-	if vim.fn.filereadable(vim.fn.getcwd() .. '/project.godot') == 1 then
-		local addr = './godot.pipe'
-		if vim.fn.has 'win64' == 1 then
-			addr = '127.0.0.1:6005'
-		end
-
-		-- Check if the server is already running
-		local server_list = vim.fn.serverlist()
-		local is_running = false
-		for _, server_addr in ipairs(server_list) do
-			if server_addr == addr then
-				is_running = true
-				break
-			end
-		end
-
-		-- Start the server only if it's not already running
-		if not is_running then
-			vim.fn.serverstart(addr)
-			print('Server started at: ' .. addr)
-		else
-			print('Server is already running at: ' .. addr)
-		end
-	end
+	-- if vim.fn.filereadable(vim.fn.getcwd() .. '/project.godot') == 1 then
+	-- 	local addr = './godot.pipe'
+	-- 	if vim.fn.has 'win64' == 1 then
+	-- 		addr = '127.0.0.1:6005'
+	-- 	end
+	--
+	-- 	-- Check if the server is already running
+	-- 	local server_list = vim.fn.serverlist()
+	-- 	local is_running = false
+	-- 	for _, server_addr in ipairs(server_list) do
+	-- 		if server_addr == addr then
+	-- 			is_running = true
+	-- 			print(is_running)
+	-- 			break
+	-- 		end
+	-- 		print("loop")
+	-- 	end
+	--
+	-- 	-- Start the server only if it's not already running
+	-- 	if not is_running then
+	-- 		vim.fn.serverstart(addr)
+	-- 		print('Server started at: ' .. addr)
+	-- 	else
+	-- 		print('Server is already running at: ' .. addr)
+	-- 	end
+	-- end
 end

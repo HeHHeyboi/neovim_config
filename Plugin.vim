@@ -20,7 +20,7 @@ else
 	call plug#begin()
 
 	Plug 'rebelot/kanagawa.nvim'
-	"Plug 'ayu-theme/ayu-vim'
+	Plug 'ayu-theme/ayu-vim'
 
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'rstacruz/vim-closer'
@@ -68,5 +68,11 @@ else
 	"highlight Normal ctermbg=none
 	"highlight NonText ctermbg=none
 endif
+	"...
+" set termguicolors     " enable true colors support
+" let ayucolor="light"  " for light version of theme
+" let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="dark"   " for dark version of theme
+" colorscheme ayu
 
 
