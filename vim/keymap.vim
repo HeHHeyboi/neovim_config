@@ -10,12 +10,12 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :bd<CR>
 "nnoremap bn :bnext<CR>
 "nnoremap bN :bprevious<CR>
-nnoremap gb :bnext<CR>
-nnoremap gB :bprevious<CR>
+nnoremap g. :bnext<CR>
+nnoremap g, :bprevious<CR>
 nnoremap <leader>ev :split ~/.vimrc<cr>
 nnoremap <leader>ei :split $MYVIMRC<cr>
-nnoremap <leader>g :set operatorfunc=GrepOperator<cr>g@
-vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
+" nnoremap <leader>g :set operatorfunc=GrepOperator<cr>g@
+" vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
 "nnoremap <silent><leader>vl :execute "rightbelow vsplit " .bufname("#")<cr>
 "nnoremap <silent><leader>vh :execute "leftabove vsplit " .bufname("#")<cr>
 "nnoremap <silent><leader>sj :execute "botright split " .bufname("#")<cr>
@@ -37,7 +37,7 @@ onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap al{ :<c-u>normal! F}va{<cr>
 onoremap an{ :<c-u>normal! f{va{<cr>
 
-vnoremap <leader>" <Esc>`>a"<Esc>`<i"<Esc>
+" vnoremap <leader>" <Esc>`>a"<Esc>`<i"<Esc>
 function! GrepOperator(type)
 	let saved_unnamed_register = @@
 	if a:type ==# 'v'

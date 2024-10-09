@@ -12,4 +12,5 @@ else
 	require('plugin.trouble')
 	require('plugin.comment')
 	require('plugin.todo-comment')
+	require('plugin.kanagawa')
 end

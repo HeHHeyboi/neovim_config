@@ -4,11 +4,11 @@ local cmd = vim.cmd
 local vimrc = vim.fn.stdpath("config") .. "./Plugin.vim"
 vim.cmd.source(vimrc)
 if vim.g.vscode then
-
 else
 	require('plugin')
 	require('keymap')
 	--require('netrw')
+	require('neovide')
 	require('autocmd')
 	local chadtree_settings = {
 		["theme.icon_glyph_set"] = "devicons"
@@ -23,9 +23,13 @@ else
 	opt.encoding = "UTF-8"
 	opt.swapfile = false
 	opt.cursorline = true
-
+	opt.list = true
+	-- opt.listchars = { tab = "󰇙 " }
+	opt.listchars = { tab = "┆ " }
+	--
 	-- NOTE: Select colorscheme
 	cmd.colorscheme("kanagawa-wave")
+	-- cmd.colorscheme("kanagawa-dragon")
 	-- vim.g.ayucolor = "mirage" -- or "mirage" or "dark"
 	-- vim.cmd("colorscheme ayu")
 

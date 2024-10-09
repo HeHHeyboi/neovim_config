@@ -8,17 +8,18 @@ require('Comment').setup(
 		ignore = nil,
 		---LHS of toggle mappings in NORMAL mode
 		toggler = {
-			---Line-comment toggle keymap
+			--Line-comment toggle keymap
 			line = '<C-k>',
-			---Block-comment toggle keymap
-			-- block = 'gbc',
+			-- -Block-comment toggle keymap
+			block = 'gbc',
 		},
-		---LHS of operator-pending mappings in NORMAL and VISUAL mode
+		--LHS of operator-pending mappings in NORMAL and VISUAL mode
 		opleader = {
 			-- -Line-comment keymap
+			-- line = '<C-/>',
 			line = '<C-k>',
 			---Block-comment keymap
-			-- block = 'gb',
+			block = 'gb',
 		},
 		---LHS of extra mappings
 		extra = {
