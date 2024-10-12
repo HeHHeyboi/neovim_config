@@ -1,7 +1,13 @@
+local open_trouble = require("trouble.sources.telescope").open
+
 require("telescope").setup {
 	defaults = {
 		filesize_limit = 50,
-		timeout = 1000
+		timeout = 1000,
+		mappings = {
+			i = { ["<C-q>"] = open_trouble }, -- Insert mode binding
+			n = { ["<C-q>"] = open_trouble }, -- Normal mode binding
+		},
 	},
 	extensions = {
 		["ui-select"] = {
