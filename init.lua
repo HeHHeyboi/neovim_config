@@ -4,6 +4,7 @@ local cmd = vim.cmd
 local vimrc = vim.fn.stdpath("config") .. "./Plugin.vim"
 vim.cmd.source(vimrc)
 if vim.g.vscode then
+	require('vscode-keymap')
 else
 	require('plugin')
 	require('keymap')
