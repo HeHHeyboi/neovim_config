@@ -20,26 +20,39 @@ require("neodev").setup({})
 
 local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- NOTE: GDScript_lsp for godot
 local gd_config = {
 	capabilities = lsp_capabilities,
 	setting = {},
 }
+local pipe = [[\\.\pipe\godot.pipe]]
 if vim.fn.has 'win64' == 1 then
 	gd_config['cmd'] = { 'ncat', 'localhost', os.getenv 'GDScript_Port' or '6005' }
 end
-lspconfig.gdscript.setup { gd_config }
-lspconfig.gradle_ls.setup {
-	capabilities = lsp_capabilities,
+local on_attach = function(client, bufnr)
+	local _notify = client.notify
+
+	client.notify = function(method, params)
+		if method == 'textDocument/didClose' then
+			-- Godot doesn't implement didClose yet
+			return
+		end
+		_notify(method, params)
+	end
+	vim.api.nvim_command([[echo serverstart(']] .. pipe .. [[')]])
+end
+lspconfig.gdscript.setup {
+	on_attach = on_attach,
+	gd_config,
 }
+
 lspconfig.powershell_es.setup({
 	capabilities = lsp_capabilities,
 })
 lspconfig.csharp_ls.setup({
 	capabilities = lsp_capabilities,
 })
-lspconfig.pylsp.setup({
-
-})
+lspconfig.pylsp.setup({})
 lspconfig.jdtls.setup({
 	settings = {
 		java = {
@@ -108,21 +121,6 @@ lspconfig.clangd.setup({
 lspconfig.cmake.setup({
 	capabilities = lsp_capabilities,
 })
-local on_attach = function(client, bufnr)
-	local _notify = client.notify
-
-	client.notify = function(method, params)
-		if method == 'textDocument/didClose' then
-			-- Godot doesn't implement didClose yet
-			return
-		end
-		_notify(method, params)
-	end
-end
-require 'lspconfig'.gdscript.setup {
-	on_attach = on_attach,
-	filetypes = { "gd", "gdscript", "gdscript3" },
-}
 
 
 require("luasnip.loaders.from_vscode").lazy_load()

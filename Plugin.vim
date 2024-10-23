@@ -11,10 +11,11 @@ else
 	let g:python3_host_prog = 'C:\Program Files\Python312\python'
 	if has("win64") 	
 		if executable("pwsh")
-			set shell=pwsh
-			set shellcmdflag=-Command
-			set shellquote=
-			set shellxquote=
+			let &shell= executable('pwsh') ? 'pwsh': 'powershell'
+			let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'
+			let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+			let &shellpipe  = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
+			set shellquote= shellxquote=
 		endif
 	endif
 	call plug#begin()
@@ -33,10 +34,12 @@ else
 	" Plug 'ryanoasis/vim-devicons' Icons without colours
 
 
+	"diagnostics & to-do
 	Plug 'folke/trouble.nvim'
 	Plug 'folke/todo-comments.nvim'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+	"lsp & code completion
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope-ui-select.nvim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
@@ -54,19 +57,16 @@ else
 
 	Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 	Plug 'saadparwaiz1/cmp_luasnip'
+
 	"file exploer
-	Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+	" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 	Plug 'stevearc/oil.nvim'
 
 	"comment plugin
 	Plug 'numToStr/Comment.nvim'
+	"render markdown documation window
+	" Plug 'folke/noice.nvim'
+	" Plug 'MunifTanjim/nui.nvim'
 
-" Somewhere after plug#end()
 	call plug#end()
-	"highlight Normal guibg=none
-	"highlight NonText guibg=none
-	"highlight Normal ctermbg=none
-	"highlight NonText ctermbg=none
 endif
-
-

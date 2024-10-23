@@ -18,7 +18,7 @@ else
 		,
 		["options.follow"] = false
 	}
-	vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
+	-- vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
 	-- Set options
 	opt.smarttab = true
 	opt.encoding = "UTF-8"

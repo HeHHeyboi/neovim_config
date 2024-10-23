@@ -92,6 +92,7 @@ keymap("n", "<A-'>", ":Trouble diagnostics toggle focus=true<cr>", { desc = "Tog
 --keymap("n", "<leader>'", ":Trouble diagnostics toggle focus=true<cr>", {})
 keymap("n", "<leader>tq", ":Trouble qflist toggle focus=true<cr>", { desc = "Trouble quickfix" })
 keymap("n", "vtd", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" })
+keymap("n", "<leader>td", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" })
 
 --delete mark
 keymap("n", "dm", function()
@@ -127,9 +128,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end)
 		--map("n", "gN", vim.diagnostic.goto_next, { buffer = 0, desc = "LSP Next Diagnostic" })
 		--map("n", "gP", vim.diagnostic.goto_prev, { buffer = 0, desc = "LSP Previous Diagnostic" })
+		map("gd", vim.lsp.buf.definition)
 
 		--Telescope
-		map("gd", telescope.lsp_definitions)
+		-- map("gd", telescope.lsp_definitions)
 		map("gi", telescope.lsp_implementations)
 		map("go", telescope.lsp_type_definitions)
 		map("gr", telescope.lsp_references)
