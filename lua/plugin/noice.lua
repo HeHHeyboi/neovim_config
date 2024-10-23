@@ -1,4 +1,4 @@
-require("noice").setup({
+require("plugin.noice").setup({
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		override = {

@@ -106,12 +106,9 @@ keymap("n", "<C-e>", "<cmd>Oil<CR>", { desc = "Open current dir" })
 
 --LSP format and linter
 keymap("n", "<A-f>", function()
-	vim.lsp.buf.format({ async = true })
+	vim.lsp.buf.format({ buffer = 0, async = true })
 end, {})
 --LSP keymap
-keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
-keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
-keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
@@ -128,10 +125,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end)
 		--map("n", "gN", vim.diagnostic.goto_next, { buffer = 0, desc = "LSP Next Diagnostic" })
 		--map("n", "gP", vim.diagnostic.goto_prev, { buffer = 0, desc = "LSP Previous Diagnostic" })
-		map("gd", vim.lsp.buf.definition)
+		-- map("gd", vim.lsp.buf.definition)
 
+		map("n", "gl", vim.diagnostic.open_float())
+		-- map("n", "[d", vim.diagnostic.goto_prev())
+		-- map("n", "]d", vim.diagnostic.goto_next())
 		--Telescope
-		-- map("gd", telescope.lsp_definitions)
+		map("gd", telescope.lsp_definitions)
 		map("gi", telescope.lsp_implementations)
 		map("go", telescope.lsp_type_definitions)
 		map("gr", telescope.lsp_references)

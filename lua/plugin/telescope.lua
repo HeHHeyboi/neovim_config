@@ -5,8 +5,9 @@ require("telescope").setup {
 		filesize_limit = 50,
 		timeout = 1000,
 		mappings = {
-			i = { ["<C-q>"] = open_trouble }, -- Insert mode binding
-			n = { ["<C-q>"] = open_trouble }, -- Normal mode binding
+			i = { ["<C-q>"] = open_trouble },          -- Insert mode binding
+			n = { ["<C-q>"] = open_trouble
+			, ["<C-c>"] = require("telescope.actions").close }, -- Normal mode binding
 		},
 	},
 	extensions = {
