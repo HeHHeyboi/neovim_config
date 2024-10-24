@@ -127,7 +127,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		--map("n", "gP", vim.diagnostic.goto_prev, { buffer = 0, desc = "LSP Previous Diagnostic" })
 		-- map("gd", vim.lsp.buf.definition)
 
-		map("n", "gl", vim.diagnostic.open_float())
+		map("gl", function() vim.diagnostic.open_float() end)
 		-- map("n", "[d", vim.diagnostic.goto_prev())
 		-- map("n", "]d", vim.diagnostic.goto_next())
 		--Telescope

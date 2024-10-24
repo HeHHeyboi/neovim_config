@@ -22,11 +22,11 @@ function! CheckCharAtCursor(s)
 
 endfunction
 
-augroup filetype_cpp
-	autocmd!
-	autocmd FileType cpp,cs nnoremap <buffer> <C-k> :call CheckCharAtCursor("//")<cr>
-	autocmd FileType cpp,cs vnoremap <buffer> <C-k> :call CheckCharAtCursor("//")<cr>
-augroup END
+" augroup filetype_cpp
+" 	autocmd!
+" 	autocmd FileType cpp,cs nnoremap <buffer> <C-k> :call CheckCharAtCursor("//")<cr>
+" 	autocmd FileType cpp,cs vnoremap <buffer> <C-k> :call CheckCharAtCursor("//")<cr>
+" augroup END
 " Markdown file
 augroup filetype_md
 	autocmd!

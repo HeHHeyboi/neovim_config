@@ -11,13 +11,13 @@ else
 	--require('netrw')
 	require('neovide')
 	require('autocmd')
-	local chadtree_settings = {
-		["theme.icon_glyph_set"] = "devicons"
-		,
-		["keymap.tertiary"] = { "<A-t>" }
-		,
-		["options.follow"] = false
-	}
+	-- local chadtree_settings = {
+	-- 	["theme.icon_glyph_set"] = "devicons"
+	-- 	,
+	-- 	["keymap.tertiary"] = { "<A-t>" }
+	-- 	,
+	-- 	["options.follow"] = false
+	-- }
 	-- vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
 	-- Set options
 	opt.smarttab = true
