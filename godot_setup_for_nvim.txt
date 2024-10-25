@@ -1,0 +1,9 @@
+-- Window
+Use External Editor: On
+Exec Path: nvim
+Exec Flags: --server "\\\\.\\pipe\\godot.pipe" --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"
+
+-- Unix
+Use External Editor: On
+Exec Path: nvim
+Exec Flags: --server /tmp/godot.pipe --remote-send "<esc>:n {file}<CR>:call cursor({line},{col})<CR>"
