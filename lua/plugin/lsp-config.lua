@@ -23,7 +23,7 @@ local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- NOTE: GDScript_lsp for godot
 local gd_config = {
 	capabilities = lsp_capabilities,
-	setting = {},
+	-- setting = {},
 }
 local pipe = [[\\.\pipe\godot.pipe]]
 if vim.fn.has 'win64' == 1 then
@@ -42,7 +42,8 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_command([[echo serverstart(']] .. pipe .. [[')]])
 end
 lspconfig.gdscript.setup {
-	on_attach = on_attach,
+	-- on_attach = on_attach,
+	-- capabilities = lsp_capabilities
 	gd_config,
 }
 
