@@ -107,7 +107,7 @@ keymap("n", "<C-e>", "<cmd>Oil<CR>", { desc = "Open current dir" })
 --LSP format and linter
 keymap("n", "<A-f>", function()
 	if vim.bo.filetype == "gdscript" then
-		-- vim.cmd("write")
+		vim.cmd("write")
 		-- vim.cmd("!gdformat " .. name)
 		local name = vim.fn.bufname("%")
 		vim.fn.jobstart("gdformat " .. name, {

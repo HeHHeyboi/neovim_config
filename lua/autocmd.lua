@@ -14,17 +14,21 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = '*',
 	callback = function()
 		if vim.bo.filetype == "gdscript" then
-			local name = vim.fn.bufname("%")
-			vim.fn.jobstart("gdformat " .. name, {
-				on_exit = function(exit_code)
-					if exit_code == 0 then
-						vim.cmd("edit!") -- Reload file to apply formatting changes
-					end
-				end
-			})
 			return
 		end
 		vim.lsp.buf.format()
+	end
+})
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = '*.gd',
+	callback = function()
+		local name = vim.fn.bufname("%")
+		-- vim.cmd("write")
+		vim.fn.jobstart("gdformat " .. name, {
+			on_exit = function(exit_code)
+				vim.cmd("edit!")
+			end
+		})
 	end
 })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
