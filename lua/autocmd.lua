@@ -24,11 +24,12 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	callback = function()
 		local name = vim.fn.bufname("%")
 		-- vim.cmd("write")
-		vim.fn.jobstart("gdformat " .. name, {
+		local job_format = vim.fn.jobstart("gdformat " .. name, {
 			on_exit = function(exit_code)
 				vim.cmd("edit!")
 			end
 		})
+		vim.fn.jobwait({ job_format })
 	end
 })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
