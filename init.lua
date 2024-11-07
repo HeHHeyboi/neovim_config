@@ -12,11 +12,11 @@ else
 	require('neovide')
 	require('autocmd')
 	-- local chadtree_settings = {
-	-- 	["theme.icon_glyph_set"] = "devicons"
-	-- 	,
-	-- 	["keymap.tertiary"] = { "<A-t>" }
-	-- 	,
-	-- 	["options.follow"] = false
+	-- ["theme.icon_glyph_set"] = "devicons"
+	-- ,
+	-- ["keymap.tertiary"] = { "<A-t>" }
+	-- ,
+	-- ["options.follow"] = false
 	-- }
 	-- vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
 	-- Set options
@@ -25,8 +25,9 @@ else
 	opt.swapfile = false
 	opt.cursorline = true
 	opt.list = true
-	-- opt.listchars = { tab = "󰇙 " }
+	-- opt.listchars = { tab = "| " }
 	opt.listchars = { tab = "┆ " }
+	-- opt.listchars = { tab = "┇ " }
 	--
 	-- NOTE: Select colorscheme
 	cmd.colorscheme("kanagawa-wave")
