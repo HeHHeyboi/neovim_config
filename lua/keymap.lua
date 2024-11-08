@@ -107,14 +107,14 @@ keymap("n", "<C-e>", "<cmd>Oil<CR>", { desc = "Open current dir" })
 --LSP format and linter
 keymap("n", "<A-f>", function()
 	if vim.bo.filetype == "gdscript" then
-		vim.cmd("write")
-		-- vim.cmd("!gdformat " .. name)
+		-- vim.cmd("write")
 		local name = vim.fn.bufname("%")
-		vim.fn.jobstart("gdformat " .. name, {
-			on_exit = function()
+		local job_format = vim.fn.jobstart("gdformat " .. name, {
+			on_exit = function(exit_code)
 				vim.cmd("edit!")
 			end
 		})
+		vim.fn.jobwait({ job_format })
 		return
 	end
 	vim.lsp.buf.format({ buffer = 0, async = true })
@@ -145,7 +145,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gd", telescope.lsp_definitions)
 		map("gi", telescope.lsp_implementations)
 		map("go", telescope.lsp_type_definitions)
-		map("gr", telescope.lsp_references)
+		map("grr", telescope.lsp_references)
 
 		map("gs", function()
 			vim.lsp.buf.signature_help()
