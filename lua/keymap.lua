@@ -95,10 +95,10 @@ keymap("n", "vtd", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" })
 keymap("n", "<leader>td", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" })
 
 --delete mark
-keymap("n", "dm", function()
-	local mark = vim.fn.nr2char(vim.fn.getchar())
-	vim.cmd("delmark " .. mark)
-end, {})
+-- keymap("n", "dm", function()
+-- 	local mark = vim.fn.nr2char(vim.fn.getchar())
+-- 	vim.cmd("delmark " .. mark)
+-- end, {})
 
 --Oil.nvim
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

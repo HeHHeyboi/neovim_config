@@ -18,6 +18,7 @@ local function is_in_quote(c)
 	return 0
 end
 
+-- check if in is_in_quote
 function MoveToNextQuote(c, f, p)
 	if c == "'" then
 		if is_in_quote(c) then

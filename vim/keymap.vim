@@ -1,12 +1,12 @@
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m,%f:%l:%m
 " Normal mode mappings
-nnoremap <Tab> :tabnext<CR>
+" nnoremap <Tab> :tabnext<CR>
 
 "nnoremap <Tab> <Plug>AirlineSelectNextTab
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
-nnoremap <C-s> :w<CR>
+" nnoremap <C-s> :w<CR>
 nnoremap <C-q> :bd<CR>
 "nnoremap bn :bnext<CR>
 "nnoremap bN :bprevious<CR>
