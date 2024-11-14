@@ -1,4 +1,6 @@
 local keymap = vim.keymap.set
+local telescope = require("telescope.builtin")
+local luasnip = require('luasnip')
 require("inQuote")
 
 keymap("o", 'in"', function()
@@ -25,27 +27,6 @@ end, {})
 keymap("o", "al'", function()
 	MoveToNextQuote("'", 'F', 'a')
 end, {})
---test keymap
-
--- keymap({ "n", "i", "v" }, "gm", function()
--- 	print(vim.fn.mode())
--- end, { noremap = true })
-local telescope = require("telescope.builtin")
-local luasnip = require('luasnip')
-local function is_quickfix_open()
-	-- Iterate over all windows
-	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		-- Get the buffer associated with the window
-		local buf = vim.api.nvim_win_get_buf(win)
-		-- Check the buffer type
-		if vim.api.nvim_buf_get_option(buf, 'buftype') == 'quickfix' then
-			return true
-		end
-	end
-	return false
-end
-
---oprator pending
 
 -- luasnip
 keymap("i", "<Tab>", function()
@@ -55,7 +36,6 @@ keymap("i", "<Tab>", function()
 		return "<Tab>"
 	end
 end, { expr = true, silent = true, desc = "Use tab to select next" })
-
 keymap("i", "<S-Tab>", function()
 	luasnip.jump(-1)
 end, { silent = true, desc = "Use tab to select previous" })
@@ -68,6 +48,32 @@ keymap("s", "<S-Tab>", function()
 	luasnip.jump(-1)
 end, { silent = true })
 
+-- NOTE: split buffer
+keymap("n", "<leader>vl", function()
+	local bufname = vim.fn.bufname("#")
+	vim.cmd("rightbelow vsplit " .. bufname)
+end, { desc = "Vsplit buffer to right" })
+keymap("n", "<leader>vh", function()
+	local bufname = vim.fn.bufname("#")
+	vim.cmd("leftabove vsplit " .. bufname)
+end, { desc = "Vsplit buffer to left" })
+keymap("n", "<leader>vv", function()
+	local bufname = vim.fn.bufname("#")
+	vim.cmd("leftabove vsplit " .. bufname)
+end, { desc = "Vsplit buffer" })
+keymap("n", "<leader>sj", function()
+	local bufname = vim.fn.bufname("#")
+	vim.cmd("belowright split " .. bufname)
+end)
+keymap("n", "<leader>sk", function()
+	local bufname = vim.fn.bufname("#")
+	vim.cmd("topleft split " .. bufname)
+end)
+keymap("n", "<leader>ss", function()
+	local bufname = vim.fn.bufname("#")
+	vim.cmd("belowright split " .. bufname)
+end)
+
 -- telescope
 keymap("n", "<C-p>", telescope.find_files, { desc = "Find find" })
 keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
@@ -77,13 +83,6 @@ keymap("n", "vm", telescope.marks, { desc = "View Mark" })
 keymap("n", "<leader>ds", telescope.lsp_document_symbols, {})
 keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, {})
 keymap("n", "<A-m>", telescope.diagnostics, {})
---keymap("n", "<leader>tq", function()
---if is_quickfix_open() then
---vim.cmd('cclose')
---else
---vim.cmd('copen')
---end
---end, {})
 --CHADtree
 keymap("n", "<C-b>", ":CHADopen<CR>", { desc = "Open File explorer on right(CHADtree)" })
 
@@ -119,6 +118,7 @@ keymap("n", "<A-f>", function()
 	end
 	vim.lsp.buf.format({ buffer = 0, async = true })
 end, { silent = true })
+
 --LSP keymap
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
@@ -162,3 +162,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, opts)
 	end,
 })
+
+-- keymap({ "n", "i", "v" }, "gm", function()
+-- 	print(vim.fn.mode())
+-- end, { noremap = true })
+local function is_quickfix_open()
+	-- Iterate over all windows
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		-- Get the buffer associated with the window
+		local buf = vim.api.nvim_win_get_buf(win)
+		-- Check the buffer type
+		if vim.api.nvim_buf_get_option(buf, 'buftype') == 'quickfix' then
+			return true
+		end
+	end
+	return false
+end
