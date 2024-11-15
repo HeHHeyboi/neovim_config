@@ -27,6 +27,8 @@ end, {})
 keymap("o", "al'", function()
 	MoveToNextQuote("'", 'F', 'a')
 end, {})
+keymap("o", "L", "g_", {})
+keymap("o", "H", "^", {})
 
 -- luasnip
 keymap("i", "<Tab>", function()
