@@ -40,9 +40,9 @@ else
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 	"lsp & code completion
+	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope-ui-select.nvim'
-	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
@@ -57,6 +57,7 @@ else
 
 	Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 	Plug 'saadparwaiz1/cmp_luasnip'
+	" Plug 'mfussenegger/nvim-jdtls'
 
 	"file exploer
 	" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
@@ -66,7 +67,8 @@ else
 	Plug 'numToStr/Comment.nvim'
 	"render markdown documation window
 	" Plug 'folke/noice.nvim'
-	" Plug 'MunifTanjim/nui.nvim'
+	Plug 'MunifTanjim/nui.nvim'
+	Plug 'mfussenegger/nvim-dap'
 
 	call plug#end()
 endif

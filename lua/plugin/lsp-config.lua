@@ -15,7 +15,6 @@ require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls", "jdtls", "cmake", "clangd" },
 })
 require("neodev").setup({})
---require("java").setup({})
 
 
 local lspconfig = require("lspconfig")
@@ -55,6 +54,7 @@ lspconfig.csharp_ls.setup({
 })
 lspconfig.pylsp.setup({})
 lspconfig.jdtls.setup({
+	-- cmd = { "jdtls", "-configuration", "~/.cache/jdtls/config", "-data", "~/.cache/jdtls/workspace" },
 	settings = {
 		java = {
 			configuration = {
