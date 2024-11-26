@@ -22,29 +22,16 @@ local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- NOTE: GDScript_lsp for godot
 local gd_config = {
 	capabilities = lsp_capabilities,
-	-- setting = {},
 }
-local pipe = [[\\.\pipe\godot.pipe]]
 if vim.fn.has 'win64' == 1 then
 	gd_config['cmd'] = { 'ncat', 'localhost', os.getenv 'GDScript_Port' or '6005' }
 end
-local on_attach = function(client, bufnr)
-	local _notify = client.notify
-
-	client.notify = function(method, params)
-		if method == 'textDocument/didClose' then
-			-- Godot doesn't implement didClose yet
-			return
-		end
-		_notify(method, params)
-	end
-	vim.api.nvim_command([[echo serverstart(']] .. pipe .. [[')]])
-end
 lspconfig.gdscript.setup {
-	-- on_attach = on_attach,
-	-- capabilities = lsp_capabilities
 	gd_config,
 }
+lspconfig.gopls.setup({
+	capabilities = lsp_capabilities,
+})
 
 lspconfig.powershell_es.setup({
 	capabilities = lsp_capabilities,

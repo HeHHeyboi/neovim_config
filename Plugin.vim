@@ -62,6 +62,7 @@ else
 	"file exploer
 	" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 	Plug 'stevearc/oil.nvim'
+	Plug 'nanotee/sqls.nvim'
 
 	"comment plugin
 	Plug 'numToStr/Comment.nvim'
@@ -69,6 +70,8 @@ else
 	" Plug 'folke/noice.nvim'
 	Plug 'MunifTanjim/nui.nvim'
 	Plug 'mfussenegger/nvim-dap'
+	" Plug 'tpope/vim-dadbod'
+	" Plug 'kristijanhusak/vim-dadbod-ui'
 
 	call plug#end()
 endif

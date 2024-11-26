@@ -13,5 +13,6 @@ else
 	require('plugin.comment')
 	require('plugin.todo-comment')
 	require('plugin.kanagawa')
+	-- require('plugin.vim-dadbod')
 	-- require('plugin.noice')
 end

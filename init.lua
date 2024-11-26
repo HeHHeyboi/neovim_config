@@ -27,6 +27,7 @@ else
 	opt.list = true
 	-- opt.listchars = { tab = "| " }
 	opt.listchars = { tab = "┆ " }
+
 	-- opt.listchars = { tab = "┇ " }
 	--
 	-- NOTE: Select colorscheme
