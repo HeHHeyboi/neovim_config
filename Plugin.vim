@@ -70,8 +70,11 @@ else
 	" Plug 'folke/noice.nvim'
 	Plug 'MunifTanjim/nui.nvim'
 	Plug 'mfussenegger/nvim-dap'
-	" Plug 'tpope/vim-dadbod'
-	" Plug 'kristijanhusak/vim-dadbod-ui'
+	" Plug 'kndndrj/nvim-dbee'
+	" Plug 'MattiasMTS/cmp-dbee'
+	Plug 'tpope/vim-dadbod'
+	Plug 'kristijanhusak/vim-dadbod-ui'
+	Plug 'kristijanhusak/vim-dadbod-completion'
 
 	call plug#end()
 endif

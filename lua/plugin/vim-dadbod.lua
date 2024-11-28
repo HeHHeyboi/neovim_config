@@ -1,1 +1,1 @@
-vim.g.db_adapter_oracle = 'sql'
+vim.g.db_ui_save_location = '~/Code/SQL'

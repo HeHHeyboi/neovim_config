@@ -26,6 +26,14 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	pattern = '*',
 	command = 'silent! normal! g`"zv'
 })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "sql", "plsql" },
+	callback = function()
+		require('cmp').setup.buffer({ sources = { { name = 'vim-dadbod-completion' } } })
+	end,
+})
+
+
 -- vim.api.nvim_create_autocmd("BufWritePost", {
 -- 	pattern = '*.gd',
 -- 	callback = function()
