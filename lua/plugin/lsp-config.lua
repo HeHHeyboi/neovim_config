@@ -31,6 +31,14 @@ lspconfig.gdscript.setup {
 }
 lspconfig.gopls.setup({
 	capabilities = lsp_capabilities,
+	settings = {
+		gopls = {
+			gofumpt = false,
+			templateExtensions = { ".html", ".tmpl" },
+			usePlaceholders = false,
+		}
+	}
+
 })
 
 lspconfig.powershell_es.setup({

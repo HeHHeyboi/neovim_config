@@ -31,14 +31,17 @@ else
 	-- opt.listchars = { tab = "┇ " }
 	--
 	-- NOTE: Select colorscheme
-	cmd.colorscheme("kanagawa-wave")
+	-- cmd.colorscheme("kanagawa-wave")
 	-- cmd.colorscheme("kanagawa-dragon")
-	-- vim.g.ayucolor = "mirage" -- or "mirage" or "dark"
-	-- vim.cmd("colorscheme ayu")
+	vim.g.ayucolor = "mirage" -- "mirage" or "dark"
+	vim.cmd("colorscheme ayu")
 
 	cmd("set mouse=a")
-	-- Highlight LineNr
-	cmd("hi CursorLine   cterm=NONE guibg=#282735 guifg=NONE")
+	-- NOTE: Highlight LineNr for kanagawa
+	-- cmd("hi CursorLine   cterm=NONE guibg=#282735 guifg=NONE")
+	-- NOTE: Highlight LineNr for ayu-mirage
+	-- cmd("hi CursorLine   cterm=NONE guibg=#292f3e guifg=NONE")
+	cmd("hi CursorLine   cterm=NONE guibg=#2d3344 guifg=NONE")
 	cmd("highlight LineNr guifg=#8aa7cf")
 
 	cmd("set foldmethod=expr")

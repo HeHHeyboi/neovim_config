@@ -125,6 +125,7 @@ end, { silent = true })
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
+		vim.lsp.inlay_hint.enable(true, { bufnr = nil }) -- Enable inlay hints
 		local opts = { buffer = event.buf }
 		local function map(key, func)
 			vim.keymap.set("n", key, func, opts)
@@ -164,19 +165,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, opts)
 	end,
 })
-
--- keymap({ "n", "i", "v" }, "gm", function()
--- 	print(vim.fn.mode())
--- end, { noremap = true })
-local function is_quickfix_open()
-	-- Iterate over all windows
-	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		-- Get the buffer associated with the window
-		local buf = vim.api.nvim_win_get_buf(win)
-		-- Check the buffer type
-		if vim.api.nvim_buf_get_option(buf, 'buftype') == 'quickfix' then
-			return true
-		end
-	end
-	return false
-end
