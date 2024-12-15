@@ -1,5 +1,5 @@
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-
+-- --
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
 require("mason").setup({
@@ -121,4 +121,4 @@ lspconfig.cmake.setup({
 
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip").filetype_extend("cs", { "unity" })
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("OFF")

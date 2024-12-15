@@ -43,6 +43,7 @@ else
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope-ui-select.nvim'
+	" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
 
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
@@ -62,7 +63,7 @@ else
 	"file exploer
 	" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 	Plug 'stevearc/oil.nvim'
-	Plug 'nanotee/sqls.nvim'
+	" Plug 'nanotee/sqls.nvim'
 
 	"comment plugin
 	Plug 'numToStr/Comment.nvim'
@@ -73,8 +74,8 @@ else
 	" Plug 'kndndrj/nvim-dbee'
 	" Plug 'MattiasMTS/cmp-dbee'
 	Plug 'tpope/vim-dadbod'
-	Plug 'kristijanhusak/vim-dadbod-ui'
-	Plug 'kristijanhusak/vim-dadbod-completion'
+	" Plug 'kristijanhusak/vim-dadbod-ui'
+	" Plug 'kristijanhusak/vim-dadbod-completion'
 
 	call plug#end()
 endif

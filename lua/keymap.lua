@@ -1,3 +1,4 @@
+---@diagnostic disable: deprecated
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
 local luasnip = require('luasnip')
@@ -76,15 +77,17 @@ keymap("n", "<leader>ss", function()
 	vim.cmd("belowright split " .. bufname)
 end)
 
--- telescope
+-- NOTE: Telescope
 keymap("n", "<C-p>", telescope.find_files, { desc = "Find find" })
-keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
+-- keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
+keymap("n", "<leader>fg", require("plugin.telescope.multigrep").live_multigrep, { desc = "Telescope Grep" })
 keymap("n", "vb", telescope.buffers, { desc = "View Buffer" })
 keymap("n", "vr", telescope.registers, { desc = "View Register" })
 keymap("n", "vm", telescope.marks, { desc = "View Mark" })
 keymap("n", "<leader>ds", telescope.lsp_document_symbols, {})
 keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, {})
 keymap("n", "<A-m>", telescope.diagnostics, {})
+
 --CHADtree
 keymap("n", "<C-b>", ":CHADopen<CR>", { desc = "Open File explorer on right(CHADtree)" })
 
@@ -125,43 +128,32 @@ end, { silent = true })
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
-		vim.lsp.inlay_hint.enable(true, { bufnr = nil }) -- Enable inlay hints
 		local opts = { buffer = event.buf }
 		local function map(key, func)
 			vim.keymap.set("n", key, func, opts)
 		end
 
-		map("K", function()
-			vim.lsp.buf.hover()
-		end)
-		map("gD", function()
-			vim.lsp.buf.declaration()
-		end)
+		map("K", vim.lsp.buf.hover)
+		map("gD", vim.lsp.buf.declaration)
 		--map("n", "gN", vim.diagnostic.goto_next, { buffer = 0, desc = "LSP Next Diagnostic" })
 		--map("n", "gP", vim.diagnostic.goto_prev, { buffer = 0, desc = "LSP Previous Diagnostic" })
 		-- map("gd", vim.lsp.buf.definition)
 
-		map("gl", function() vim.diagnostic.open_float() end)
-		-- map("n", "[d", vim.diagnostic.goto_prev())
-		-- map("n", "]d", vim.diagnostic.goto_next())
+		map("gl", vim.diagnostic.open_float)
+		map("[d", vim.diagnostic.goto_prev)
+		map("]d", vim.diagnostic.goto_next)
 		--Telescope
 		map("gd", telescope.lsp_definitions)
 		map("gi", telescope.lsp_implementations)
 		map("go", telescope.lsp_type_definitions)
 		map("grr", telescope.lsp_references)
 
-		map("gs", function()
-			vim.lsp.buf.signature_help()
-		end)
-		map("<F2>", function()
-			vim.lsp.buf.rename()
-		end)
-		map("<leader>ca", function()
-			vim.lsp.buf.code_action()
-		end)
+		map("gs", vim.lsp.buf.signature_help)
+		map("<F2>", vim.lsp.buf.rename)
+		map("<leader>ca", vim.lsp.buf.code_action)
 
 		keymap({ "n", "x" }, "<F3>", function()
 			vim.lsp.buf.format({ async = true })
-		end, opts)
+		end)
 	end,
 })

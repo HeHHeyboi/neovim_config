@@ -39,3 +39,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.bo.filetype = "json.nu"
 	end,
 })
+vim.api.nvim_create_autocmd("LspAttach", {
+	desc = "LSP actions",
+	callback = function()
+		if vim.bo.filetype == "cpp" then
+			return
+		end
+		vim.lsp.inlay_hint.enable(true, { bufnr = nil }) -- Enable inlay hints
+	end
+})
