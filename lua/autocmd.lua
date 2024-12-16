@@ -33,12 +33,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*.nu",
-	callback = function()
-		vim.bo.filetype = "json.nu"
-	end,
-})
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function()
