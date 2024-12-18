@@ -1,15 +1,15 @@
 if vim.fn.argc() == 0 then
-	vim.api.nvim_create_augroup('OpenOil', { clear = true })
-
-	vim.api.nvim_create_autocmd('VimEnter', {
-		group = 'OpenOil',
-		pattern = '*',
-		callback = function()
-			vim.defer_fn(function() vim.cmd("Oil .") end, 10) -- delay execution by 100ms
-		end
-	})
+	vim.cmd("Oil")
+	-- vim.api.nvim_create_augroup('OpenOil', { clear = true })
+	--
+	-- vim.api.nvim_create_autocmd('VimEnter', {
+	-- 	group = 'OpenOil',
+	-- 	pattern = '*',
+	-- 	callback = function()
+	-- 		vim.defer_fn(function() vim.cmd("e .") end, 10) -- delay execution by 100ms
+	-- 	end
+	-- })
 end
-
 vim.api.nvim_create_augroup('misc_augroup', { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = '*',
@@ -32,15 +32,9 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 		vim.cmd('silent! normal! g`"zv')
 	end
 })
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "sql", "plsql" },
-	callback = function()
-		require('cmp').setup.buffer({ sources = { { name = 'vim-dadbod-completion' } } })
-	end,
-})
 
 vim.api.nvim_create_autocmd("LspAttach", {
-	desc = "LSP actions",
+	desc = "LSP autocmd",
 	callback = function()
 		if vim.bo.filetype == "cpp" then
 			return

@@ -4,10 +4,10 @@ if exists('g:vscode')
 
 else
 	source ~/.vimrc
-	source ~/AppData/Local/nvim/vim/vim-airline.vim
-	source ~/AppData/Local/nvim/vim/autocmd.vim
-	source ~/AppData/Local/nvim/vim/keymap.vim
-	source ~/AppData/Local/nvim/vim/tabline.vim
+	source ~/.config/nvim/vim/keymap.vim
+	source ~/.config/nvim/vim/autocmd.vim
+	source ~/.config/nvim/vim/tabline.vim
+	source ~/.config/nvim/vim/vim-airline.vim
 	let g:python3_host_prog = 'C:\Program Files\Python312\python'
 	if has("win64") 	
 		if executable("pwsh")

@@ -105,8 +105,7 @@ keymap("n", "<leader>td", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" 
 -- end, {})
 
 --Oil.nvim
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-keymap("n", "<C-e>", "<cmd>Oil<CR>", { desc = "Open current dir" })
+keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 --LSP format and linter
 keymap("n", "<A-f>", function()

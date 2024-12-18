@@ -6,6 +6,7 @@ set grepformat=%f:%l:%c:%m,%f:%l:%m
 "nnoremap <Tab> <Plug>AirlineSelectNextTab
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qall<CR>
 " nnoremap <C-s> :w<CR>
 nnoremap <C-q> :bd<CR>
 "nnoremap bn :bnext<CR>
