@@ -1,8 +1,7 @@
 ---@diagnostic disable: deprecated
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
-local luasnip = require('luasnip')
-require("inQuote")
+require("config.inQuote")
 
 keymap("o", 'in"', function()
 	MoveToNextQuote("\"", 'f', 'i')
@@ -30,26 +29,6 @@ keymap("o", "al'", function()
 end, {})
 keymap("o", "L", "g_", {})
 keymap("o", "H", "^", {})
-
--- luasnip
-keymap("i", "<Tab>", function()
-	if luasnip.expand_or_jumpable() then
-		return "<Plug>luasnip-expand-or-jump"
-	else
-		return "<Tab>"
-	end
-end, { expr = true, silent = true, desc = "Use tab to select next" })
-keymap("i", "<S-Tab>", function()
-	luasnip.jump(-1)
-end, { silent = true, desc = "Use tab to select previous" })
-
-keymap("s", "<Tab>", function()
-	luasnip.jump(1)
-end, { silent = true })
-
-keymap("s", "<S-Tab>", function()
-	luasnip.jump(-1)
-end, { silent = true })
 
 -- NOTE: split buffer
 keymap("n", "<leader>vl", function()
@@ -80,7 +59,7 @@ end)
 -- NOTE: Telescope
 keymap("n", "<C-p>", telescope.find_files, { desc = "Find find" })
 -- keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
-keymap("n", "<leader>fg", require("plugin.telescope.multigrep").live_multigrep, { desc = "Telescope Grep" })
+keymap("n", "<leader>fg", require("config.telescope.multigrep").live_multigrep, { desc = "Telescope Grep" })
 keymap("n", "vb", telescope.buffers, { desc = "View Buffer" })
 keymap("n", "vr", telescope.registers, { desc = "View Register" })
 keymap("n", "vm", telescope.marks, { desc = "View Mark" })
