@@ -1,25 +1,15 @@
 -- Load your custom Vimscript configuration
 local opt = vim.opt
 local cmd = vim.cmd
-local vimrc = vim.fn.stdpath("config") .. "./Plugin.vim"
+local vimrc = vim.fn.stdpath("config") .. "./config.vim"
 vim.cmd.source(vimrc)
 if vim.g.vscode then
-	require('vscode-keymap')
+	require('config.vscode-keymap')
 else
-	require('plugin')
-	require('keymap')
-	--require('netrw')
-	require('neovide')
-	require('autocmd')
-	-- local chadtree_settings = {
-	-- ["theme.icon_glyph_set"] = "devicons"
-	-- ,
-	-- ["keymap.tertiary"] = { "<A-t>" }
-	-- ,
-	-- ["options.follow"] = false
-	-- }
-	-- vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
-	-- Set options
+	require('config.lazy')
+	require('config.keymap')
+	require('config.neovide')
+	require('config.autocmd')
 	opt.smarttab = true
 	opt.encoding = "UTF-8"
 	opt.swapfile = false

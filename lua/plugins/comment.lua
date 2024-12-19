@@ -1,5 +1,6 @@
-require('Comment').setup(
-	{
+local M = {
+	'numToStr/Comment.nvim',
+	opts = {
 		---Add a space b/w comment and the line
 		padding = true,
 		---Whether the cursor should stay at its position
@@ -43,4 +44,5 @@ require('Comment').setup(
 		---Function to call after (un)comment
 		post_hook = nil,
 	}
-)
+}
+return { M }

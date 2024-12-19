@@ -1,0 +1,25 @@
+---@diagnostic disable: deprecated
+local keymap = vim.keymap.set
+local luasnip = require('luasnip')
+require("inQuote")
+
+
+-- luasnip
+keymap("i", "<Tab>", function()
+	if luasnip.expand_or_jumpable() then
+		return "<Plug>luasnip-expand-or-jump"
+	else
+		return "<Tab>"
+	end
+end, { expr = true, silent = true, desc = "Use tab to select next" })
+keymap("i", "<S-Tab>", function()
+	luasnip.jump(-1)
+end, { silent = true, desc = "Use tab to select previous" })
+
+keymap("s", "<Tab>", function()
+	luasnip.jump(1)
+end, { silent = true })
+
+keymap("s", "<S-Tab>", function()
+	luasnip.jump(-1)
+end, { silent = true })

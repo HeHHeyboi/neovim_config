@@ -1,8 +1,3 @@
-if argc() == 0
-  augroup OpenOil
-    autocmd!
-  augroup END
-endif
 
 function! CheckCharAtCursor(s)
 	execute "normal H"
