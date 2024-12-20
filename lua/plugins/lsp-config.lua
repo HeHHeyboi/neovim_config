@@ -3,6 +3,9 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 local M =
 {
 	"neovim/nvim-lspconfig",
+	cond = function()
+		return not vim.opt.diff:get()
+	end,
 	config = function()
 		local lspconfig = require("lspconfig")
 		local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()

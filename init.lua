@@ -24,12 +24,13 @@ else
 	-- cmd.colorscheme("kanagawa-wave")
 	-- cmd.colorscheme("kanagawa-dragon")
 	vim.g.ayucolor = "mirage" -- "mirage" or "dark"
-	vim.cmd("colorscheme ayu")
+	cmd.colorscheme("ayu")
 
 	cmd("set mouse=a")
 	-- NOTE: Highlight LineNr for kanagawa
-	cmd("hi CursorLine   cterm=NONE guibg=#2e3646 guifg=NONE")
+	-- cmd("hi CursorLine   cterm=NONE guibg=#2e3646 guifg=NONE")
 	-- 252a35, 2e3646, 2a313d, 282735
+
 	-- NOTE: Highlight LineNr for ayu-mirage
 	-- cmd("hi CursorLine   cterm=NONE guibg=#292f3e guifg=NONE")
 	cmd("hi CursorLine   cterm=NONE guibg=#2d3344 guifg=NONE")

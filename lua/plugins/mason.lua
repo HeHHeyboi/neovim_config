@@ -1,9 +1,11 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		cond = function()
+			return not vim.opt.diff:get()
+		end,
 		config = function()
 			require("mason").setup {
-
 				ui = {
 					icons = {
 						package_installed = "✓",
@@ -16,9 +18,12 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		cond = function()
+			return not vim.opt.diff:get()
+		end,
 		config = function()
 			require("mason-lspconfig").setup {
-				ensure_installed = { "lua_ls", "gopls", "cmake", "clangd", "jdtls" }
+				ensure_installed = { "lua_ls", "gopls", "cmake", "clangd" }
 			}
 		end
 	},

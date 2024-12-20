@@ -1,6 +1,9 @@
 return
 {
 	'stevearc/oil.nvim',
+	cond = function()
+		return not vim.opt.diff:get()
+	end,
 	opts = {
 		default_file_explorer = true,
 		view_options = {
