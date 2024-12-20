@@ -1,5 +1,8 @@
 local M = {
 	'numToStr/Comment.nvim',
+	cond = function()
+		return not vim.opt.diff:get()
+	end,
 	opts = {
 		---Add a space b/w comment and the line
 		padding = true,

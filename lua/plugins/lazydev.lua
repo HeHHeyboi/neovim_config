@@ -1,6 +1,9 @@
 return {
 	"folke/lazydev.nvim",
 	ft = "lua", -- only load on lua files
+	cond = function()
+		return not vim.opt.diff:get()
+	end,
 	opts = {
 		library = {
 			-- See the configuration section for more details

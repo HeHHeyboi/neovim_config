@@ -1,4 +1,4 @@
-return{ 
-		{"ayu-theme/ayu-vim",lazy = false},
-		{"rebelot/kanagawa.nvim",lazy=true},
-	}
+return {
+	{ "ayu-theme/ayu-vim",     lazy = true },
+	{ "rebelot/kanagawa.nvim", lazy = true },
+}

@@ -106,6 +106,9 @@ end, { silent = true })
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
+		if vim.opt.diff:get() then
+			return
+		end
 		local opts = { buffer = event.buf }
 		local function map(key, func)
 			vim.keymap.set("n", key, func, opts)
