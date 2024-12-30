@@ -100,6 +100,13 @@ local M =
 		lspconfig.cmake.setup({
 			capabilities = lsp_capabilities,
 		})
+		lspconfig.sqlls.setup({
+			capabilities = lsp_capabilities,
+			filetypes = { 'sql' },
+			root_dir = function(_)
+				return vim.loop.cwd()
+			end,
+		})
 
 
 		require("luasnip.loaders.from_vscode").lazy_load()

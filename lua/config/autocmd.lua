@@ -11,11 +11,14 @@ if vim.fn.argc() == 0 then
 	-- })
 end
 vim.api.nvim_create_augroup('misc_augroup', { clear = true })
+local exclude = { "godot", "make" }
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = '*',
 	callback = function()
-		if vim.bo.filetype == "gdscript" then
-			return
+		for _, value in ipairs(exclude) do
+			if vim.bo.filetype == value then
+				return
+			end
 		end
 		vim.lsp.buf.format()
 	end
