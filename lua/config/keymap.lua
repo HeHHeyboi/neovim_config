@@ -2,6 +2,7 @@
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
 require("config.inQuote")
+require("config.global")
 
 keymap("o", 'in"', function()
 	MoveToNextQuote("\"", 'f', 'i')
@@ -95,13 +96,23 @@ local format = function(filetype, formatter)
 	})
 	vim.fn.jobwait({ job_format })
 end
---LSP format and linter
+-- NOTE: Format and linter
+local custom_format = {
+	hurl = {
+		cmd = "hurlfmt",
+		arg = "--in-place"
+	},
+	gdscript = {
+		cmd = "gdformat",
+		arg = ""
+	}
+}
 keymap("n", "<A-f>", function()
-	if vim.bo.filetype == "gdscript" then
-		format(vim.bo.filetype, "gdformat")
-		return
+	local format = custom_format[vim.bo.filetype]
+	if format ~= nil then
+		Format_file(format.cmd, format.arg)
 	end
-	vim.lsp.buf.format({ buffer = 0, async = true })
+	vim.lsp.buf.format({ async = true })
 end, { silent = true })
 
 --LSP keymap
