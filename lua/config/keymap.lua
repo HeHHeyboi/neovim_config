@@ -86,17 +86,19 @@ keymap("n", "<leader>td", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" 
 --Oil.nvim
 keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+local format = function(filetype, formatter)
+	local name = vim.fn.bufname("%")
+	local job_format = vim.fn.jobstart(formatter .. " " .. name, {
+		on_exit = function(exit_code)
+			vim.cmd("edit!")
+		end
+	})
+	vim.fn.jobwait({ job_format })
+end
 --LSP format and linter
 keymap("n", "<A-f>", function()
 	if vim.bo.filetype == "gdscript" then
-		-- vim.cmd("write")
-		local name = vim.fn.bufname("%")
-		local job_format = vim.fn.jobstart("gdformat " .. name, {
-			on_exit = function(exit_code)
-				vim.cmd("edit!")
-			end
-		})
-		vim.fn.jobwait({ job_format })
+		format(vim.bo.filetype, "gdformat")
 		return
 	end
 	vim.lsp.buf.format({ buffer = 0, async = true })

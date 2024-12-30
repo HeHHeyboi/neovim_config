@@ -111,7 +111,7 @@ local M =
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 		require("luasnip").filetype_extend("cs", { "unity" })
-		vim.lsp.set_log_level("OFF")
+		vim.lsp.set_log_level("ERROR")
 	end
 }
 

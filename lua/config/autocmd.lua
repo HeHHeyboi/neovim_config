@@ -10,7 +10,6 @@ if vim.fn.argc() == 0 then
 	-- 	end
 	-- })
 end
-vim.api.nvim_create_augroup('misc_augroup', { clear = true })
 local exclude = { "godot", "make" }
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = '*',
@@ -23,9 +22,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.lsp.buf.format()
 	end
 })
+vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
 vim.api.nvim_create_autocmd('BufReadPost', {
 	desc = 'Open file at the last position it was edited earlier',
-	group = 'misc_augroup',
+	group = 'goto_prev_pos_from_last_exit',
 	pattern = '*',
 	callback = function()
 		if vim.bo.filetype == "gitcommit" then
