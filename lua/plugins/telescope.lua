@@ -1,6 +1,5 @@
--- plugins/telescope.lua:
-return {
-
+local actions = require("telescope.actions")
+local M = {
 	'nvim-telescope/telescope.nvim',
 	tag = '0.1.8',
 	-- or                              , branch = '0.1.x',
@@ -12,9 +11,12 @@ return {
 				filesize_limit = 50,
 				timeout = 1000,
 				mappings = {
-					i = { ["<C-q>"] = open_trouble },    -- Insert mode binding
-					n = { ["<C-q>"] = open_trouble
-					, ["<C-c>"] = require("telescope.actions").close }, -- Normal mode binding
+					i = { ["<C-q>"] = open_trouble }, -- Insert mode binding
+					n = { ["<C-q>"] = open_trouble,
+						["<C-c>"] = actions.close,
+						["s"] = actions.toggle_selection + actions.move_selection_next,
+						["S"] = actions.toggle_selection + actions.move_selection_previous
+					}, -- Normal mode binding
 				},
 
 			},
@@ -33,4 +35,7 @@ return {
 		}
 		require("telescope").load_extension("ui-select")
 	end,
+
 }
+-- plugins/telescope.lua:
+return { M }

@@ -20,7 +20,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 				return
 			end
 		end
-
 		if custom_format[filetype] ~= nil then
 			return
 		end

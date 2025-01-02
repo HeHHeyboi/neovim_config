@@ -34,7 +34,19 @@ local M =
 		lspconfig.csharp_ls.setup({
 			capabilities = lsp_capabilities,
 		})
-		lspconfig.pylsp.setup({})
+		lspconfig.pylsp.setup({
+			settings = {
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							ignore = { 'W391' },
+							maxLineLength = 100
+						}
+					}
+				}
+			},
+			capabilities = lsp_capabilities,
+		})
 		lspconfig.jdtls.setup({
 			-- cmd = { "jdtls", "-configuration", "~/.cache/jdtls/config", "-data", "~/.cache/jdtls/workspace" },
 			settings = {

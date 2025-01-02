@@ -4,15 +4,25 @@ end
 local function col()
 	return [[Col:%c]]
 end
-local function buffer()
-	return [[Buf: %n]]
+local function mode()
+	local m = vim.fn.mode()
+	local mapMode = {
+		n = "N",
+		i = "I",
+		v = "V",
+		V = "V-l",
+		[""] = "V-b",
+		R = "R",
+		c = "Cmd",
+		t = "Term",
+	}
+	return mapMode[m]
 end
-return {
-	{
-		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		config = function()
-			require('lualine').setup{
+local M = {
+	'nvim-lualine/lualine.nvim',
+	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	config = function()
+		require('lualine').setup {
 			options = {
 				icons_enabled = true,
 				theme = 'auto',
@@ -25,16 +35,13 @@ return {
 				ignore_focus = {},
 				always_divide_middle = true,
 				globalstatus = false,
-				refresh = {
-					statusline = 1000,
-					tabline = 1000,
-					winbar = 1000,
-				}
 			},
 			sections = {
-				lualine_a = { 'mode' },
-				lualine_b = { 'branch', 'diff', 'diagnostics' },
-				lualine_c = { { "%f%m", color = { fg = '#ffffff', gui = 'bold' } } },
+				-- lualine_a = { 'mode' },
+				lualine_a = { mode },
+				lualine_b = { { 'branch', color = {} }, 'diff', 'diagnostics' },
+				-- lualine_c = { { "%f%m", color = { fg = '#ffffff', gui = 'bold' } } },
+				lualine_c = { { 'filename', file_staus = true, path = 1, color = { fg = '#ffffff', gui = '' } } },
 				lualine_x = { 'searchcount', 'fileformat' },
 				lualine_y = { 'filetype', col },
 				lualine_z = { line }
@@ -54,7 +61,7 @@ return {
 			},
 			inactive_winbar = {},
 			extensions = {}
-			}
-		end,
-	}
+		}
+	end,
 }
+return { M }
