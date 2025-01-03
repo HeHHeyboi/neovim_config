@@ -7,7 +7,7 @@ local custom_format = {
 	hurl = {
 		cmd = "hurlfmt",
 		arg = "--in-place"
-	}
+	},
 }
 local format_group = vim.api.nvim_create_augroup('FormatFile', { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = format_group,
-	pattern = { '*.hurl' },
+	pattern = { '*.hurl', "*.json" },
 	callback = function()
 		local format = custom_format[vim.bo.filetype]
 		if format ~= nil then
