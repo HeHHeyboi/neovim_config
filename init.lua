@@ -43,3 +43,11 @@ cmd("set foldlevel=999")
 cmd("highlight TabLine guibg=#3E4452 guifg=#ABB2BF")
 cmd("highlight TabLineSel guibg=#61AFEF guifg=#282C34 gui=bold")
 cmd("highlight TabLineFill guibg=#282C34 guifg=#ABB2BF")
+
+if vim.fn.filereadable(vim.fn.getcwd() .. '/project.godot') == 1 then
+	local addr = './godot.pipe'
+	if vim.fn.has('win32') then
+		addr = '127.0.0.1:6004'
+	end
+	vim.fn.serverstart(addr)
+end
