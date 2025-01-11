@@ -87,15 +87,6 @@ keymap("n", "<leader>td", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" 
 --Oil.nvim
 keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
-local format = function(filetype, formatter)
-	local name = vim.fn.bufname("%")
-	local job_format = vim.fn.jobstart(formatter .. " " .. name, {
-		on_exit = function(exit_code)
-			vim.cmd("edit!")
-		end
-	})
-	vim.fn.jobwait({ job_format })
-end
 -- NOTE: Format and linter
 local custom_format = {
 	hurl = {
@@ -111,6 +102,7 @@ keymap("n", "<A-f>", function()
 	local format = custom_format[vim.bo.filetype]
 	if format ~= nil then
 		Format_file(format.cmd, format.arg)
+		return
 	end
 	vim.lsp.buf.format({ async = true })
 end, { silent = true })

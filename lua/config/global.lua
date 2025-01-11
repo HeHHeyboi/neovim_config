@@ -1,6 +1,9 @@
 function Format_file(formatter, args)
 	local name = vim.fn.bufname("%")
 	local cmd = { vim.fn.exepath(formatter), args, name }
+	if args == "" then
+		cmd = { vim.fn.exepath(formatter), name }
+	end
 	vim.system(cmd, {}, function(out)
 		if out.code ~= 0 then
 			print(out.stderr)

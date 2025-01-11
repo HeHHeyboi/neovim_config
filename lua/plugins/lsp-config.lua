@@ -47,23 +47,9 @@ local M =
 			},
 			capabilities = lsp_capabilities,
 		})
-		lspconfig.jdtls.setup({
-			-- cmd = { "jdtls", "-configuration", "~/.cache/jdtls/config", "-data", "~/.cache/jdtls/workspace" },
-			settings = {
-				java = {
-					configuration = {
-						runtimes = {
-							{
-								name = "JavaSE-21",
-								path = "C:/JavaTool/jdk-21.0.2",
-								default = true,
-							}
-						}
-					}
-				}
-			},
+		require 'lspconfig'.java_language_server.setup {
 			capabilities = lsp_capabilities,
-		})
+		}
 		lspconfig.lua_ls.setup({
 			on_init = function(client)
 				local path = client.workspace_folders[1].name
