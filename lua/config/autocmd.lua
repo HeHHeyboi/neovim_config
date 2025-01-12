@@ -1,14 +1,20 @@
 if vim.fn.argc() == 0 then
 	vim.cmd("Oil")
 end
-require("config.global")
+
+require("config.format")
 local exclude = { "gdscript", "make" }
 local custom_format = {
 	hurl = {
 		cmd = "hurlfmt",
 		arg = "--in-place"
 	},
+	gdscript = {
+		cmd = "gdformat",
+		arg = ""
+	},
 }
+
 local format_group = vim.api.nvim_create_augroup('FormatFile', { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
 	group = format_group,
@@ -28,7 +34,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = format_group,
-	pattern = { '*.hurl', "*.json" },
+	pattern = { '*.hurl', '*.gd' },
 	callback = function()
 		local format = custom_format[vim.bo.filetype]
 		if format ~= nil then
@@ -36,6 +42,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		end
 	end
 })
+
 vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
 vim.api.nvim_create_autocmd('BufReadPost', {
 	desc = 'Open file at the last position it was edited earlier',
@@ -43,7 +50,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	pattern = '*',
 	callback = function()
 		if vim.bo.filetype == "gitcommit" then
-			print("this is gitcommit")
 			return
 		end
 		vim.cmd('silent! normal! g`"zv')

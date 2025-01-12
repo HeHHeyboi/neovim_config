@@ -2,7 +2,7 @@
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
 require("config.inQuote")
-require("config.global")
+require("config.format")
 
 keymap("o", 'in"', function()
 	MoveToNextQuote("\"", 'f', 'i')
@@ -28,6 +28,7 @@ end, {})
 keymap("o", "al'", function()
 	MoveToNextQuote("'", 'F', 'a')
 end, {})
+
 keymap("o", "L", "g_", {})
 keymap("o", "H", "^", {})
 
@@ -68,10 +69,10 @@ keymap("n", "<leader>ds", telescope.lsp_document_symbols, {})
 keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, {})
 keymap("n", "<A-m>", telescope.diagnostics, {})
 
---CHADtree
+-- NOTE: CHADtree
 keymap("n", "<C-b>", ":CHADopen<CR>", { desc = "Open File explorer on right(CHADtree)" })
 
---Trouble
+-- NOTE: Trouble
 keymap("n", "<A-'>", ":Trouble diagnostics toggle focus=true<cr>", { desc = "Toggle diagnostics" })
 --keymap("n", "<leader>'", ":Trouble diagnostics toggle focus=true<cr>", {})
 keymap("n", "<leader>tq", ":Trouble qflist toggle focus=true<cr>", { desc = "Trouble quickfix" })
@@ -84,10 +85,10 @@ keymap("n", "<leader>td", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" 
 -- 	vim.cmd("delmark " .. mark)
 -- end, {})
 
---Oil.nvim
+-- NOTE: Oil.nvim
 keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
--- NOTE: Format and linter
+-- NOTE: Format
 local custom_format = {
 	hurl = {
 		cmd = "hurlfmt",
@@ -96,7 +97,7 @@ local custom_format = {
 	gdscript = {
 		cmd = "gdformat",
 		arg = ""
-	}
+	},
 }
 keymap("n", "<A-f>", function()
 	local format = custom_format[vim.bo.filetype]

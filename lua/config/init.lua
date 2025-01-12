@@ -3,6 +3,6 @@ if vim.g.vscode then
 else
 	require('config.lazy')
 	require('config.keymap')
-	require('config.neovide')
 	require('config.autocmd')
+	require('config.neovide')
 end
