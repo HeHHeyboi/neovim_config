@@ -34,6 +34,7 @@ local M =
 		lspconfig.csharp_ls.setup({
 			capabilities = lsp_capabilities,
 		})
+		lspconfig.jdtls.setup {}
 		lspconfig.pylsp.setup({
 			settings = {
 				pylsp = {
@@ -47,9 +48,6 @@ local M =
 			},
 			capabilities = lsp_capabilities,
 		})
-		require 'lspconfig'.java_language_server.setup {
-			capabilities = lsp_capabilities,
-		}
 		lspconfig.lua_ls.setup({
 			on_init = function(client)
 				local path = client.workspace_folders[1].name
@@ -97,13 +95,6 @@ local M =
 		})
 		lspconfig.cmake.setup({
 			capabilities = lsp_capabilities,
-		})
-		lspconfig.sqlls.setup({
-			capabilities = lsp_capabilities,
-			filetypes = { 'sql' },
-			root_dir = function(_)
-				return vim.loop.cwd()
-			end,
 		})
 
 
