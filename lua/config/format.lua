@@ -1,6 +1,16 @@
 local notify = vim.schedule_wrap(function(msg, level)
 	vim.notify(msg, level)
 end)
+Custom_format = {
+	hurl = {
+		cmd = "hurlfmt",
+		arg = "--in-place"
+	},
+	gdscript = {
+		cmd = "gdformat",
+		arg = ""
+	},
+}
 
 function Format_file(formatter, args)
 	local name = vim.fn.bufname("%")

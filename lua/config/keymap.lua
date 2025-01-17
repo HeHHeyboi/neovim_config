@@ -69,8 +69,6 @@ keymap("n", "<leader>ds", telescope.lsp_document_symbols, {})
 keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, {})
 keymap("n", "<A-m>", telescope.diagnostics, {})
 
--- NOTE: CHADtree
-keymap("n", "<C-b>", ":CHADopen<CR>", { desc = "Open File explorer on right(CHADtree)" })
 
 -- NOTE: Trouble
 keymap("n", "<A-'>", ":Trouble diagnostics toggle focus=true<cr>", { desc = "Toggle diagnostics" })
@@ -89,18 +87,8 @@ keymap("n", "<leader>td", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" 
 keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- NOTE: Format
-local custom_format = {
-	hurl = {
-		cmd = "hurlfmt",
-		arg = "--in-place"
-	},
-	gdscript = {
-		cmd = "gdformat",
-		arg = ""
-	},
-}
 keymap("n", "<A-f>", function()
-	local format = custom_format[vim.bo.filetype]
+	local format = Custom_format[vim.bo.filetype]
 	if format ~= nil then
 		Format_file(format.cmd, format.arg)
 		return

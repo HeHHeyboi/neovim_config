@@ -4,16 +4,6 @@ end
 
 require("config.format")
 local exclude = { "gdscript", "make" }
-local custom_format = {
-	hurl = {
-		cmd = "hurlfmt",
-		arg = "--in-place"
-	},
-	gdscript = {
-		cmd = "gdformat",
-		arg = ""
-	},
-}
 
 local format_group = vim.api.nvim_create_augroup('FormatFile', { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -26,7 +16,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 				return
 			end
 		end
-		if custom_format[filetype] ~= nil then
+		if Custom_format[filetype] ~= nil then
 			return
 		end
 		vim.lsp.buf.format()
@@ -36,7 +26,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	group = format_group,
 	pattern = { '*.hurl', '*.gd' },
 	callback = function()
-		local format = custom_format[vim.bo.filetype]
+		local format = Custom_format[vim.bo.filetype]
 		if format ~= nil then
 			Format_file(format.cmd, format.arg)
 		end
