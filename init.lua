@@ -43,6 +43,7 @@ cmd("set foldlevel=999")
 cmd("highlight TabLine guibg=#3E4452 guifg=#ABB2BF")
 cmd("highlight TabLineSel guibg=#61AFEF guifg=#282C34 gui=bold")
 cmd("highlight TabLineFill guibg=#282C34 guifg=#ABB2BF")
+-- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
 
 if vim.fn.filereadable(vim.fn.getcwd() .. '/project.godot') == 1 then
 	local addr = './godot.pipe'
