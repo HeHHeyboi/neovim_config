@@ -10,15 +10,30 @@ local M =
 		local lspconfig = require("lspconfig")
 		local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 		-- NOTE: GDScript_lsp for godot
-		local gd_config = {
-			capabilities = lsp_capabilities,
-		}
-		if vim.fn.has 'win64' == 1 then
-			gd_config['cmd'] = { 'ncat', 'localhost', os.getenv 'GDScript_Port' or '6005' }
-		end
 
 		lspconfig.gdscript.setup {
-			gd_config,
+			capabilities = lsp_capabilities,
+			root_dir = vim.fs.root(0, { 'project.godot', '.git' })
+			-- NOTE: Can use Function Below
+			-- root_dir = vim.fs.root(0, function(name, path)
+			-- 	local root = { 'project.godot', '.git' }
+			-- 	for i in ipairs(root) do
+			-- 		if name == root[i] then
+			-- 			return true
+			-- 		end
+			-- 	end
+			-- 	return false
+			-- end)
+			-- Or This one for more Control
+			-- root_dir = function()
+			-- 	local parent = vim.fs.find({ 'project.godot', '.git' },
+			-- 		{ upward = true, stop = "C:/Godot", limit = math.huge })
+			-- 	if #parent == 0 then
+			-- 		print("Godot project not found")
+			-- 		return nil
+			-- 	end
+			-- 	return vim.fs.dirname(parent[1])
+			-- end
 		}
 		lspconfig.gopls.setup({
 			capabilities = lsp_capabilities,
@@ -51,7 +66,7 @@ local M =
 		lspconfig.lua_ls.setup({
 			on_init = function(client)
 				local path = client.workspace_folders[1].name
-				if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+				if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
 					return
 				end
 
