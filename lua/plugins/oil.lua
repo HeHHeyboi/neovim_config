@@ -24,7 +24,7 @@ return
 			border = "rounded",
 		},
 		columns = {
-			"icon",
+			{ "icon", add_padding = false },
 			-- "type",
 			-- "permissions",
 			-- "size",
