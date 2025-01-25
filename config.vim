@@ -2,7 +2,7 @@ source ~/.vimrc
 source ~/.config/nvim/vim/keymap.vim
 let g:python3_host_prog = 'C:\Program Files\Python313\python'
 let &shell = 'nu'
-let &shellcmdflag = '-c'
+let &shellcmdflag = '--error-style plain -c'
 let &shellquote = ""
 let &shellxquote = ""
 set shellslash
