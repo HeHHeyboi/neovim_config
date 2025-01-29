@@ -49,10 +49,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP autocmd",
 	callback = function()
-		if vim.bo.filetype == "cpp" then
-			-- vim.lsp.inlay_hint.enable(false, { bufnr = nil }) -- Enable inlay hints
-			return
-		end
-		vim.lsp.inlay_hint.enable(true, { bufnr = nil }) -- Enable inlay hints
+		vim.lsp.inlay_hint.enable(false, { bufnr = nil }) -- Enable inlay hints
 	end
 })

@@ -14,7 +14,7 @@ opt.list = true
 opt.listchars = { tab = "┆ " }
 
 -- opt.listchars = { tab = "┇ " }
---
+
 -- NOTE: Select colorscheme
 cmd.colorscheme("kanagawa-wave")
 -- cmd.colorscheme("kanagawa-dragon")

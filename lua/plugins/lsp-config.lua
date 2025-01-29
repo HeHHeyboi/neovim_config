@@ -35,6 +35,9 @@ local M =
 			-- 	return vim.fs.dirname(parent[1])
 			-- end
 		}
+		lspconfig.ols.setup {
+			capabilities = lsp_capabilities,
+		}
 		lspconfig.gopls.setup({
 			capabilities = lsp_capabilities,
 			settings = {
