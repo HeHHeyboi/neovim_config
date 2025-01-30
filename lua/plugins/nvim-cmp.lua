@@ -11,7 +11,9 @@ local M = {
 		})
 	end,
 	config = function()
+		local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 		local cmp = require("cmp")
+		cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 		cmp.setup({
 			snippet = {
 				expand = function(args)
@@ -42,10 +44,6 @@ local M = {
 					select = false,
 				}),
 			}),
-			window = {
-				-- completion = cmp.config.window.bordered({ border = "double" }),
-				-- documentation = cmp.config.window.bordered({ border = "double" }),
-			},
 			view = {
 				entries = {
 					name = "custom",
@@ -71,7 +69,6 @@ local M = {
 			}, {
 				{ name = "cmdline" },
 			}),
-			matching = { disallow_symbol_nonprefix_matching = false },
 		})
 	end
 }
