@@ -14,7 +14,16 @@ local M = {
 		local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 		local cmp = require("cmp")
 		cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
 		cmp.setup({
+			matching = {
+				disallow_fuzzy_matching = false,
+				disallow_fullfuzzy_matching = false,
+				disallow_partial_fuzzy_matching = false,
+				disallow_partial_matching = false,
+				disallow_prefix_unmatching = true,
+				disallow_symbol_nonprefix_matching = true,
+			},
 			snippet = {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body)
@@ -28,9 +37,9 @@ local M = {
 				{ name = "path" },
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
-				["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
-				['<C-g>'] = function()
+				-- ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+				-- ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
+				['<C-d>'] = function()
 					if cmp.visible_docs() then
 						cmp.close_docs()
 					else
@@ -38,17 +47,26 @@ local M = {
 					end
 				end,
 				-- C-b (back) C-f (forward) for snippet placeholder navigation.
-				["<C-Space>"] = cmp.mapping.complete(),
+				["<C-e>"] = function()
+					if cmp.visible() then
+						cmp.abort()
+					else
+						cmp.complete()
+					end
+				end,
 				["<CR>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = false,
 				}),
+
 			}),
 			view = {
+				docs = {
+					auto_open = false
+				},
 				entries = {
 					name = "custom",
 					selection_order = "near_cursor",
-					follow_cursor = false,
 				}
 			}
 		})

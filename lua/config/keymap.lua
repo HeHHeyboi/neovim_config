@@ -1,4 +1,17 @@
 ---@diagnostic disable: deprecated
+local cmp_enabled = true
+
+function ToggleCmp()
+	cmp_enabled = not cmp_enabled
+	if cmp_enabled then
+		cmp.setup({ enabled = true })
+		print("Completion enabled")
+	else
+		cmp.setup({ enabled = false })
+		print("Completion disabled")
+	end
+end
+
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
 require("config.inQuote")
@@ -65,13 +78,14 @@ keymap("n", "<leader>fg", require("config.telescope.multigrep").live_multigrep, 
 keymap("n", "vb", telescope.buffers, { desc = "View Buffer" })
 keymap("n", "vr", telescope.registers, { desc = "View Register" })
 keymap("n", "vm", telescope.marks, { desc = "View Mark" })
-keymap("n", "<leader>ds", telescope.lsp_document_symbols, {})
-keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, {})
-keymap("n", "<A-m>", telescope.diagnostics, {})
+keymap("n", "<A-m>", telescope.diagnostics, { desc = "Telescope Diagnostic" })
+-- vim.keymap.del("n", "<leader>ds")
+keymap("n", "<leader>ds", telescope.lsp_document_symbols, { desc = "Telescope Document Symbols" })
+keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, { desc = "Telescope Workspace symbols" })
 
 
 -- NOTE: Trouble
-keymap("n", "<A-'>", ":Trouble diagnostics toggle focus=true<cr>", { desc = "Toggle diagnostics" })
+keymap("n", "<A-'>", ":Trouble diagnostics toggle focus=true<cr>", { desc = "Toggle Trouble diagnostics" })
 --keymap("n", "<leader>'", ":Trouble diagnostics toggle focus=true<cr>", {})
 keymap("n", "<leader>tq", ":Trouble qflist toggle focus=true<cr>", { desc = "Trouble quickfix" })
 keymap("n", "vtd", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" })

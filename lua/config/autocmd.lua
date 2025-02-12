@@ -39,7 +39,8 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	group = 'goto_prev_pos_from_last_exit',
 	pattern = '*',
 	callback = function()
-		if vim.bo.filetype == "gitcommit" then
+		if vim.bo.filetype == "gitcommit" or vim.wo.diff then
+			print("Git commit file or git diff")
 			return
 		end
 		vim.cmd('silent! normal! g`"zv')
