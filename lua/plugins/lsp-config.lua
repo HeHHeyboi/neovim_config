@@ -39,9 +39,9 @@ local M =
 			capabilities = lsp_capabilities,
 			init_options = {
 				enable_snippets = true,
-				enable_semantic_tokes = true,
+				enable_semantic_tokens = false,
 				verbose = true,
-				checker_args = "-vet-unused -vet-shadowing"
+				checker_args = "-vet-unused-variable -vet-shadowing"
 			}
 		}
 		lspconfig.gopls.setup({

@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = format_group,
-	pattern = { '*.hurl', '*.gd' },
+	pattern = { '*.gd' },
 	callback = function()
 		local format = Custom_format[vim.bo.filetype]
 		if format ~= nil then
