@@ -1,4 +1,3 @@
-local actions = require("telescope.actions")
 local M = {
 	'nvim-telescope/telescope.nvim',
 	tag = '0.1.8',
@@ -6,6 +5,7 @@ local M = {
 	dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim' },
 	config = function()
 		local open_trouble = require("trouble.sources.telescope").open
+		local actions = require("telescope.actions")
 		require("telescope").setup {
 			defaults = {
 				filesize_limit = 50,
