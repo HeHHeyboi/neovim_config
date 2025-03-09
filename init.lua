@@ -1,8 +1,8 @@
 -- Load your custom Vimscript configuration
 local opt = vim.opt
 local cmd = vim.cmd
-local vimrc = vim.fn.stdpath("config") .. "./config.vim"
-vim.cmd.source(vimrc)
+local vimrc = vim.fn.stdpath("config") .. "/config.vim"
+cmd.source(vimrc)
 require("config")
 
 opt.smarttab = true
