@@ -5,6 +5,7 @@ local vimrc = vim.fn.stdpath("config") .. "/config.vim"
 cmd.source(vimrc)
 require("config")
 
+
 opt.smarttab = true
 opt.encoding = "UTF-8"
 opt.swapfile = false
