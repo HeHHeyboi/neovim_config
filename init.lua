@@ -40,7 +40,7 @@ cmd("highlight LineNr guifg=#8aa7cf")
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 cmd("set nofoldenable")
--- cmd("set foldlevel=999")
+cmd("set foldlevel=999")
 cmd("highlight TabLine guibg=#3E4452 guifg=#ABB2BF")
 cmd("highlight TabLineSel guibg=#61AFEF guifg=#282C34 gui=bold")
 cmd("highlight TabLineFill guibg=#282C34 guifg=#ABB2BF")
