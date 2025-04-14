@@ -1,2 +1,6 @@
-vim.api.nvim_set_hl(0, "MyReturn", { fg = "#e6565b", bold = true })
-vim.fn.matchadd("MyReturn", "\\<return\\>")
+-- vim.api.nvim_set_hl(0, "MyKeywordImport", {
+-- 	fg = "#ff5f5f",
+-- 	bold = true,
+-- 	italic = false,
+-- })
+-- vim.api.nvim_set_hl(0, "@keyword.import.go", { link = "MyKeywordImport" })

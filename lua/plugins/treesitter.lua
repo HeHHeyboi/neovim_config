@@ -7,9 +7,7 @@ local M =
 			local configs = require("nvim-treesitter.configs")
 			configs.setup({
 				ensure_installed = { "gitattributes", "git_config", "git_rebase", "gitcommit", "gdscript", "c_sharp",
-					"cpp",
-					"java", "c",
-					"lua", "vim", "vimdoc", "markdown", "markdown_inline", "go" },
+					"cpp", "java", "c", "lua", "vim", "vimdoc", "markdown", "markdown_inline", "go" },
 
 				sync_install = false,
 				modules = {},
