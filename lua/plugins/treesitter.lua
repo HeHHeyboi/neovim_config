@@ -1,34 +1,46 @@
-return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	config = function()
-		local configs = require("nvim-treesitter.configs")
+local M =
+{
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			local configs = require("nvim-treesitter.configs")
+			configs.setup({
+				ensure_installed = { "gitattributes", "git_config", "git_rebase", "gitcommit", "gdscript", "c_sharp",
+					"cpp",
+					"java", "c",
+					"lua", "vim", "vimdoc", "markdown", "markdown_inline", "go" },
 
-		configs.setup({
-			-- A list of parser names, or "all" (the five listed parsers should always be installed)
-			ensure_installed = { "gitattributes", "git_config", "git_rebase", "gitcommit", "gdscript", "c_sharp", "cpp",
-				"java", "c",
-				"lua", "vim", "vimdoc", "markdown", "markdown_inline", "go" },
+				sync_install = false,
+				modules = {},
+				ignore_install = {},
 
-			-- Install parsers synchronously (only applied to `ensure_installed`)
-			sync_install = false,
-			modules = {},
-			ignore_install = {},
+				auto_install = false,
 
-			-- Automatically install missing parsers when entering buffer
-			-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-			auto_install = false,
+				indent = {
+					enable = true,
+				},
 
-			indent = {
-				enable = true,
-			},
+				highlight = {
+					enable = true,
 
-			highlight = {
-				enable = true,
-
-				additional_vim_regex_highlighting = false,
-			},
-		})
-	end
-
+					additional_vim_regex_highlighting = false,
+				},
+			})
+		end
+	},
+	-- {
+	-- 	'nvim-treesitter/nvim-treesitter-refactor',
+	-- 	dependencies = { 'nvim-treesitter/nvim-treesitter' },
+	-- 	config = function()
+	-- 		---@diagnostic disable-next-line: missing-fields
+	-- 		require 'nvim-treesitter.configs'.setup {
+	-- 			refactor = {
+	-- 				highlight_definitions = { enable = true },
+	-- 				highlight_current_scope = { enable = false },
+	-- 			}
+	-- 		}
+	-- 	end
+	-- }
 }
+return M

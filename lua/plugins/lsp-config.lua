@@ -51,6 +51,7 @@ local M =
 					gofumpt = false,
 					templateExtensions = { ".html", ".tmpl" },
 					usePlaceholders = false,
+					semanticTokens = true,
 				}
 			}
 		})
