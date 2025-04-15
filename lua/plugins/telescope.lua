@@ -2,6 +2,8 @@ local M = {
 	'nvim-telescope/telescope.nvim',
 	tag = '0.1.8',
 	-- or                              , branch = '0.1.x',
+	--
+	--
 	dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim' },
 	config = function()
 		local open_trouble = require("trouble.sources.telescope").open
@@ -10,6 +12,7 @@ local M = {
 			defaults = {
 				filesize_limit = 50,
 				timeout = 1000,
+				preview = { hide_on_startup = true },
 				mappings = {
 					i = { ["<C-q>"] = open_trouble }, -- Insert mode binding
 					n = { ["<C-q>"] = open_trouble,
@@ -18,18 +21,24 @@ local M = {
 						["S"] = actions.toggle_selection + actions.move_selection_previous
 					}, -- Normal mode binding
 				},
-
+				-- path_display = { "smart" },
 			},
 			extensions = {
 				["ui-select"] = {
-					require("telescope.themes").get_dropdown {
-					}
+					require("telescope.themes").get_dropdown {}
 				}
 			},
 			pickers = {
+				path_display = { "smart" },
 				find_files = {
 					-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+					-- theme = "dropdown",
 					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--glob", "!**/env/*" },
+				},
+				buffers = {
+					mappings = {
+						n = { ["<c-d>"] = actions.delete_buffer + actions.move_to_top, }
+					}
 				},
 			},
 		}
