@@ -25,8 +25,9 @@ local function list_buffers_ls_style(opts)
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
 		if vim.api.nvim_buf_is_loaded(buf) then
 			local name = vim.api.nvim_buf_get_name(buf)
+			local check_oil = string.find(name, "oil")
 			name = string.gsub(name, "\\", "/")
-			if name ~= "" then
+			if name ~= "" and check_oil == nil then
 				name = vim.fn.fnamemodify(name, ":~:.")
 			else
 				goto continue
