@@ -67,6 +67,12 @@ local M =
 						pycodestyle = {
 							ignore = { 'W391' },
 							maxLineLength = 100
+						},
+						yapf = {
+							enabled = true
+						},
+						autopep8 = {
+							enabled = false
 						}
 					}
 				}

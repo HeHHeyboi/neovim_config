@@ -14,7 +14,7 @@ opt.list = true
 -- opt.listchars = { tab = "| " }
 opt.listchars = { tab = "┆ " }
 
--- opt.listchars = { tab = "┇ " }
+-- opt.listchars = { tab = "┇ ", space = "" }
 -- NOTE: Select colorscheme
 
 vim.wo.foldmethod = 'expr'
