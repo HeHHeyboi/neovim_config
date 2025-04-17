@@ -1,16 +1,16 @@
 ---@diagnostic disable: deprecated
-local cmp_enabled = true
-
-function ToggleCmp()
-	cmp_enabled = not cmp_enabled
-	if cmp_enabled then
-		cmp.setup({ enabled = true })
-		print("Completion enabled")
-	else
-		cmp.setup({ enabled = false })
-		print("Completion disabled")
-	end
-end
+-- local cmp_enabled = true
+--
+-- function ToggleCmp()
+-- 	cmp_enabled = not cmp_enabled
+-- 	if cmp_enabled then
+-- 		cmp.setup({ enabled = true })
+-- 		print("Completion enabled")
+-- 	else
+-- 		cmp.setup({ enabled = false })
+-- 		print("Completion disabled")
+-- 	end
+-- end
 
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
@@ -70,7 +70,7 @@ keymap("n", "<leader>ss", function()
 	local bufname = vim.fn.bufname("#")
 	vim.cmd("belowright split " .. bufname)
 end)
-local theme = require('telescope.themes').get_dropdown({})
+-- local theme = require('telescope.themes').get_dropdown({})
 -- NOTE: Telescope
 keymap("n", "<C-p>", telescope.find_files, { desc = "Find find" })
 -- keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
@@ -130,8 +130,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- map("gd", vim.lsp.buf.definition)
 
 		map("gl", vim.diagnostic.open_float)
-		map("[d", vim.diagnostic.goto_prev)
-		map("]d", vim.diagnostic.goto_next)
+		map("[d", function()
+			vim.diagnostic.jump({ count = 1, float = true })
+		end)
+		map("]d", function()
+			vim.diagnostic.jump({ count = -1, float = true })
+		end)
 		--Telescope
 		map("gd", telescope.lsp_definitions)
 		map("gi", telescope.lsp_implementations)

@@ -5,6 +5,12 @@ local vimrc = vim.fn.stdpath("config") .. "/config.vim"
 cmd.source(vimrc)
 require("config")
 
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+})
+
 
 opt.smarttab = true
 opt.encoding = "UTF-8"
