@@ -113,6 +113,7 @@ end, { silent = true })
 
 --LSP keymap
 vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("Lsp_keymap", {}),
 	desc = "LSP actions",
 	callback = function(event)
 		if vim.opt.diff:get() then

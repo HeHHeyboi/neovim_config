@@ -3,23 +3,23 @@ if vim.fn.argc() == 0 then
 end
 
 require("config.format")
-local exclude = { "gdscript", "make" }
+-- local exclude = { "gdscript", "make" }
 
-local format_group = vim.api.nvim_create_augroup('FormatFile', { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = format_group,
-	pattern = '*',
-	callback = function()
-		local filetype = vim.bo.filetype
-		for _, value in ipairs(exclude) do
-			if filetype == value then
-				return
-			end
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup('format_buffer', {}),
+	desc = "LSP autocmd",
+	callback = function(args)
+		vim.lsp.inlay_hint.enable(false, { bufnr = nil }) -- Enable inlay hints
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+		if client:supports_method('textDocument/formatting') then
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = vim.api.nvim_create_augroup('format_buffer', { clear = false }),
+				buffer = args.buf,
+				callback = function()
+					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+				end,
+			})
 		end
-		if Custom_format[filetype] ~= nil then
-			return
-		end
-		vim.lsp.buf.format()
 	end
 })
 vim.api.nvim_create_autocmd("BufWritePost", {
@@ -47,9 +47,21 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	end
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	desc = "LSP autocmd",
-	callback = function()
-		vim.lsp.inlay_hint.enable(false, { bufnr = nil }) -- Enable inlay hints
-	end
-})
+
+-- local format_group = vim.api.nvim_create_augroup('FormatFile', { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	group = format_group,
+-- 	pattern = '*',
+-- 	callback = function()
+-- 		local filetype = vim.bo.filetype
+-- 		for _, value in ipairs(exclude) do
+-- 			if filetype == value then
+-- 				return
+-- 			end
+-- 		end
+-- 		if Custom_format[filetype] ~= nil then
+-- 			return
+-- 		end
+-- 		vim.lsp.buf.format()
+-- 	end
+-- })

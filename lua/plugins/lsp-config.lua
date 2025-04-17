@@ -65,7 +65,7 @@ local M =
 				pylsp = {
 					plugins = {
 						pycodestyle = {
-							ignore = { 'W391' },
+							ignore = { 'W391', 'W191' },
 							maxLineLength = 100
 						},
 						yapf = {
