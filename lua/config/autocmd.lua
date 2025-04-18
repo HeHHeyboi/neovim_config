@@ -40,7 +40,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	pattern = '*',
 	callback = function()
 		if vim.bo.filetype == "gitcommit" or vim.wo.diff then
-			print("Git commit file or git diff")
 			return
 		end
 		vim.cmd('silent! normal! g`"zv')
