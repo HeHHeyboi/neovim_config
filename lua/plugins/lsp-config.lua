@@ -7,9 +7,9 @@ local M =
 		return not vim.opt.diff:get()
 	end,
 	config = function()
-		local lspconfig = require("lspconfig")
+		-- local lspconfig = require("lspconfig")
 		local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-		print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
+		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
 		-- NOTE: GDScript_lsp for godot
 		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp' }
 		vim.lsp.config('*', {

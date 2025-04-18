@@ -6,6 +6,7 @@ let &shellcmdflag = '--error-style plain -c'
 let &shellquote = ""
 let &shellxquote = ""
 set shellslash
+" set noshellslash
 
 "Plug 'jiangmiao/auto-pairs'
 "Plug 'rstacruz/vim-closer'
