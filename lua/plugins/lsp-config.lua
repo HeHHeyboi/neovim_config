@@ -100,8 +100,6 @@ local M =
 		vim.lsp.config("clangd", {})
 		vim.lsp.config("cmake", {})
 
-		require("luasnip.loaders.from_vscode").lazy_load()
-		require("luasnip").filetype_extend("cs", { "unity" })
 		vim.lsp.set_log_level("ERROR")
 		vim.lsp.enable(enable_lsp)
 	end
