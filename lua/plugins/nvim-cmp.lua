@@ -29,13 +29,14 @@ local M = {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
-			sources = {
+			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "buffer" },
 				{ name = "luasnip" },
+			}, {
+				{ name = "buffer" },
 				{ name = 'nvim_lsp_signature_help' },
 				{ name = "path" },
-			},
+			}),
 			mapping = cmp.mapping.preset.insert({
 				-- ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
 				-- ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down

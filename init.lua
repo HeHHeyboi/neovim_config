@@ -11,7 +11,7 @@ vim.diagnostic.config({
 	underline = true,
 })
 
-
+vim.g.mapleader = " "
 opt.smarttab = true
 opt.encoding = "UTF-8"
 opt.swapfile = false

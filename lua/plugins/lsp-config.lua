@@ -9,45 +9,25 @@ local M =
 	config = function()
 		local lspconfig = require("lspconfig")
 		local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+		print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
 		-- NOTE: GDScript_lsp for godot
+		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp' }
+		vim.lsp.config('*', {
+			capabilities = lsp_capabilities,
+		})
 
-		lspconfig.gdscript.setup {
-			capabilities = lsp_capabilities,
-			root_dir = vim.fs.root(0, { 'project.godot', '.git' })
-			-- NOTE: Can use Function Below
-			-- root_dir = vim.fs.root(0, function(name, path)
-			-- 	local root = { 'project.godot', '.git' }
-			-- 	for i in ipairs(root) do
-			-- 		if name == root[i] then
-			-- 			return true
-			-- 		end
-			-- 	end
-			-- 	return false
-			-- end)
-			-- Or This one for more Control
-			-- root_dir = function()
-			-- 	local parent = vim.fs.find({ 'project.godot', '.git' },
-			-- 		{ upward = true, stop = "C:/Godot", limit = math.huge })
-			-- 	if #parent == 0 then
-			-- 		print("Godot project not found")
-			-- 		return nil
-			-- 	end
-			-- 	return vim.fs.dirname(parent[1])
-			-- end
-		}
-		lspconfig.ols.setup {
-			capabilities = lsp_capabilities,
+		vim.lsp.config('ols', {
 			init_options = {
 				enable_snippets = true,
 				enable_semantic_tokens = false,
 				verbose = true,
 				checker_args = "-vet-unused-variable -vet-shadowing"
-			}
-		}
-		lspconfig.gopls.setup({
-			capabilities = lsp_capabilities,
+			},
+		})
+		vim.lsp.config("gopls", {
 			settings = {
 				gopls = {
+					experimentalPostfixCompletions = true,
 					gofumpt = false,
 					templateExtensions = { ".html", ".tmpl" },
 					usePlaceholders = false,
@@ -56,11 +36,9 @@ local M =
 			}
 		})
 
-		lspconfig.csharp_ls.setup({
-			capabilities = lsp_capabilities,
-		})
-		lspconfig.jdtls.setup {}
-		lspconfig.pylsp.setup({
+		vim.lsp.config("csharp_ls", {})
+		-- lspconfig.jdtls.setup {}
+		vim.lsp.config("pylsp", {
 			settings = {
 				pylsp = {
 					plugins = {
@@ -77,9 +55,8 @@ local M =
 					}
 				}
 			},
-			capabilities = lsp_capabilities,
 		})
-		lspconfig.lua_ls.setup({
+		vim.lsp.config("lua_ls", {
 			on_init = function(client)
 				local path = client.workspace_folders[1].name
 				if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
@@ -119,19 +96,14 @@ local M =
 					},
 				}
 			},
-			capabilities = lsp_capabilities,
 		})
-		lspconfig.clangd.setup({
-			capabilities = lsp_capabilities,
-		})
-		lspconfig.cmake.setup({
-			capabilities = lsp_capabilities,
-		})
-
+		vim.lsp.config("clangd", {})
+		vim.lsp.config("cmake", {})
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 		require("luasnip").filetype_extend("cs", { "unity" })
 		vim.lsp.set_log_level("ERROR")
+		vim.lsp.enable(enable_lsp)
 	end
 }
 

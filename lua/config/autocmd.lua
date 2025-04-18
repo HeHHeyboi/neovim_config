@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end
 })
 vim.api.nvim_create_autocmd("BufWritePost", {
-	group = format_group,
+	group = vim.api.nvim_create_augroup("Format with formatter", { clear = true }),
 	pattern = { '*.gd' },
 	callback = function()
 		local format = Custom_format[vim.bo.filetype]
