@@ -1,5 +1,3 @@
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "none" })
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "none" })
 local M =
 {
 	"neovim/nvim-lspconfig",
@@ -19,7 +17,7 @@ local M =
 		vim.lsp.config('ols', {
 			init_options = {
 				enable_snippets = true,
-				enable_semantic_tokens = false,
+				enable_semantic_tokens = true,
 				verbose = true,
 				checker_args = "-vet-unused-variable -vet-shadowing"
 			},

@@ -9,14 +9,15 @@ local M =
 			colors = { -- add/modify theme and palette colors
 				palette = {},
 				theme = {
-					wave = {},
+					wave = {
+					},
 					lotus = {},
 					dragon = {},
 					all = {
 						ui = {
-							-- bg_gutter = "none",
 							nontext = "#8aa7cf",
-							bg_p2 = "#292e3b"
+							-- bg_p2 = "#484861"
+							bg_p2 = "#313141"
 						}
 					}
 				},
@@ -24,5 +25,43 @@ local M =
 
 		},
 	},
+	{
+		'AlexvZyl/nordic.nvim',
+		lazy = true,
+		opts = {
+			after_palette = function(palette)
+				palette.fg_sidebar = "#8aa7cf"
+			end,
+			bright_border = true,
+			reduced_blue = true,
+			cursorline = {
+				theme = 'light',
+				bg = "#292e3b",
+				blend = 0.8,
+			},
+			override = {
+				CursorLineNr = { fg = '#ffc300' },
+				MatchParen = { fg = "#ffc900" }
+			},
+			telescope = {
+				style = "classic"
+			}
+		}
+	},
+	{
+		'navarasu/onedark.nvim',
+		lazy = true,
+		opts = {
+			style = 'deep', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+			highlights = {
+				["CursorLine"] = { bg = "#2e3442" },
+				["CursorLineNr"] = { fg = "#ffc300" },
+				["LineNr"] = { fg = "#8aa7cf" },
+				["MatchParen"] = { fg = "#ffc300", bg = "NONE" },
+				["PMenu"] = { bg = "#364368" },
+				["@lsp.type.comment"] = { fg = "#5c6d8f" }
+			}
+		}
+	}
 }
 return { M }
