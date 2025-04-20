@@ -133,6 +133,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("Lsp_keymap", {}),
 	desc = "LSP actions",
 	callback = function(event)
+		local custom_border = { '', '', ' ', ' ' }
 		if vim.opt.diff:get() then
 			return
 		end
@@ -142,8 +143,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		map("K", function()
-			-- vim.lsp.buf.hover({ offset_x = -3 })
-			vim.lsp.buf.hover({ border = "rounded" })
+			vim.lsp.buf.hover({ border = custom_border })
+			-- vim.lsp.buf.hover({ border = { '', '' } })
 		end)
 		map("gD", vim.lsp.buf.declaration)
 		--map("n", "gN", vim.diagnostic.goto_next, { buffer = 0, desc = "LSP Next Diagnostic" })
@@ -164,8 +165,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("grr", telescope.lsp_references)
 
 		map("gs", function()
-			vim.lsp.buf.signature_help({ border = "rounded" })
-			-- vim.lsp.buf.hover({ offset_x = -3 })
+			-- vim.lsp.buf.signature_help({ border = "rounded" })
+			vim.lsp.buf.hover({ border = custom_border })
 		end)
 		map("<F2>", vim.lsp.buf.rename)
 		map("<leader>ca", vim.lsp.buf.code_action)
