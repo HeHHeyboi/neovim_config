@@ -23,7 +23,7 @@ return {
 		end,
 		config = function()
 			require("mason-lspconfig").setup {
-				ensure_installed = { "lua_ls", "gopls", "clangd" },
+				ensure_installed = { "lua_ls", "gopls", "clangd", "ols", "gdtoolkit" },
 				automatic_installation = false
 			}
 		end
