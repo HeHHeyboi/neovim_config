@@ -1,6 +1,7 @@
 return
 {
 	'stevearc/oil.nvim',
+	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 	cond = function()
 		return not vim.opt.diff:get()
 	end,
@@ -36,6 +37,5 @@ return
 	},
 	-- Optional dependencies
 	--dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 
 }

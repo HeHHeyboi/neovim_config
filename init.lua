@@ -19,9 +19,15 @@ opt.cursorline = true
 opt.list = true
 -- opt.listchars = { tab = "| " }
 opt.listchars = { tab = "┆ " }
-
 -- opt.listchars = { tab = "┇ ", space = "" }
--- NOTE: Select colorscheme
+
+-- NOTE: Set Theme
+cmd.colorscheme("kanagawa-dragon")
+-- cmd.colorscheme("kanagawa-wave")
+-- vim.g.ayucolor = "dark" -- "mirage" or "dark"
+-- cmd.colorscheme("ayu")
+
+cmd("set mouse=a")
 
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'

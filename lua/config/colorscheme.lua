@@ -1,14 +1,7 @@
-local opt = vim.opt
 local cmd = vim.cmd
 
-cmd.colorscheme("kanagawa-wave")
--- cmd.colorscheme("kanagawa-dragon")
-vim.g.ayucolor = "mirage" -- "mirage" or "dark"
--- cmd.colorscheme("ayu")
-
-cmd("set mouse=a")
 -- NOTE: Highlight LineNr for kanagawa
-cmd("hi CursorLine   cterm=NONE guibg=#292e3b guifg=NONE")
+-- cmd("hi CursorLine   cterm=NONE guibg=#292e3b guifg=NONE")
 -- 252a35, 2e3646, 2a313d, 282735,292e3b
 
 -- NOTE: Highlight LineNr for ayu-mirage

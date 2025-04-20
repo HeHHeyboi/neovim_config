@@ -4,29 +4,26 @@ return {
 		cond = function()
 			return not vim.opt.diff:get()
 		end,
-		config = function()
-			require("mason").setup {
-				ui = {
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗",
-					},
+		opts = {
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
 				},
-			}
-		end
+			},
+
+		}
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		cond = function()
 			return not vim.opt.diff:get()
 		end,
-		config = function()
-			require("mason-lspconfig").setup {
-				ensure_installed = { "lua_ls", "gopls", "clangd", "ols" },
-				automatic_installation = false
-			}
-		end
+		opts = {
+			ensure_installed = { "lua_ls", "gopls", "clangd", "ols" },
+			automatic_installation = false
+		}
 	},
 
 }
