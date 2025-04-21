@@ -9,7 +9,7 @@ local M =
 		local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
 		-- NOTE: GDScript_lsp for godot
-		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp' }
+		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylyzer' }
 		vim.lsp.config('*', {
 			capabilities = lsp_capabilities,
 		})
@@ -36,6 +36,7 @@ local M =
 
 		vim.lsp.config("csharp_ls", {})
 		-- lspconfig.jdtls.setup {}
+		vim.lsp.config("pylyzer", {})
 		vim.lsp.config("pylsp", {
 			settings = {
 				pylsp = {
