@@ -49,7 +49,7 @@ local M =
 		opts = {
 			style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 			highlights = {
-				["CursorLine"] = { bg = "#2e3442" },
+				["CursorLine"] = { bg = "#2e3139" },
 				["CursorLineNr"] = { fg = "#ffc300" },
 				["LineNr"] = { fg = "#8aa7cf" },
 				["MatchParen"] = { fg = "#ffc300", bg = "NONE" },
