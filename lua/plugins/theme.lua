@@ -53,9 +53,9 @@ local M =
 				["CursorLineNr"] = { fg = "#ffc300" },
 				["LineNr"] = { fg = "#8aa7cf" },
 				["MatchParen"] = { fg = "#ffc300", bg = "NONE" },
-				["PMenu"] = { bg = "#28324d" },
-				["NormalFloat"] = { bg = "#28324d" },
-				["FloatBorder"] = { bg = "#28324d" },
+				-- ["PMenu"] = { bg = "#28324d" },
+				-- ["NormalFloat"] = { bg = "#28324d" },
+				-- ["FloatBorder"] = { bg = "#28324d" },
 				-- ["@lsp.type.comment"] = { fg = "#5c6d8f" }
 			}
 		}
