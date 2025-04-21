@@ -22,10 +22,10 @@ opt.listchars = { tab = "┆ " }
 -- opt.listchars = { tab = "┇ ", space = "" }
 
 -- NOTE: Set Theme
--- cmd.colorscheme("onedark")
+cmd.colorscheme("onedark")
 -- cmd.colorscheme("nordic")
 -- cmd.colorscheme("kanagawa-dragon")
-cmd.colorscheme("kanagawa-wave")
+-- cmd.colorscheme("kanagawa-wave")
 -- vim.g.ayucolor = "dark" -- "mirage" or "dark"
 -- cmd.colorscheme("ayu")
 

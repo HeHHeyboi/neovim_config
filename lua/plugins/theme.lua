@@ -47,7 +47,7 @@ local M =
 		'navarasu/onedark.nvim',
 		lazy = true,
 		opts = {
-			style = 'deep', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+			style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 			highlights = {
 				["CursorLine"] = { bg = "#2e3442" },
 				["CursorLineNr"] = { fg = "#ffc300" },
