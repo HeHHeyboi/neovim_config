@@ -47,15 +47,17 @@ local M =
 		'navarasu/onedark.nvim',
 		lazy = true,
 		opts = {
-			style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+			style = 'darker',            -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 			highlights = {
-				["CursorLine"] = { bg = "#2e3139" },
+				["CursorLine"] = { bg = "#2e3139" }, -- "#2e3139"
 				["CursorLineNr"] = { fg = "#ffc300" },
 				["LineNr"] = { fg = "#8aa7cf" },
 				["MatchParen"] = { fg = "#ffc300", bg = "NONE" },
-				["PMenu"] = { bg = "#15181d" },
-				["NormalFloat"] = { bg = "#15181d" },
-				["FloatBorder"] = { bg = "#15181d" },
+				["PMenu"] = { bg = "#212d40" }, -- "#212d40"
+				["NormalFloat"] = { bg = "#17191c" }, -- "#15181d","#131a25"
+				["FloatBorder"] = { bg = "#17191c" },
+				["LspReferenceTarget"] = { bg = "#46494f" }
+
 				-- ["@lsp.type.comment"] = { fg = "#5c6d8f" }
 			}
 		}
