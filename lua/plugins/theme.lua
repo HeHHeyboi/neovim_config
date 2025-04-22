@@ -53,8 +53,8 @@ local M =
 				["CursorLineNr"] = { fg = "#ffc300" },
 				["LineNr"] = { fg = "#8aa7cf" },
 				["MatchParen"] = { fg = "#ffc300", bg = "NONE" },
-				["PMenu"] = { bg = "#212d40" }, -- "#212d40"
-				["NormalFloat"] = { bg = "#17191c" }, -- "#15181d","#131a25"
+				["PMenu"] = { bg = "#17191c" }, -- "#212d40"
+				["NormalFloat"] = { bg = "#17191c" }, -- "#15181d","#131a25","#17191c"
 				["FloatBorder"] = { bg = "#17191c" },
 				["LspReferenceTarget"] = { bg = "#46494f" }
 
