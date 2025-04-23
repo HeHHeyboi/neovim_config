@@ -11,8 +11,8 @@ local M =
 					all = {
 						ui = {
 							nontext = "#8aa7cf",
-							-- bg_p2 = "#484861"
-							bg_p2 = "#313141"
+							-- bg_p2 = "#484861","#313141"
+							bg_p2 = "NONE"
 						}
 					}
 				},
@@ -28,15 +28,15 @@ local M =
 				palette.fg_sidebar = "#8aa7cf"
 			end,
 			bright_border = true,
-			reduced_blue = true,
+			reduced_blue = false,
 			cursorline = {
 				theme = 'light',
-				bg = "#292e3b",
-				blend = 0.8,
+				bg = "NONE", --#292e3b
+				blend = 0,
 			},
 			override = {
 				CursorLineNr = { fg = '#ffc300' },
-				MatchParen = { fg = "#ffc900" }
+				MatchParen = { fg = "#ffc900" },
 			},
 			telescope = {
 				style = "classic"
@@ -47,9 +47,9 @@ local M =
 		'navarasu/onedark.nvim',
 		lazy = true,
 		opts = {
-			style = 'darker',            -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+			style = 'darker',         -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 			highlights = {
-				["CursorLine"] = { bg = "#2e3139" }, -- "#2e3139"
+				["CursorLine"] = { bg = "NONE" }, -- "#2e3139"
 				["CursorLineNr"] = { fg = "#ffc300" },
 				["LineNr"] = { fg = "#8aa7cf" },
 				["MatchParen"] = { fg = "#ffc300", bg = "NONE" },
