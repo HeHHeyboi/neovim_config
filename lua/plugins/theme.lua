@@ -57,10 +57,6 @@ local M =
 				["NormalFloat"] = { bg = "#17191c" }, -- "#15181d","#131a25","#17191c"
 				["FloatBorder"] = { bg = "#17191c" },
 				["LspReferenceTarget"] = { bg = "#46494f" },
-				["DiagnosticVirtualTextError"] = { link = "hl-DiagnosticError" },
-				["DiagnosticVirtualTextWarn"] = { link = "hl-DiagnosticWarn" },
-				["DiagnosticVirtualTextInfo"] = { link = "hl-DiagnosticInfo" },
-				["DiagnosticVirtualTextHint"] = { link = "hl-DiagnosticHint" },
 
 				-- ["@lsp.type.comment"] = { fg = "#5c6d8f" }
 			}
