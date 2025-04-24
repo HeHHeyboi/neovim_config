@@ -18,7 +18,7 @@ opt.swapfile = false
 opt.cursorline = true
 opt.list = true
 -- opt.listchars = { tab = "| " }
-opt.listchars = { tab = "┆ " }
+opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
 -- opt.listchars = { tab = "┇ ", space = "" }
 
 -- NOTE: Set Theme
