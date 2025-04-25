@@ -36,7 +36,7 @@ local M =
 
 		vim.lsp.config("csharp_ls", {})
 		-- lspconfig.jdtls.setup {}
-		vim.lsp.config("pylyzer", {})
+		-- vim.lsp.config("pylyzer", {})
 		vim.lsp.config("pylsp", {
 			settings = {
 				pylsp = {
