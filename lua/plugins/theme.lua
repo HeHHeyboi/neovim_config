@@ -58,7 +58,10 @@ local M =
 				["FloatBorder"] = { bg = "#17191c" },
 				["LspReferenceTarget"] = { bg = "#46494f" },
 
-				-- ["@lsp.type.comment"] = { fg = "#5c6d8f" }
+				["DiagnosticVirtualTextError"] = { fg = "#d84752" },
+				["DiagnosticVirtualTextWarn"] = { fg = "#e0af68" }, -- Muted gold for warnings
+				["DiagnosticVirtualTextInfo"] = { fg = "#4ec1d3" }, -- Muted teal for info
+				["DiagnosticVirtualTextHint"] = { fg = "#c769e2" },
 			}
 		}
 	}
