@@ -2,7 +2,7 @@ return {
 	"folke/todo-comments.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	cond = function()
-		return not vim.opt.diff:get()
+		return not vim.wo.diff
 	end,
 	opts = {
 		keywords = {

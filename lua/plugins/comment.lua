@@ -1,7 +1,7 @@
 local M = {
 	'numToStr/Comment.nvim',
 	cond = function()
-		return not vim.opt.diff:get()
+		return not vim.wo.diff
 	end,
 	opts = {
 		---Add a space b/w comment and the line

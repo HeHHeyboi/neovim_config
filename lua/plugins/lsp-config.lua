@@ -2,7 +2,7 @@ local M =
 {
 	"neovim/nvim-lspconfig",
 	cond = function()
-		return not vim.opt.diff:get()
+		return not vim.wo.diff
 	end,
 	config = function()
 		-- local lspconfig = require("lspconfig")
