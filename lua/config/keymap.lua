@@ -10,15 +10,6 @@
 -- 		cmp.setup({ enabled = false })
 -- 		print("Completion disabled")
 -- 	end
-vim.keymap.set("n", "<leader>li", function()
-	local clients = vim.lsp.get_clients()
-	for _, client in ipairs(clients) do
-		vim.lsp.buf_request(0, "textDocument/completion", vim.lsp.util.make_position_params(0, 'utf-8'),
-			function(err, result)
-				print(vim.inspect(result))
-			end)
-	end
-end)
 
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
