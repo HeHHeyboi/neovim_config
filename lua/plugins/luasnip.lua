@@ -15,6 +15,6 @@ return {
 		local ls = require("luasnip")
 		require("luasnip.loaders.from_vscode").lazy_load()
 		ls.filetype_extend("cs", { "unity" })
-		ls.log.set_loglevel("debug")
+		ls.log.set_loglevel("error")
 	end
 }
