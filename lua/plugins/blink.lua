@@ -2,7 +2,7 @@ local M = {
 	'saghen/blink.cmp',
 	dependencies = { 'rafamadriz/friendly-snippets' },
 
-	version = '1.*',
+	version = '1.1.1',
 
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
