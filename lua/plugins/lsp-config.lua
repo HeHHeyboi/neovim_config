@@ -6,7 +6,7 @@ local M =
 	end,
 	config = function()
 		-- local lspconfig = require("lspconfig")
-		local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+		local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
 		-- NOTE: GDScript_lsp for godot
 		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp' }
