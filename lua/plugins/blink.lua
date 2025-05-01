@@ -61,6 +61,9 @@ local M = {
 					preselect = true,
 					auto_insert = false,
 				}
+			},
+			accept = {
+				auto_brackets = { enabled = false }
 			}
 		},
 
