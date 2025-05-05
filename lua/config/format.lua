@@ -12,32 +12,6 @@ Custom_format = {
 	},
 }
 
--- function Format_file(formatter, args)
--- 	local name = vim.fn.bufname("%")
--- 	local exe = vim.fn.exepath(formatter)
--- 	if exe == "" then
--- 		notify("Formatter not found: " .. formatter, vim.log.levels.ERROR)
--- 		return
--- 	end
---
--- 	local cmd = { exe, name }
--- 	if args == "" then
--- 		cmd = { exe, args, name }
--- 	end
---
--- 	notify("Start Fomat", vim.log.levels.INFO)
--- 	local output = vim.system(cmd)
--- 	local code = vim.v.shell_error
---
--- 	if code ~= 0 then
--- 		notify(output, vim.log.levels.ERROR)
--- 	else
--- 		-- Reload the file content after formatting
--- 		vim.cmd("edit")
--- 		notify("Format " .. name .. " success", vim.log.levels.INFO)
--- 	end
--- end
-
 function Format_file(formatter, args)
 	local name = vim.fn.bufname("%")
 	local exe = vim.fn.exepath(formatter)
