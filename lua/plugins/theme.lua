@@ -37,9 +37,13 @@ local M =
 			override = {
 				CursorLineNr = { fg = '#ffc300' },
 				MatchParen = { fg = "#ffc900" },
+				PmenuKind = { bg = "NONE" },
+				Visual = { link = "PmenuSel" },
+				VisualNOS = { link = "PmenuSel" },
+				-- DevIconDefault = { bg = "inherit" }
 			},
 			telescope = {
-				style = "classic"
+				style = "flat"
 			}
 		}
 	},
