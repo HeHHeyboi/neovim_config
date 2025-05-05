@@ -37,9 +37,11 @@ cmd("set nofoldenable")
 cmd("set foldlevel=999")
 -- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
 
-if vim.fn.filereadable(vim.fn.getcwd() .. '/project.godot') == 1 then
-	local addr = './godot.pipe'
-	if vim.fn.has('win32') then
+local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })
+if #gdproj ~= 0 then
+	-- local parent = vim.fs.dirname(gdproj[1])
+	local addr = '/tmp/godot.pipe'
+	if vim.uv.os_uname().sysname == "Windows_NT" then
 		addr = '127.0.0.1:6004'
 	end
 	vim.fn.serverstart(addr)
