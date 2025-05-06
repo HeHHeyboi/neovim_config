@@ -43,8 +43,10 @@ if #gdproj ~= 0 then
 	if vim.uv.os_uname().sysname == "Windows_NT" then
 		addr = '127.0.0.1:6004'
 	end
-	local _, err = vim.uv.fs_stat(addr)
-	if err == nil then
-		vim.fn.serverstart(addr)
+	local stats, err = vim.uv.fs_stat(addr)
+	print(err)
+	if err ~= nil or err ~= "ENOENT: no such file or directory: 127.0.0.1:6004" then
+		return
 	end
+	vim.fn.serverstart(addr)
 end
