@@ -43,5 +43,8 @@ if #gdproj ~= 0 then
 	if vim.uv.os_uname().sysname == "Windows_NT" then
 		addr = '127.0.0.1:6004'
 	end
-	vim.fn.serverstart(addr)
+	local _, err = vim.uv.fs_stat(addr)
+	if err == nil then
+		vim.fn.serverstart(addr)
+	end
 end
