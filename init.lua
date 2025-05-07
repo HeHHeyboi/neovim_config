@@ -44,15 +44,13 @@ if #gdproj > 0 then
 		addr = '127.0.0.1:6004'
 		local result = vim.system({ "netstat", "-ano" }, { text = true }):wait()
 		if result.code == 0 and result.stdout:find("6004") ~= nil then
-			print("found")
 			return
 		end
+		-- vim.fn.serverstart(addr)
+	end
+	local stats, _, err_name = vim.uv.fs_stat(addr)
+	if stats or err_name ~= "ENOENT" then
+		return
 	end
 	vim.fn.serverstart(addr)
 end
--- local stats, err, err_name = vim.uv.fs_stat(addr)
--- print(err_name)
--- if err == nil or err_name ~= "ENOENT" then
--- 	print("not valid")
--- 	return
--- end
