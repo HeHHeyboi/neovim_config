@@ -37,16 +37,22 @@ cmd("set foldlevel=999")
 -- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
 
 local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })
-if #gdproj ~= 0 then
+if #gdproj > 0 then
 	-- local parent = vim.fs.dirname(gdproj[1])
 	local addr = '/tmp/godot.pipe'
 	if vim.uv.os_uname().sysname == "Windows_NT" then
 		addr = '127.0.0.1:6004'
-	end
-	local stats, err = vim.uv.fs_stat(addr)
-	print(err)
-	if err ~= nil or err ~= "ENOENT: no such file or directory: 127.0.0.1:6004" then
-		return
+		local result = vim.system({ "netstat", "-ano" }, { text = true }):wait()
+		if result.code == 0 and result.stdout:find("6004") ~= nil then
+			print("found")
+			return
+		end
 	end
 	vim.fn.serverstart(addr)
 end
+-- local stats, err, err_name = vim.uv.fs_stat(addr)
+-- print(err_name)
+-- if err == nil or err_name ~= "ENOENT" then
+-- 	print("not valid")
+-- 	return
+-- end

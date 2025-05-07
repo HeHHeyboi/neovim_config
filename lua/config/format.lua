@@ -25,8 +25,7 @@ function Format_file(formatter, args)
 		table.insert(cmd, args)
 	end
 	table.insert(cmd, name)
-	local job = vim.system(cmd, {})
-	local result = job:wait()
+	local result = vim.system(cmd, {}):wait()
 	if result.code ~= 0 then
 		notify(result.stderr, vim.log.levels.ERROR)
 		return
