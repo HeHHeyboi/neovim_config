@@ -8,7 +8,6 @@ local M =
 		-- local lspconfig = require("lspconfig")
 		local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
-		-- NOTE: GDScript_lsp for godot
 		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp', 'hyprls' }
 		vim.lsp.config('*', {
 			capabilities = lsp_capabilities,
@@ -34,7 +33,7 @@ local M =
 			}
 		})
 
-		vim.lsp.config("csharp_ls", {})
+		-- vim.lsp.config("csharp_ls", {})
 		-- lspconfig.jdtls.setup {}
 		-- vim.lsp.config("pylyzer", {})
 		vim.lsp.config("pylsp", {

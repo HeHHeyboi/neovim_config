@@ -46,6 +46,12 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	end
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "TelescopeResults",
+	callback = function()
+		vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#313141" })
+	end,
+})
 
 -- local format_group = vim.api.nvim_create_augroup('FormatFile', { clear = true })
 -- vim.api.nvim_create_autocmd("BufWritePre", {
