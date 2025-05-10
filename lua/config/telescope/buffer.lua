@@ -14,7 +14,6 @@ local displayer = entry_display.create({
 		{ width = 4 }, -- info flag
 		{ width = 2 }, -- icon
 		{ remaining = true } -- filename
-
 	},
 })
 
@@ -33,7 +32,6 @@ local function list_buffers_ls_style(opts)
 				goto continue
 			end
 			local flag = ""
-			print(buf)
 			if buf == vim.fn.bufnr("%") then
 				flag = "%a "
 			elseif buf == vim.fn.bufnr("#") then
@@ -55,6 +53,7 @@ local function list_buffers_ls_style(opts)
 				hl_group = hl_group,
 				flag = flag,
 				info = modified .. readonly,
+				-- ordinal = vim.fs.basename(name),
 				ordinal = name,
 			})
 			::continue::
@@ -80,6 +79,7 @@ local function list_buffers_ls_style(opts)
 			end,
 		},
 		sorter = conf.generic_sorter(opts),
+		-- sorter = conf.file_sorter(opts),
 		attach_mappings = function(prompt_bufnr, map)
 			actions.select_default:replace(function()
 				local selection = action_state.get_selected_entry()
