@@ -2,7 +2,6 @@ local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
 require("config.inQuote")
 require("config.format")
-require("config.telescope.buffer").opts.show_title = false
 vim.keymap.del("n", "<leader>q")
 
 keymap("n", "<leader>q", function()

@@ -1,5 +1,4 @@
 local pickers = require("telescope.pickers")
-local from_entry = require("telescope.from_entry")
 local utils = require("telescope.utils")
 local preview = require("telescope.previewers")
 local finders = require("telescope.finders")
@@ -10,10 +9,6 @@ local entry_display = require("telescope.pickers.entry_display")
 local log = require("plenary.log"):new()
 log.level = 'debug'
 local M = {}
-local opts = {
-	preview = { hide_on_startup = true },
-	show_title = true
-}
 
 local displayer = entry_display.create({
 	separator = " ",
@@ -26,8 +21,8 @@ local displayer = entry_display.create({
 })
 
 
-local function list_buffers_ls_style()
-	-- opts = opts or {}
+local function list_buffers_ls_style(opts)
+	opts = opts or {}
 	opts.preview = opts.preview or { hide_on_startup = true }
 	opts.show_title = opts.show_title or false
 	local buffers = {}
@@ -121,6 +116,5 @@ local function list_buffers_ls_style()
 	}):find()
 end
 
-M.opts = opts
 M.list_buffers_ls_style = list_buffers_ls_style
 return M
