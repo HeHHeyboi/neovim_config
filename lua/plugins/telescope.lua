@@ -7,8 +7,10 @@ local M = {
 		config = function()
 			local open_trouble = require("trouble.sources.telescope").open
 			local actions = require("telescope.actions")
+			local layout_actions = require("telescope.actions.layout")
 			require("telescope").setup {
 				defaults = {
+					dynamic_preview_title = true,
 					filesize_limit = 50,
 					timeout = 1000,
 					preview = { hide_on_startup = true },
@@ -17,7 +19,8 @@ local M = {
 						n = { ["<C-q>"] = open_trouble,
 							["<C-c>"] = actions.close,
 							["s"] = actions.toggle_selection + actions.move_selection_next,
-							["S"] = actions.toggle_selection + actions.move_selection_previous
+							["S"] = actions.toggle_selection + actions.move_selection_previous,
+							["?"] = layout_actions.toggle_preview,
 						}, -- Normal mode binding
 					},
 					-- path_display = { "smart" },

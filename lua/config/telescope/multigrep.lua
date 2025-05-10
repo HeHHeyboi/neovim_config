@@ -2,6 +2,8 @@ local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local make_entry = require("telescope.make_entry")
 local conf = require("telescope.config").values
+local log = require("plenary.log"):new()
+log.level = 'debug'
 local M = {}
 
 local live_multigrep = function(opts)
@@ -25,9 +27,11 @@ local live_multigrep = function(opts)
 				table.insert(args, "-g")
 				table.insert(args, pieces[2])
 			end
-			return vim.tbl_flatten {
+			local command = {
 				args, { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
 			}
+			-- log.debug(vim.iter(command):flatten():totable())
+			return vim.iter(command):flatten():totable()
 		end,
 		entry_maker = make_entry.gen_from_vimgrep(opts),
 		cwd = opts.cwd,

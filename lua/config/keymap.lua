@@ -1,20 +1,8 @@
----@diagnostic disable: deprecated
--- local cmp_enabled = true
---
--- function ToggleCmp()
--- 	cmp_enabled = not cmp_enabled
--- 	if cmp_enabled then
--- 		cmp.setup({ enabled = true })
--- 		print("Completion enabled")
--- 	else
--- 		cmp.setup({ enabled = false })
--- 		print("Completion disabled")
--- 	end
-
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
 require("config.inQuote")
 require("config.format")
+require("config.telescope.buffer").opts.show_title = false
 vim.keymap.del("n", "<leader>q")
 
 keymap("n", "<leader>q", function()
