@@ -4,6 +4,13 @@ local cmd = vim.cmd
 local vimrc = vim.fn.stdpath("config") .. "/config.vim"
 cmd.source(vimrc)
 require("config")
+if vim.uv.os_uname().sysname == "Windows_NT" then
+	cmd("let &shell = 'nu'")
+	cmd("let &shellcmdflag = '--error-style plain -c'")
+	cmd("let &shellquote = \"\"")
+	cmd("let &shellxquote = \"\"")
+	cmd("set shellslash")
+end
 
 vim.diagnostic.config({
 	virtual_text = true,
