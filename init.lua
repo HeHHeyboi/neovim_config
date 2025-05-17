@@ -11,6 +11,7 @@ if vim.uv.os_uname().sysname == "Windows_NT" then
 	cmd("let &shellxquote = \"\"")
 	cmd("set shellslash")
 end
+-- vim.o.winborder = "rounded"
 
 vim.diagnostic.config({
 	virtual_text = true,

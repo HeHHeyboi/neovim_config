@@ -118,9 +118,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		map("K", function()
-			vim.lsp.buf.hover({ border = custom_border })
+			-- vim.lsp.buf.hover({ border = custom_border })
+			vim.lsp.buf.hover({ border = "rounded" })
 			-- vim.lsp.buf.hover({ border = { '', '' } })
 		end)
+		-- map("K", vim.lsp.buf.hover)
 		map("gD", vim.lsp.buf.declaration)
 		--map("n", "gN", vim.diagnostic.goto_next, { buffer = 0, desc = "LSP Next Diagnostic" })
 		--map("n", "gP", vim.diagnostic.goto_prev, { buffer = 0, desc = "LSP Previous Diagnostic" })
@@ -140,7 +142,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("grr", telescope.lsp_references)
 
 		map("gs", function()
-			vim.lsp.buf.signature_help({ border = custom_border })
+			-- vim.lsp.buf.signature_help({ border = custom_border })
+			vim.lsp.buf.hover({ border = "rounded" })
 			-- vim.lsp.buf.hover({ border = custom_border })
 		end)
 		map("<F2>", vim.lsp.buf.rename)

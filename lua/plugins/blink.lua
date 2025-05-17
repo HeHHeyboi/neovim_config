@@ -73,7 +73,7 @@ local M = {
 		sources = {
 			default = { 'lsp', 'path', 'snippets', 'buffer' },
 		},
-		signature = { enabled = true },
+		signature = { enabled = true, window = { border = 'rounded' } },
 
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
