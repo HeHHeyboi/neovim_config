@@ -143,7 +143,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		map("gs", function()
 			-- vim.lsp.buf.signature_help({ border = custom_border })
-			vim.lsp.buf.hover({ border = "rounded" })
+			vim.lsp.buf.signature_help({ border = "rounded" })
 			-- vim.lsp.buf.hover({ border = custom_border })
 		end)
 		map("<F2>", vim.lsp.buf.rename)
