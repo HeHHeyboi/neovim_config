@@ -17,7 +17,7 @@ local M =
 			init_options = {
 				enable_snippets = true,
 				enable_semantic_tokens = true,
-				verbose = true,
+				verbose = false,
 				checker_args = "-vet-unused-variable -vet-shadowing"
 			},
 		})
