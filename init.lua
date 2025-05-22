@@ -41,9 +41,10 @@ cmd.colorscheme("kanagawa")
 
 cmd("set mouse=a")
 
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-cmd("set nofoldenable")
+opt.foldmethod = 'expr'
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+opt.foldenable = false
 cmd("set foldlevel=999")
 -- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
 
@@ -59,9 +60,11 @@ if #gdproj > 0 then
 		end
 		-- vim.fn.serverstart(addr)
 	end
+
 	local stats, _, err_name = vim.uv.fs_stat(addr)
 	if stats or err_name ~= "ENOENT" then
 		return
 	end
+
 	vim.fn.serverstart(addr)
 end
