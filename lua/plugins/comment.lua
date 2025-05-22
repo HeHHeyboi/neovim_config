@@ -13,7 +13,8 @@ local M = {
 		---LHS of toggle mappings in NORMAL mode
 		toggler = {
 			--Line-comment toggle keymap
-			line = '<C-k>',
+			-- line = '<C-k>',
+			line = 'gcc',
 			-- -Block-comment toggle keymap
 			block = 'gbc',
 		},
@@ -21,7 +22,7 @@ local M = {
 		opleader = {
 			-- -Line-comment keymap
 			-- line = '<C-/>',
-			line = '<C-k>',
+			line = 'gc',
 			---Block-comment keymap
 			block = 'gb',
 		},
