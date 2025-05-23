@@ -60,7 +60,7 @@ local function list_buffers_ls_style(opts)
 				flag = flag,
 				info = modified .. readonly,
 				basename = vim.fs.basename(name),
-				ordinal = name .. modified,
+				ordinal = name .. modified .. bufnr_str,
 			})
 			::continue::
 		end

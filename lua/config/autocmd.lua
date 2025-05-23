@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- NOTE: autocmd doesn't work when in sandbox
 
 vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
-vim.api.nvim_create_autocmd('BufReadPost', {
+vim.api.nvim_create_autocmd('BufEnter', {
 	desc = 'Open file at the last position it was edited earlier',
 	group = 'goto_prev_pos_from_last_exit',
 	pattern = '*',

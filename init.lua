@@ -50,7 +50,7 @@ opt.foldtext = "foldtext() .. \" ...\""
 opt.fillchars = "fold: "
 
 opt.foldenable = false
-cmd("set foldlevel=999")
+opt.foldlevel = 99
 -- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
 
 local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })
