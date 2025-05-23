@@ -45,11 +45,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	desc = "save fold",
 	callback = function()
 		-- local start = vim.uv.hrtime()
-		local viewDir = vim.fs.normalize(vim.opt.viewdir:get())
 		local name = vim.api.nvim_buf_get_name(0)
-		if string.find(name, "oil") ~= nil then
+		if string.find(name, "oil") ~= nil or string.find(name, "harpoon") then
 			return
 		end
+		local viewDir = vim.fs.normalize(vim.opt.viewdir:get())
 		name = vim.fn.sha256(name)
 		local viewName = string.format("%s/%s.vim", viewDir, name)
 		vim.cmd("mkview! " .. viewName)
@@ -74,11 +74,11 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	desc = "Update Fold expr",
 	callback = function()
 		-- local start = vim.uv.hrtime()
-		local viewDir = vim.fs.normalize(vim.opt.viewdir:get())
 		local name = vim.api.nvim_buf_get_name(0)
-		if string.find(name, "oil") ~= nil then
+		if string.find(name, "oil") ~= nil or string.find(name, "harpoon") then
 			return
 		end
+		local viewDir = vim.fs.normalize(vim.opt.viewdir:get())
 		name = vim.fn.sha256(name)
 		local viewName = string.format("%s/%s.vim", viewDir, name)
 		vim.schedule(function()
