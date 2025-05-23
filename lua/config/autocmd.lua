@@ -82,7 +82,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		name = vim.fn.sha256(name)
 		local viewName = string.format("%s/%s.vim", viewDir, name)
 		vim.schedule(function()
-			vim.cmd("normal! zx")
+			vim.cmd("normal! zX")
 			vim.cmd("silent! source " .. viewName)
 			-- local elapsed_ms = (vim.uv.hrtime() - start) / 1e6
 			-- print(elapsed_ms .. " ms")
