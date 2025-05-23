@@ -21,7 +21,7 @@ local M =
 				enable_snippets = true,
 				enable_semantic_tokens = true,
 				verbose = false,
-				checker_args = "-vet-unused-variable -vet-shadowing"
+				checker_args = "-vet-unused-variables -vet-shadowing"
 			},
 		})
 		vim.lsp.config("gopls", {
