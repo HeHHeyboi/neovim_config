@@ -35,6 +35,8 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 -- NOTE: when call command after write buffer may cause 'Race condition'
 -- so when do something after BufWritePost try call "vim.schedule()" first
+--
+-- NOTE: autocmd doesn't work when in sandbox
 vim.api.nvim_create_autocmd("BufWritePost", {
 	desc = "Update Fold expr",
 	callback = function()

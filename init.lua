@@ -43,6 +43,10 @@ cmd("set mouse=a")
 
 opt.foldmethod = 'expr'
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldtext = "foldtext() .. \" ...\""
+-- opt.foldtext =
+-- "v:folddashes .. substitute(getline(v:foldstart), '/\\*\\|\\*/\\|{{{\\d\\=', '', 'g') .. (v:foldend - v:foldstart)..' line'"
+opt.fillchars = "fold: "
 
 opt.foldenable = false
 cmd("set foldlevel=999")

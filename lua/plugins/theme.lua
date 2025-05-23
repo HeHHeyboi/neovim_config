@@ -6,11 +6,17 @@ local M =
 		lazy = true,
 		opts = {
 			compile = true,
+			overrides = function(colors)
+				return {
+					Folded = { fg = "#8aa7cf" }
+				}
+			end,
 			colors = { -- add/modify theme and palette colors
 				theme = {
 					all = {
 						ui = {
 							nontext = "#8aa7cf",
+							-- special = "#ff0000",
 							-- bg_p2 = "#313141",
 							--"#313141"
 							bg_p2 = "NONE"
