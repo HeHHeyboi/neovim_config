@@ -33,6 +33,13 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	end
 })
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+	callback = function()
+		vim.schedule(function()
+			vim.cmd("normal! zx")
+		end)
+	end
+})
 vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
 vim.api.nvim_create_autocmd('BufReadPost', {
 	desc = 'Open file at the last position it was edited earlier',
