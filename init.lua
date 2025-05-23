@@ -42,6 +42,7 @@ cmd.colorscheme("kanagawa")
 cmd("set mouse=a")
 
 opt.foldmethod = 'expr'
+opt.viewoptions = "folds,cursor"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldtext = "foldtext() .. \" ...\""
 -- opt.foldtext =
@@ -54,7 +55,6 @@ cmd("set foldlevel=999")
 
 local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })
 if #gdproj > 0 then
-	-- local parent = vim.fs.dirname(gdproj[1])
 	local addr = '/tmp/godot.pipe'
 	if vim.uv.os_uname().sysname == "Windows_NT" then
 		addr = '127.0.0.1:6004'
@@ -62,7 +62,6 @@ if #gdproj > 0 then
 		if result.code == 0 and result.stdout:find("6004") ~= nil then
 			return
 		end
-		-- vim.fn.serverstart(addr)
 	end
 
 	local stats, _, err_name = vim.uv.fs_stat(addr)

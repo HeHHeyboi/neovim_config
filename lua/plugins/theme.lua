@@ -8,7 +8,7 @@ local M =
 			compile = true,
 			overrides = function(colors)
 				return {
-					Folded = { fg = "#8aa7cf" }
+					Folded = { fg = "#A3D4D5" }
 				}
 			end,
 			colors = { -- add/modify theme and palette colors

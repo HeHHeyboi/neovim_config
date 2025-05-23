@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup('format_buffer', {}),
 	desc = "LSP autocmd",
 	callback = function(args)
+		local start = vim.uv.hrtime()
 		vim.lsp.inlay_hint.enable(false, { bufnr = nil }) -- Enable inlay hints
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		if client:supports_method('textDocument/formatting') then
@@ -16,7 +17,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup('format_buffer', { clear = false }),
 				buffer = args.buf,
 				callback = function()
+					-- local start = vim.uv.hrtime()
 					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+					-- local elapsed_ms = (vim.uv.hrtime() - start) / 1e6
+					-- print(elapsed_ms .. " ms")
 				end,
 			})
 		end
@@ -37,11 +41,45 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- so when do something after BufWritePost try call "vim.schedule()" first
 --
 -- NOTE: autocmd doesn't work when in sandbox
+vim.api.nvim_create_autocmd("BufWritePre", {
+	desc = "save fold",
+	callback = function()
+		-- local start = vim.uv.hrtime()
+		local viewDir = vim.fs.normalize(vim.opt.viewdir:get())
+		local name = vim.api.nvim_buf_get_name(0)
+		name = vim.fn.sha256(name)
+		local viewName = string.format("%s/%s.vim", viewDir, name)
+		vim.cmd("mkview! " .. viewName)
+		-- local elapsed_ms = (vim.uv.hrtime() - start) / 1e6
+		-- print(elapsed_ms .. " ms")
+	end
+})
+
+vim.api.nvim_create_autocmd("QuitPre", {
+	desc = "Remove view",
+	callback = function()
+		local viewDir = vim.fs.normalize(vim.opt.viewdir:get())
+
+		for name in vim.fs.dir(viewDir) do
+			local path = string.format("%s/%s", viewDir, name)
+			os.remove(path)
+		end
+	end
+})
+
 vim.api.nvim_create_autocmd("BufWritePost", {
 	desc = "Update Fold expr",
 	callback = function()
+		-- local start = vim.uv.hrtime()
+		local viewDir = vim.fs.normalize(vim.opt.viewdir:get())
+		local name = vim.api.nvim_buf_get_name(0)
+		name = vim.fn.sha256(name)
+		local viewName = string.format("%s/%s.vim", viewDir, name)
 		vim.schedule(function()
 			vim.cmd("normal! zx")
+			vim.cmd("silent! source " .. viewName)
+			-- local elapsed_ms = (vim.uv.hrtime() - start) / 1e6
+			-- print(elapsed_ms .. " ms")
 		end)
 	end
 })
