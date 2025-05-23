@@ -25,8 +25,8 @@ opt.encoding = "UTF-8"
 opt.swapfile = false
 opt.cursorline = true
 opt.wrap = false
-opt.sidescroll = 10
-opt.sidescrolloff = 5
+opt.sidescroll = 20
+opt.sidescrolloff = 10
 opt.list = true
 -- opt.listchars = { tab = "| " }
 opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }

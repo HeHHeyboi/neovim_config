@@ -9,6 +9,9 @@ local M =
 		local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
 		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp', 'hyprls' }
+		if vim.uv.os_uname().sysname == "Windows_NT" then
+			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp' }
+		end
 		vim.lsp.config('*', {
 			capabilities = lsp_capabilities,
 		})
