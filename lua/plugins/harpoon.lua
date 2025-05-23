@@ -1,3 +1,31 @@
+local function selected_handler(list_item, list, options)
+	if list_item == nil then
+		return
+	end
+
+	options = options or {}
+
+	local bufnr = vim.fn.bufnr(list_item.value)
+	if bufnr == -1 then -- must create a buffer!
+		-- bufnr = vim.fn.bufnr(list_item.value, true)
+		bufnr = vim.fn.bufadd(list_item.value)
+	end
+	if not vim.api.nvim_buf_is_loaded(bufnr) then
+		vim.fn.bufload(bufnr)
+		vim.api.nvim_set_option_value("buflisted", true, {
+			buf = bufnr,
+		})
+	end
+
+	if options.vsplit then
+		vim.cmd("vsplit")
+	elseif options.split then
+		vim.cmd("split")
+	elseif options.tabedit then
+		vim.cmd("tabedit")
+	end
+	vim.api.nvim_set_current_buf(bufnr)
+end
 return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
@@ -24,34 +52,7 @@ return {
 
 					return relative
 				end,
-				select = function(list_item, list, options)
-					if list_item == nil then
-						return
-					end
-
-					options = options or {}
-
-					local bufnr = vim.fn.bufnr(list_item.value)
-					if bufnr == -1 then -- must create a buffer!
-						-- bufnr = vim.fn.bufnr(list_item.value, true)
-						bufnr = vim.fn.bufadd(list_item.value)
-					end
-					if not vim.api.nvim_buf_is_loaded(bufnr) then
-						vim.fn.bufload(bufnr)
-						vim.api.nvim_set_option_value("buflisted", true, {
-							buf = bufnr,
-						})
-					end
-
-					if options.vsplit then
-						vim.cmd("vsplit")
-					elseif options.split then
-						vim.cmd("split")
-					elseif options.tabedit then
-						vim.cmd("tabedit")
-					end
-					vim.api.nvim_set_current_buf(bufnr)
-				end
+				-- select = selected_handler,
 
 			},
 			settings = {
