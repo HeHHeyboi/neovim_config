@@ -33,13 +33,17 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	end
 })
 
+-- NOTE: when call command after write buffer may cause 'Race condition'
+-- so when do something after BufWritePost try call "vim.schedule()" first
 vim.api.nvim_create_autocmd("BufWritePost", {
+	desc = "Update Fold expr",
 	callback = function()
 		vim.schedule(function()
 			vim.cmd("normal! zx")
 		end)
 	end
 })
+
 vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
 vim.api.nvim_create_autocmd('BufReadPost', {
 	desc = 'Open file at the last position it was edited earlier',
