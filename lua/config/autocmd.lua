@@ -41,6 +41,31 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- so when do something after BufWritePost try call "vim.schedule()" first
 --
 -- NOTE: autocmd doesn't work when in sandbox
+vim.api.nvim_create_autocmd("BufWritePre", {
+	desc = "save fold",
+	callback = function()
+		vim.cmd("mkview")
+	end
+})
+
+vim.api.nvim_create_autocmd("QuitPre", {
+	desc = "Remove view",
+	callback = function()
+		local viewDir = vim.fs.normalize(vim.opt.viewdir:get())
+
+		for name in vim.fs.dir(viewDir) do
+			local path = string.format("%s/%s", viewDir, name)
+			os.remove(path)
+		end
+	end
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	desc = "Update Fold expr",
+	callback = function()
+		vim.cmd("silent! source " .. viewName)
+	end
+})
 
 vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
 vim.api.nvim_create_autocmd('BufEnter', {
