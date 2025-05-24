@@ -1,5 +1,6 @@
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m,%f:%l:%m
+let mapleader = "\<Space>"
 " Normal mode mappings
 " nnoremap <Tab> :tabnext<CR>
 
@@ -54,3 +55,66 @@ function! GrepOperator(type)
 	let @@ = saved_unnamed_register
 	copen
 endfunction
+
+"autocmd FileType markdown onoremap <buffer> ih :<c-u>execute "normal! ?^==|^--\\+$\r:nohlsearch\rkvg_"<cr>
+"
+inoremap kj <Esc>
+"noremap kk <Esc>
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+"or
+"nnoremap <C-d> 15gjzz
+"nnoremap <C-u> 15gkzz
+nnoremap <C-s> :w<CR>
+nnoremap <C-q> :q<CR>
+"nnoremap <silent><leader>vh :execute "rightbelow vsplit " .bufname("#")<cr>
+"nnoremap <silent><leader>vl :execute "leftabove vsplit " .bufname("#")<cr>
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+nnoremap <C-h> :noh<CR>
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+" nnoremap <silent><Tab> :tabnext<cr>
+nnoremap <S-Tab> gT
+nnoremap , @@
+nnoremap <Leader>p "+p 
+nnoremap <Leader>P k"+p 
+nnoremap <silent><leader>y :set operatorfunc=YankOperator<cr>g@
+function! YankOperator(type)
+	if a:type ==# 'char'
+		execute 'normal! `[v`]"+y'
+	else
+		return
+	endif
+endfunction
+nnoremap vr :register<CR>
+nnoremap vm :marks<CR>
+nnoremap H ^
+nnoremap L g_
+"nnoremap ' :execute "normal! '" .nr2char(getchar()). " zz"<cr>
+
+" }}}
+"nnoremap r :execute 'normal! @'.nr2char(getchar())<CR>
+"nnoremap <silent> dm :execute 'delmark '.nr2char(getchar())<CR>"
+
+"
+"Snippet--------------{{{
+
+iabbrev @@    thanathatwave@gmail.com
+"}}}
+
+"Visual keymap-----------------{{{
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+vnoremap <Leader>y "+y
+vnoremap <Leader>p "+p 
+vnoremap <C-d> <C-d>zz
+vnoremap <C-u> <C-u>zz
+vnoremap H ^
+vnoremap L g_
+"}}}
+
+

@@ -2,7 +2,9 @@
 local opt = vim.opt
 local cmd = vim.cmd
 local vimrc = vim.fn.stdpath("config") .. "/config.vim"
-cmd.source(vimrc)
+local keymap = vim.fn.stdpath("config") .. "/vim/keymap.vim"
+vim.cmd("so " .. vimrc)
+vim.cmd("so " .. keymap)
 require("config")
 if vim.uv.os_uname().sysname == "Windows_NT" then
 	cmd("let &shell = 'nu'")

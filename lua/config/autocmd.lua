@@ -63,7 +63,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 vim.api.nvim_create_autocmd("BufWritePost", {
 	desc = "Update Fold expr",
 	callback = function()
-		vim.cmd("silent! source " .. viewName)
+		vim.cmd("loadview")
 	end
 })
 
@@ -77,6 +77,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 			return
 		end
 		vim.cmd('silent! normal! g`"zv')
+		vim.cmd('UfoEnableFold')
 	end
 })
 
