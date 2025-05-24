@@ -7,7 +7,7 @@ let mapleader = "\<Space>"
 "nnoremap <Tab> <Plug>AirlineSelectNextTab
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :qall<CR>
+" nnoremap <leader>Q :qall<CR>
 " nnoremap <C-s> :w<CR>
 nnoremap <C-q> :bd<CR>
 "nnoremap bn :bnext<CR>
@@ -67,7 +67,6 @@ nnoremap <C-u> <C-u>zz
 "nnoremap <C-d> 15gjzz
 "nnoremap <C-u> 15gkzz
 nnoremap <C-s> :w<CR>
-nnoremap <C-q> :q<CR>
 "nnoremap <silent><leader>vh :execute "rightbelow vsplit " .bufname("#")<cr>
 "nnoremap <silent><leader>vl :execute "leftabove vsplit " .bufname("#")<cr>
 nnoremap <leader>h <C-w>h

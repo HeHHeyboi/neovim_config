@@ -30,6 +30,7 @@ opt.wrap = false
 opt.sidescroll = 20
 opt.sidescrolloff = 10
 opt.list = true
+opt.sessionoptions = "buffers,folds,curdir"
 -- opt.listchars = { tab = "| " }
 opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
 -- opt.listchars = { tab = "┇ ", space = "" }

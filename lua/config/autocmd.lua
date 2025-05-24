@@ -44,18 +44,18 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	desc = "save fold",
 	callback = function()
-		vim.cmd("mkview")
+		vim.cmd("mksession!")
 	end
 })
 
 vim.api.nvim_create_autocmd("QuitPre", {
 	desc = "Remove view",
 	callback = function()
-		local viewDir = vim.fs.normalize(vim.opt.viewdir:get())
+		local cwd = vim.fs.normalize(vim.uv.cwd())
+		local session_path = cwd .. "/Session.vim"
 
-		for name in vim.fs.dir(viewDir) do
-			local path = string.format("%s/%s", viewDir, name)
-			os.remove(path)
+		if vim.uv.fs_stat(session_path) then
+			vim.fs.rm(session_path)
 		end
 	end
 })
@@ -63,12 +63,14 @@ vim.api.nvim_create_autocmd("QuitPre", {
 vim.api.nvim_create_autocmd("BufWritePost", {
 	desc = "Update Fold expr",
 	callback = function()
-		vim.cmd("loadview")
+		vim.schedule(function()
+			vim.cmd("so Session.vim")
+		end)
 	end
 })
 
 vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
-vim.api.nvim_create_autocmd('BufEnter', {
+vim.api.nvim_create_autocmd('BufReadPost', {
 	desc = 'Open file at the last position it was edited earlier',
 	group = 'goto_prev_pos_from_last_exit',
 	pattern = '*',
@@ -77,7 +79,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
 			return
 		end
 		vim.cmd('silent! normal! g`"zv')
-		vim.cmd('UfoEnableFold')
+		vim.schedule(function()
+			vim.cmd('UfoEnableFold')
+		end)
 	end
 })
 
