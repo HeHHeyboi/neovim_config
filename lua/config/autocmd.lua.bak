@@ -86,3 +86,30 @@ local function VisualcheckAtcursor(c)
 	--vim.cmd("normal! gv")
 	--vim.api.nvim_feedkeys("gv", "n", false)
 end
+vim.api.nvim_create_autocmd("BufWritePre", {
+	desc = "save fold",
+	callback = function()
+		vim.cmd("silent! mksession!")
+	end
+})
+
+vim.api.nvim_create_autocmd("QuitPre", {
+	desc = "Remove view",
+	callback = function()
+		local cwd = vim.fs.normalize(vim.uv.cwd())
+		local session_path = cwd .. "/Session.vim"
+
+		if vim.uv.fs_stat(session_path) then
+			vim.fs.rm(session_path)
+		end
+	end
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	desc = "Update Fold expr",
+	callback = function()
+		vim.schedule(function()
+			vim.cmd("so Session.vim")
+		end)
+	end
+})

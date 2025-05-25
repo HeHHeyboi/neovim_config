@@ -17,7 +17,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup('format_buffer', { clear = false }),
 				buffer = args.buf,
 				callback = function()
-					-- local start = vim.uv.hrtime()
+					if vim.bo.filetype == "odin" then
+						return
+					end
 					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
 					-- local elapsed_ms = (vim.uv.hrtime() - start) / 1e6
 					-- print(elapsed_ms .. " ms")
@@ -41,33 +43,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- so when do something after BufWritePost try call "vim.schedule()" first
 --
 -- NOTE: autocmd doesn't work when in sandbox
-vim.api.nvim_create_autocmd("BufWritePre", {
-	desc = "save fold",
-	callback = function()
-		vim.cmd("mksession!")
-	end
-})
-
-vim.api.nvim_create_autocmd("QuitPre", {
-	desc = "Remove view",
-	callback = function()
-		local cwd = vim.fs.normalize(vim.uv.cwd())
-		local session_path = cwd .. "/Session.vim"
-
-		if vim.uv.fs_stat(session_path) then
-			vim.fs.rm(session_path)
-		end
-	end
-})
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-	desc = "Update Fold expr",
-	callback = function()
-		vim.schedule(function()
-			vim.cmd("so Session.vim")
-		end)
-	end
-})
 
 vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
 vim.api.nvim_create_autocmd('BufReadPost', {
@@ -75,13 +50,11 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	group = 'goto_prev_pos_from_last_exit',
 	pattern = '*',
 	callback = function()
-		if vim.bo.filetype == "gitcommit" or vim.wo.diff then
+		if vim.bo.filetype == "gitcommit" or vim.wo.diff or vim.bo.filetype == "help" or vim.bo.filetype == "oil" then
 			return
 		end
 		vim.cmd('silent! normal! g`"zv')
-		vim.schedule(function()
-			vim.cmd('UfoEnableFold')
-		end)
+		-- vim.cmd('UfoEnableFold')
 	end
 })
 

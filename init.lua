@@ -30,7 +30,7 @@ opt.wrap = false
 opt.sidescroll = 20
 opt.sidescrolloff = 10
 opt.list = true
-opt.sessionoptions = "buffers,folds,curdir"
+-- opt.sessionoptions = "buffers,folds,curdir"
 -- opt.listchars = { tab = "| " }
 opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
 -- opt.listchars = { tab = "┇ ", space = "" }
@@ -44,16 +44,18 @@ cmd.colorscheme("kanagawa")
 
 cmd("set mouse=a")
 
+
 opt.foldmethod = 'expr'
-opt.viewoptions = "folds,cursor"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldtext = "foldtext() .. \" ...\""
--- opt.foldtext =
--- "v:folddashes .. substitute(getline(v:foldstart), '/\\*\\|\\*/\\|{{{\\d\\=', '', 'g') .. (v:foldend - v:foldstart)..' line'"
-opt.fillchars = "fold: "
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- opt.foldtext = "foldtext() .. \" ...\""
+-- NOTE: if don't want to use nvim-ufo virtual_text try uncomment below
+opt.foldtext = ""
+opt.fillchars = "fold:."
 
 opt.foldenable = false
 opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldnestmax = 4
 -- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
 
 local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })

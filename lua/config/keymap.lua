@@ -3,14 +3,19 @@ local telescope = require("telescope.builtin")
 require("config.inQuote")
 require("config.format")
 vim.keymap.del("n", "<leader>q")
+vim.keymap.del("n", "<leader>w")
 
 keymap("n", "<leader>q", function()
 	if vim.wo.diff then
-		vim.cmd(":qall")
+		vim.cmd("qall")
 	else
-		vim.cmd(":q")
+		vim.cmd("q")
 	end
 end)
+
+keymap("n", "<leader>w", function()
+	vim.cmd("w")
+end, { silent = true })
 
 keymap("o", 'in"', function()
 	MoveToNextQuote("\"", 'f', 'i')

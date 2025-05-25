@@ -6,11 +6,11 @@ local M =
 		lazy = true,
 		opts = {
 			compile = true,
-			overrides = function(colors)
-				return {
-					Folded = { fg = "#A3D4D5" }
-				}
-			end,
+			-- overrides = function(colors)
+			-- 	return {
+			-- 		Folded = { fg = "#A3D4D5" }
+			-- 	}
+			-- end,
 			colors = { -- add/modify theme and palette colors
 				theme = {
 					all = {
