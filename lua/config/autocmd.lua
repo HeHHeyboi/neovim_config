@@ -17,12 +17,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup('format_buffer', { clear = false }),
 				buffer = args.buf,
 				callback = function()
-					if vim.bo.filetype == "odin" then
-						return
-					end
+					-- if vim.bo.filetype == "odin" then
+					-- 	return
+					-- end
+					vim.cmd("silent! mkview!")
 					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-					-- local elapsed_ms = (vim.uv.hrtime() - start) / 1e6
-					-- print(elapsed_ms .. " ms")
+					vim.cmd("silent! loadview")
 				end,
 			})
 		end
@@ -43,6 +43,16 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- so when do something after BufWritePost try call "vim.schedule()" first
 --
 -- NOTE: autocmd doesn't work when in sandbox
+vim.api.nvim_create_autocmd("QuitPre", {
+	desc = "Remove view",
+	callback = function()
+		local view_dir = vim.fs.normalize(vim.o.viewdir)
+
+		if vim.uv.fs_stat(view_dir) ~= nil then
+			vim.fs.rm(view_dir, { recursive = true })
+		end
+	end
+})
 
 vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
 vim.api.nvim_create_autocmd('BufReadPost', {
