@@ -9,7 +9,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup('format_buffer', {}),
 	desc = "LSP autocmd",
 	callback = function(args)
-		local start = vim.uv.hrtime()
 		vim.lsp.inlay_hint.enable(false, { bufnr = nil }) -- Enable inlay hints
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		if client:supports_method('textDocument/formatting') then
