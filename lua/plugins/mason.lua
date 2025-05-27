@@ -21,7 +21,7 @@ return {
 			return not vim.opt.diff:get()
 		end,
 		opts = {
-			ensure_installed = { "lua_ls", "gopls", "clangd", "ols" },
+			ensure_installed = { "lua_ls", "gopls", "clangd" },
 			automatic_installation = false
 		}
 	},
