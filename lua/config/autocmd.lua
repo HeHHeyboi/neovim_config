@@ -27,11 +27,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end
 })
+
+
+local exclude = { "gdscript", "make" }
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = vim.api.nvim_create_augroup("Format with formatter", { clear = true }),
 	pattern = { '*.gd' },
 	callback = function()
-		local format = Custom_format[vim.bo.filetype]
+		local filetype = vim.bo.filetype
+		for _, ft in ipairs(exclude) do
+			if filetype == ft then
+				return
+			end
+		end
+		local format = Custom_format[filetype]
 		if format ~= nil then
 			Format_file(format.cmd, format.arg)
 		end
