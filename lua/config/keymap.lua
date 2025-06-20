@@ -102,13 +102,19 @@ keymap("n", "<leader>td", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" 
 keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- NOTE: Format
+-- keymap("n", "<A-f>", function()
+-- 	local format = Custom_format[vim.bo.filetype]
+-- 	if format ~= nil then
+-- 		Format_file(format.cmd, format.arg)
+-- 		return
+-- 	end
+-- 	vim.lsp.buf.format({ async = true })
+-- end, { silent = true })
 keymap("n", "<A-f>", function()
-	local format = Custom_format[vim.bo.filetype]
-	if format ~= nil then
-		Format_file(format.cmd, format.arg)
-		return
-	end
-	vim.lsp.buf.format({ async = true })
+	require("conform").format({ lsp_format = "fallback" }, function(err, did_edit)
+		local name = vim.fn.bufname("%")
+		vim.notify("format " .. name .. " success", vim.log.levels.INFO)
+	end)
 end, { silent = true })
 
 --LSP keymap
