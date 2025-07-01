@@ -9,9 +9,9 @@ local M =
 		local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
 		local util = require("lspconfig.util")
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
-		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp', 'hyprls' }
+		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp', 'hyprls', 'jdtls' }
 		if vim.uv.os_uname().sysname == "Windows_NT" then
-			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp' }
+			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp', 'jdtls' }
 		end
 		vim.lsp.config('*', {
 			capabilities = lsp_capabilities,
@@ -41,6 +41,7 @@ local M =
 			root_marker = { ".git" }
 		})
 		-- lspconfig.jdtls.setup {}
+		vim.lsp.config("jdtls", {})
 		-- vim.lsp.config("pylyzer", {})
 		vim.lsp.config("pylsp", {
 			settings = {
