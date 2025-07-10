@@ -13,6 +13,7 @@ local M =
 		if vim.uv.os_uname().sysname == "Windows_NT" then
 			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp', 'jdtls' }
 		end
+
 		vim.lsp.config('*', {
 			capabilities = lsp_capabilities,
 		})
@@ -41,7 +42,8 @@ local M =
 			root_marker = { ".git" }
 		})
 		-- lspconfig.jdtls.setup {}
-		vim.lsp.config("jdtls", {})
+		vim.lsp.config("jdtls", {
+		})
 		-- vim.lsp.config("pylyzer", {})
 		vim.lsp.config("pylsp", {
 			settings = {

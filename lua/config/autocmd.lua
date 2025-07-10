@@ -3,7 +3,7 @@ if vim.fn.argc() == 0 then
 end
 
 require("config.format")
--- local exclude = { "gdscript", "make" }
+local exclude_semantic = {}
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup('format_buffer', {}),
@@ -11,6 +11,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		vim.lsp.inlay_hint.enable(false, { bufnr = nil }) -- Enable inlay hints
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+		-- disable Sematic Tokens
+		if vim.tbl_contains(exclude_semantic, client.name) then
+			client.server_capabilities.semanticTokensProvider = nil
+			return
+		end
+
 		if client:supports_method('textDocument/formatting') then
 			vim.api.nvim_create_autocmd('BufWritePre', {
 				group = vim.api.nvim_create_augroup('format_buffer', { clear = false }),
@@ -29,23 +36,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 
-local exclude = { "gdscript", "make" }
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = vim.api.nvim_create_augroup("Format with formatter", { clear = true }),
-	pattern = { '*.gd' },
-	callback = function()
-		local filetype = vim.bo.filetype
-		for _, ft in ipairs(exclude) do
-			if filetype == ft then
-				return
-			end
-		end
-		local format = Custom_format[filetype]
-		if format ~= nil then
-			Format_file(format.cmd, format.arg)
-		end
-	end
-})
 
 -- NOTE: when call command after write buffer may cause 'Race condition'
 -- so when do something after BufWritePost try call "vim.schedule()" first

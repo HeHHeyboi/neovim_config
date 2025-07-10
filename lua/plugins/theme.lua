@@ -6,11 +6,12 @@ local M =
 		lazy = true,
 		opts = {
 			compile = true,
-			-- overrides = function(colors)
-			-- 	return {
-			-- 		Folded = { fg = "#A3D4D5" }
-			-- 	}
-			-- end,
+			overrides = function(colors)
+				return {
+					["@lsp.type.modifier.java"]          = { link = "@keyword" },
+					["@lsp.typemod.class.readonly.java"] = { link = "@type" },
+				}
+			end,
 			colors = { -- add/modify theme and palette colors
 				theme = {
 					all = {
