@@ -8,8 +8,9 @@ local M =
 			compile = true,
 			overrides = function(colors)
 				return {
-					["@lsp.type.modifier.java"]          = { link = "@keyword" },
-					["@lsp.typemod.class.readonly.java"] = { link = "@type" },
+					["@lsp.type.modifier.java"]           = { link = "@keyword" },
+					["@lsp.typemod.class.readonly.java"]  = { link = "@type" },
+					["@lsp.typemod.property.public.java"] = { link = "@variable.member" }
 				}
 			end,
 			colors = { -- add/modify theme and palette colors
