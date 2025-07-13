@@ -5,8 +5,13 @@ local M = {
 		-- tag = '0.1.8',
 		dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim' },
 		config = function()
-			local open_trouble = require("trouble.sources.telescope").open
+			-- local open_trouble_tele = require("trouble.sources.telescope").open
+			local trouble = require("trouble")
 			local actions = require("telescope.actions")
+			local open_trouble = function(prompt_bufnr)
+				actions.send_to_qflist(prompt_bufnr)
+				trouble.open("qflist")
+			end
 			local layout_actions = require("telescope.actions.layout")
 			require("telescope").setup {
 				defaults = {
