@@ -14,14 +14,14 @@ return {
 				lsp_format = "fallback",
 			},
 			format_on_save = function(bufnr)
-				vim.cmd("silent! mkview!")
+				-- vim.cmd("silent! mkview!")
 				return {
 					lsp_format = "fallback",
 					timeout_ms = 500,
 				}
 			end,
 			format_after_save = function(bufnr)
-				vim.cmd("silent! loadview")
+				-- vim.cmd("silent! loadview")
 				return {
 					lsp_format = "fallback",
 				}
