@@ -1,4 +1,36 @@
 local exclude = { "gdscript", "make" }
+
+-- NOTE: Auto Format for nvim version 0.11
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup('format_buffer', {}),
+	desc = "LSP autocmd",
+	callback = function(args)
+		vim.lsp.inlay_hint.enable(false, { bufnr = nil }) -- Enable inlay hints
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+		-- disable Sematic Tokens
+		if vim.tbl_contains(exclude_semantic, client.name) then
+			client.server_capabilities.semanticTokensProvider = nil
+			return
+		end
+
+		if client:supports_method('textDocument/formatting') then
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = vim.api.nvim_create_augroup('format_buffer', { clear = false }),
+				callback = function()
+					-- if vim.bo.filetype == "odin" then
+					-- 	return
+					-- end
+					vim.cmd("silent! mkview!")
+					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+					vim.cmd("silent! loadview")
+				end,
+			})
+		end
+	end
+})
+
+-- NOTE: old autoformat
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = vim.api.nvim_create_augroup("Format with formatter", { clear = true }),
 	pattern = { '*.gd' },
