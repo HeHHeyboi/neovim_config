@@ -17,7 +17,7 @@ return {
 				-- vim.cmd("silent! mkview!")
 				return {
 					lsp_format = "fallback",
-					timeout_ms = 500,
+					timeout_ms = 1000,
 				}
 			end,
 			format_after_save = function(bufnr)
