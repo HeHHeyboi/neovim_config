@@ -9,6 +9,7 @@ return {
 			formatters_by_ft = {
 				gdscript = { "gdformat" },
 				cs = { "csharpier" },
+				hurl = { "hurlfmt" }
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
