@@ -11,7 +11,7 @@ return
 			show_hidden = true,
 			natural_order = true,
 			is_always_hidden = function(name, bufnr)
-				local m = name:match(".+uid")
+				local m = name:match("%.uid$")
 				return m ~= nil
 			end
 		},
