@@ -42,8 +42,8 @@ local M =
 			root_marker = { ".git" }
 		})
 		-- NOTE: enable lsp in after/ftplugin/java.lua by nvim-jdtls
-		vim.lsp.config("jdtls", {
-		})
+		-- vim.lsp.config("jdtls", {
+		-- })
 		-- vim.lsp.config("pylyzer", {})
 		vim.lsp.config("pylsp", {
 			settings = {

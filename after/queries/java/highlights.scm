@@ -2,6 +2,12 @@
 
 ((type_identifier) @type (#set! priority 130))
 
+(field_declaration
+  declarator: (variable_declarator
+    name: (identifier) @variable.member) (#set! priority 130))
+
+(field_access
+  field: (identifier) @variable.member(#set! priority 130))
 ([
   "record"
   "class"
