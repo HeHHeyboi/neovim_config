@@ -7,10 +7,8 @@ local function jdtls_exe()
 end
 
 local function root_dir()
-	local file = vim.fs.find({ 'pom.xml', 'gradlew', '.git', 'mvnw', '.classpath' }, { upward = true })
-	local root = vim.fs.dirname(file[1])
-	print(root)
-	return root
+	local file = vim.fs.find({ 'pom.xml', 'gradlew', '.git', 'mvnw', '.classpath' }, { upward = true })[1]
+	return file and vim.fs.dirname(file) or vim.loop.cwd()
 end
 
 local config = {
