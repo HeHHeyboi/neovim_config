@@ -9,20 +9,19 @@ return {
 			formatters_by_ft = {
 				gdscript = { "gdformat" },
 				cs = { "csharpier" },
-				hurl = { "hurlfmt" }
+				hurl = { "hurlfmt" },
+				java = { "clang-format" }
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
 			},
 			format_on_save = function(bufnr)
-				-- vim.cmd("silent! mkview!")
 				return {
 					lsp_format = "fallback",
 					timeout_ms = 1000,
 				}
 			end,
 			format_after_save = function(bufnr)
-				-- vim.cmd("silent! loadview")
 				return {
 					lsp_format = "fallback",
 				}
