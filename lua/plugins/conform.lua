@@ -10,7 +10,6 @@ return {
 				gdscript = { "gdformat" },
 				cs = { "csharpier" },
 				hurl = { "hurlfmt" },
-				java = { "google-java-format" }
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
