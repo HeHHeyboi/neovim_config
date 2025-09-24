@@ -66,7 +66,7 @@ nnoremap <C-u> <C-u>zz
 "or
 "nnoremap <C-d> 15gjzz
 "nnoremap <C-u> 15gkzz
-nnoremap <C-s> :w<CR>
+" nnoremap <C-s> :w<CR>
 "nnoremap <silent><leader>vh :execute "rightbelow vsplit " .bufname("#")<cr>
 "nnoremap <silent><leader>vl :execute "leftabove vsplit " .bufname("#")<cr>
 nnoremap <leader>h <C-w>h
