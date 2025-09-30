@@ -25,8 +25,8 @@ nnoremap <leader>ei :split $MYVIMRC<cr>
 " nnoremap <silent><leader>s :execute "split ".bufname("#")<cr> 
 " nnoremap <silent><leader>v :"leftabove vsplit ".bufname("#")<cr>
 " nnoremap <C-h> :noh<CR>:let @/=''<CR>
-nnoremap <A-,> <C-w>5<
-nnoremap <A-.> <C-w>5>
+nnoremap <A-.> <C-w>5<
+nnoremap <A-,> <C-w>5>
 nnoremap <A-=> <C-w>+
 nnoremap <A--> <C-w>-
 
