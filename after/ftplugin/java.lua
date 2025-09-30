@@ -15,4 +15,6 @@ local config = {
 	cmd = jdtls_exe(),
 	root_dir = root_dir()
 }
-require('jdtls').start_or_attach(config)
+if not vim.wo.diff then
+	require('jdtls').start_or_attach(config)
+end
