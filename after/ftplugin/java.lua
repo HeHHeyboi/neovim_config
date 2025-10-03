@@ -16,5 +16,6 @@ local config = {
 	root_dir = root_dir()
 }
 if not vim.wo.diff then
+	print("In diff mode")
 	require('jdtls').start_or_attach(config)
 end
