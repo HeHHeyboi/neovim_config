@@ -15,7 +15,10 @@ local config = {
 	cmd = jdtls_exe(),
 	root_dir = root_dir()
 }
-if not vim.wo.diff then
-	print("In diff mode")
-	require('jdtls').start_or_attach(config)
-end
+vim.schedule(function()
+	if not vim.wo.diff then
+		require('jdtls').start_or_attach(config)
+	else
+		print("Skipping JDTLS: diff mode enabled")
+	end
+end)
