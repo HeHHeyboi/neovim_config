@@ -1,5 +1,14 @@
 local M =
 {
+	{
+		"tiagovla/tokyodark.nvim",
+		opts = {
+			-- custom options here
+		},
+		config = function()
+			require("tokyodark").setup() -- calling setup is optional
+		end,
+	},
 	{ "ayu-theme/ayu-vim", lazy = true },
 	{
 		"rebelot/kanagawa.nvim",
@@ -63,6 +72,9 @@ local M =
 			style = 'darker',         -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 			highlights = {
 				["CursorLine"] = { bg = "NONE" }, -- "#2e3139"
+				["Comment"] = { fg = "#575e6e" },
+				["@comment"] = { fg = "#575e6e" },
+				["@lsp.type.comment"] = { fg = "#575e6e" },
 				["CursorLineNr"] = { fg = "#ffc300" },
 				["LineNr"] = { fg = "#8aa7cf" },
 				["MatchParen"] = { fg = "#ffc300", bg = "NONE" },

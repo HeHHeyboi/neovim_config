@@ -36,9 +36,9 @@ opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
 -- opt.listchars = { tab = "┇ ", space = "" }
 
 -- NOTE: Set Theme
--- cmd.colorscheme("onedark")
+cmd.colorscheme("onedark")
 -- cmd.colorscheme("nordic")
-cmd.colorscheme("kanagawa")
+-- cmd.colorscheme("kanagawa")
 -- vim.g.ayucolor = "dark" -- "mirage" or "dark"
 -- cmd.colorscheme("ayu")
 
