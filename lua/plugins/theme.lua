@@ -2,12 +2,19 @@ local M =
 {
 	{
 		"tiagovla/tokyodark.nvim",
+		layz = true,
 		opts = {
 			-- custom options here
 		},
 		config = function()
 			require("tokyodark").setup() -- calling setup is optional
 		end,
+	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = true,
+		priority = 1000,
+		opts = {},
 	},
 	{ "ayu-theme/ayu-vim", lazy = true },
 	{
