@@ -79,8 +79,8 @@ local M =
 			style = 'darker',         -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 			highlights = {
 				["CursorLine"] = { bg = "NONE" }, -- "#2e3139"
-				["Comment"] = { fg = "#575e6e" },
-				["@comment"] = { fg = "#575e6e" },
+				["Comment"] = { fg = "#62697a" }, -- "#575e6e"
+				["@comment"] = { fg = "#62697a" },
 				["@lsp.type.comment"] = { fg = "#575e6e" },
 				["CursorLineNr"] = { fg = "#ffc300" },
 				["LineNr"] = { fg = "#8aa7cf" },
