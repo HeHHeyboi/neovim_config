@@ -81,6 +81,7 @@ local M =
 				["CursorLine"] = { bg = "NONE" }, -- "#2e3139"
 				["Comment"] = { fg = "#62697a" }, -- "#575e6e"
 				["Conceal"] = { fg = "#ffffff" },
+				["WinSeperator"] = { fg = "#ffffff" },
 				["@comment"] = { fg = "#62697a" },
 				["@lsp.type.comment"] = { fg = "#575e6e" },
 				["CursorLineNr"] = { fg = "#ffc300" },
