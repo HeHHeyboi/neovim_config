@@ -11,3 +11,11 @@
 
 (const_spec
   name: (identifier) @constant (#set! priority 130))
+
+(field_declaration
+  name: (field_identifier) @variable.member (#set! priority 130))
+
+(keyed_element
+  .
+  (literal_element
+    (identifier) @variable.member)(#set! priority 130))
