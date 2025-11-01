@@ -63,7 +63,7 @@ local M = {
 				}
 			},
 			accept = {
-				auto_brackets = { enabled = false }
+				auto_brackets = { enabled = true }
 			}
 		},
 
