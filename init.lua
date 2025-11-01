@@ -61,21 +61,21 @@ opt.foldlevelstart = 99
 opt.foldnestmax = 1
 -- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
 
-local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })
-if #gdproj > 0 then
-	local addr = '/tmp/godot.pipe'
-	if vim.uv.os_uname().sysname == "Windows_NT" then
-		addr = '127.0.0.1:6004'
-		local result = vim.system({ "netstat", "-ano" }, { text = true }):wait()
-		if result.code == 0 and result.stdout:find("6004") ~= nil then
-			return
-		end
-	end
-
-	local stats, _, err_name = vim.uv.fs_stat(addr)
-	if stats or err_name ~= "ENOENT" then
-		return
-	end
-
-	vim.fn.serverstart(addr)
-end
+-- local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })
+-- if #gdproj > 0 then
+-- 	local addr = '/tmp/godot.pipe'
+-- 	if vim.uv.os_uname().sysname == "Windows_NT" then
+-- 		addr = '127.0.0.1:6004'
+-- 		local result = vim.system({ "netstat", "-ano" }, { text = true }):wait()
+-- 		if result.code == 0 and result.stdout:find("6004") ~= nil then
+-- 			return
+-- 		end
+-- 	end
+--
+-- 	local stats, _, err_name = vim.uv.fs_stat(addr)
+-- 	if stats or err_name ~= "ENOENT" then
+-- 		return
+-- 	end
+--
+-- 	vim.fn.serverstart(addr)
+-- end
