@@ -5,23 +5,20 @@ end
 require("config.format")
 local exclude_semantic = {}
 
-
-
-
 -- NOTE: when call command after write buffer may cause 'Race condition'
 -- so when do something after BufWritePost try call "vim.schedule()" first
 --
 -- NOTE: autocmd doesn't work when in sandbox
-vim.api.nvim_create_autocmd("QuitPre", {
-	desc = "Remove view",
-	callback = function()
-		local view_dir = vim.fs.normalize(vim.o.viewdir)
-
-		if vim.uv.fs_stat(view_dir) ~= nil then
-			vim.fs.rm(view_dir, { recursive = true })
-		end
-	end
-})
+-- vim.api.nvim_create_autocmd("QuitPre", {
+-- 	desc = "Remove view",
+-- 	callback = function()
+-- 		local view_dir = vim.fs.normalize(vim.o.viewdir)
+--
+-- 		if vim.uv.fs_stat(view_dir) ~= nil then
+-- 			vim.fs.rm(view_dir, { recursive = true })
+-- 		end
+-- 	end
+-- })
 
 vim.api.nvim_create_augroup('goto_prev_pos_from_last_exit', { clear = true })
 vim.api.nvim_create_autocmd('BufReadPost', {
@@ -37,12 +34,27 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	end
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "TelescopeResults",
-	callback = function()
-		vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#313141" })
+--QuickFixCmdPost
+-- Enable cursorline only inside Trouble buffers
+vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave" }, {
+	pattern = "*",
+	callback = function(args)
+		if vim.api.nvim_get_option_value("filetype", { buf = args.buf }) == "trouble" then
+			if args.event == "BufEnter" then
+				vim.opt_local.cursorline = true
+				vim.api.nvim_set_hl(0, "CursorLine", { bg = "#313141" })
+			else
+				vim.opt_local.cursorline = false
+			end
+		end
 	end,
 })
+-- vim.api.nvim_create_autocmd("BufLeave", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
+-- 	end,
+-- })
 
 -- local format_group = vim.api.nvim_create_augroup('FormatFile', { clear = true })
 -- vim.api.nvim_create_autocmd("BufWritePre", {

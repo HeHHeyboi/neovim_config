@@ -2,7 +2,7 @@ local M =
 {
 	{
 		"tiagovla/tokyodark.nvim",
-		layz = true,
+		lazy = true,
 		opts = {
 			-- custom options here
 		},
@@ -26,7 +26,8 @@ local M =
 				return {
 					["@lsp.type.modifier.java"]           = { link = "@keyword" },
 					["@lsp.typemod.class.readonly.java"]  = { link = "@type" },
-					["@lsp.typemod.property.public.java"] = { link = "@variable.member" }
+					["@lsp.typemod.property.public.java"] = { link = "@variable.member" },
+					-- ["TelescopeSelection"]                = { bg = "#313141", link = "" }, -- "#2e3139"
 				}
 			end,
 			colors = { -- add/modify theme and palette colors
@@ -35,9 +36,8 @@ local M =
 						ui = {
 							nontext = "#8aa7cf",
 							-- special = "#ff0000",
-							-- bg_p2 = "#313141",
+							bg_p2 = "#313141",
 							--"#313141"
-							bg_p2 = "NONE"
 						}
 					}
 				},
@@ -56,7 +56,7 @@ local M =
 			reduced_blue = false,
 			cursorline = {
 				theme = 'light',
-				bg = "NONE", --#292e3b
+				bg = "#292e3b", --#292e3b
 				blend = 0,
 			},
 			override = {
@@ -76,9 +76,9 @@ local M =
 		'navarasu/onedark.nvim',
 		lazy = true,
 		opts = {
-			style = 'darker',         -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+			style = 'darker',            -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 			highlights = {
-				["CursorLine"] = { bg = "NONE" }, -- "#2e3139"
+				["CursorLine"] = { bg = "#2e3139" }, -- "#2e3139"
 				["Comment"] = { fg = "#62697a" }, -- "#575e6e"
 				["Conceal"] = { fg = "#ffffff" },
 				["WinSeperator"] = { fg = "#ffffff" },
