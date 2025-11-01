@@ -34,21 +34,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	end
 })
 
---QuickFixCmdPost
--- Enable cursorline only inside Trouble buffers
-vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave" }, {
-	pattern = "*",
-	callback = function(args)
-		if vim.api.nvim_get_option_value("filetype", { buf = args.buf }) == "trouble" then
-			if args.event == "BufEnter" then
-				vim.opt_local.cursorline = true
-				vim.api.nvim_set_hl(0, "CursorLine", { bg = "#313141" })
-			else
-				vim.opt_local.cursorline = false
-			end
-		end
-	end,
-})
 -- vim.api.nvim_create_autocmd("BufLeave", {
 -- 	pattern = "*",
 -- 	callback = function()
