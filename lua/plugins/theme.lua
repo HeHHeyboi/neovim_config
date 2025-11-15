@@ -83,6 +83,7 @@ local M =
 				["Conceal"] = { fg = "#ffffff" },
 				["WinSeperator"] = { fg = "#ffffff" },
 				["@comment"] = { fg = "#62697a" },
+				["@spell.odin"] = { fg = "#62697a" },
 				["@lsp.type.comment"] = { fg = "#575e6e" },
 				["CursorLineNr"] = { fg = "#ffc300" },
 				["LineNr"] = { fg = "#8aa7cf" },
