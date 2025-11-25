@@ -82,7 +82,7 @@ keymap("n", "vm", telescope.marks, { desc = "View Mark" })
 keymap("n", "<A-m>", telescope.diagnostics, { desc = "Telescope Diagnostic" })
 -- vim.keymap.del("n", "<leader>ds")
 keymap("n", "<leader>ds", telescope.lsp_document_symbols, { desc = "Telescope Document Symbols" })
-keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, { desc = "Telescope Workspace symbols" })
+-- keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, { desc = "Telescope Workspace symbols" })
 
 
 -- NOTE: Trouble
