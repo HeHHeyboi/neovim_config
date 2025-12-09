@@ -47,7 +47,6 @@ cmd.colorscheme("onedark")
 
 cmd("set mouse=a")
 
-
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- opt.foldtext = "foldtext() .. \" ...\""
@@ -55,7 +54,7 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldtext = ""
 opt.fillchars = "fold:."
 
-opt.foldenable = false
+opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldnestmax = 4
