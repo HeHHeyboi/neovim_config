@@ -48,8 +48,8 @@ cmd.colorscheme("onedark")
 cmd("set mouse=a")
 
 
-opt.foldmethod = 'expr'
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- opt.foldtext = "foldtext() .. \" ...\""
 -- NOTE: if don't want to use nvim-ufo virtual_text try uncomment below
 opt.foldtext = ""
@@ -58,7 +58,7 @@ opt.fillchars = "fold:."
 opt.foldenable = false
 opt.foldlevel = 99
 opt.foldlevelstart = 99
-opt.foldnestmax = 1
+opt.foldnestmax = 4
 -- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
 -- Get godot jump when create or clikc script
 local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })
