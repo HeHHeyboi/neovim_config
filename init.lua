@@ -36,8 +36,8 @@ opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
 -- opt.listchars = { tab = "┇ ", space = "" }
 
 -- NOTE: Set Theme
-cmd.colorscheme("onedark")
--- cmd.colorscheme("tokyodark")
+-- cmd.colorscheme("onedark")
+cmd.colorscheme("tokyodark")
 -- cmd.colorscheme("nordic")
 -- cmd.colorscheme("kanagawa") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "kanagawa-lotus"
 
