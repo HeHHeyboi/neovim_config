@@ -13,15 +13,25 @@ local M =
 	{
 		"folke/tokyonight.nvim",
 		lazy = true,
-		priority = 1000,
-		opts = {
-			-- on_highlights = function(hl, c)
-			-- 	local fold = "#252e4d"
-			-- 	hl.Folded = {
-			-- 		bg = fold,
-			-- 	}
-			-- end
-		},
+		-- priority = 1000,
+		config = function()
+			require("tokyonight").setup({
+				on_highlights = function(hl, c)
+					local CursorLineNr_fg = "#ffc300"
+					-- local LineNr_fg = "#a9b1d6"
+					local LineNr_fg = "#8aa7cf"
+					hl.LineNr = {
+						fg = CursorLineNr_fg,
+					}
+					hl.LineNrAbove = {
+						fg = LineNr_fg,
+					}
+					hl.LineNrBelow = {
+						fg = LineNr_fg,
+					}
+				end
+			})
+		end,
 	},
 	{ "ayu-theme/ayu-vim", lazy = true },
 	{

@@ -11,8 +11,8 @@ local cmd = vim.cmd
 -- cmd("hi CursorLine   cterm=NONE guibg=#3a4256 guifg=NONE")
 -- cmd("hi CursorLine   cterm=NONE guibg=#313847 guifg=NONE ") -- or 292f3e, 2d3344, 343b4d,3a425h,313847
 
-cmd("hi CursorLineNr cterm=NONE guifg=#ffc300 guibg=NONE gui=bold")
-cmd("highlight LineNr guifg=#8aa7cf")
-cmd("highlight TabLine guibg=#3E4452 guifg=#ABB2BF")
-cmd("highlight TabLineSel guibg=#61AFEF guifg=#282C34 gui=bold")
-cmd("highlight TabLineFill guibg=#282C34 guifg=#ABB2BF")
+vim.cmd("hi CursorLineNr cterm=NONE guifg=#ffc300 guibg=NONE gui=bold")
+vim.cmd("highlight LineNr guifg=#8aa7cf")
+vim.cmd("highlight TabLine guibg=#3E4452 guifg=#ABB2BF")
+vim.cmd("highlight TabLineSel guibg=#61AFEF guifg=#282C34 gui=bold")
+vim.cmd("highlight TabLineFill guibg=#282C34 guifg=#ABB2BF")
