@@ -14,7 +14,14 @@ local M =
 		"folke/tokyonight.nvim",
 		lazy = true,
 		priority = 1000,
-		opts = {},
+		opts = {
+			-- on_highlights = function(hl, c)
+			-- 	local fold = "#252e4d"
+			-- 	hl.Folded = {
+			-- 		bg = fold,
+			-- 	}
+			-- end
+		},
 	},
 	{ "ayu-theme/ayu-vim", lazy = true },
 	{
