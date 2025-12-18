@@ -9,9 +9,9 @@ local M =
 		local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
 		local util = require("lspconfig.util")
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
-		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp', 'hyprls' }
+		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn', 'clangd', 'pylsp', 'hyprls' }
 		if vim.uv.os_uname().sysname == "Windows_NT" then
-			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'csharp_ls', 'clangd', 'pylsp', 'nim_langserver' }
+			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn', 'clangd', 'pylsp' }
 		end
 
 		vim.lsp.config('*', {
@@ -40,6 +40,20 @@ local M =
 
 		vim.lsp.config("csharp_ls", {
 			root_marker = { ".git" }
+		})
+		vim.lsp.config("roslyn", {
+			on_attach = function()
+				print("roslyn lsp server")
+			end,
+			settings = {
+				["csharp|inlay_hints"] = {
+					csharp_enable_inlay_hints_for_implicit_object_creation = true,
+					csharp_enable_inlay_hints_for_implicit_variable_types = true,
+				},
+				["csharp|code_lens"] = {
+					dotnet_enable_references_code_lens = true,
+				},
+			},
 		})
 		-- NOTE: enable lsp in after/ftplugin/java.lua by nvim-jdtls
 		-- vim.lsp.config("jdtls", {
@@ -107,7 +121,6 @@ local M =
 		vim.lsp.config("clangd", {})
 		vim.lsp.config("cmake", {})
 		vim.lsp.config("hyprls", {})
-		vim.lsp.config("nimls", {})
 
 		vim.lsp.set_log_level("ERROR")
 		vim.lsp.enable(enable_lsp)
