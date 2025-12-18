@@ -11,8 +11,9 @@ return
 			show_hidden = true,
 			natural_order = true,
 			is_always_hidden = function(name, bufnr)
-				local m = name:match("%.uid$")
-				return m ~= nil
+				local uid = name:match("%.uid$")
+				local meta = name:match("%.meta$")
+				return uid ~= nil or meta ~= nil
 			end
 		},
 		win_options = {
