@@ -9,9 +9,10 @@ local M =
 		local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
 		local util = require("lspconfig.util")
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
-		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn', 'clangd', 'pylsp', 'hyprls' }
+		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'hyprls' }
 		if vim.uv.os_uname().sysname == "Windows_NT" then
-			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn', 'clangd', 'pylsp' }
+			-- enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp' }
+			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'clangd', 'pylsp' }
 		end
 
 		vim.lsp.config('*', {
@@ -41,10 +42,18 @@ local M =
 		vim.lsp.config("csharp_ls", {
 			root_marker = { ".git" }
 		})
-		vim.lsp.config("roslyn", {
+		vim.lsp.config("roslyn_ls", {
 			on_attach = function()
 				print("roslyn lsp server")
 			end,
+			cmd = {
+				'roslyn.cmd',
+				'--logLevel',
+				'Information',
+				'--extensionLogDirectory',
+				vim.fs.joinpath(vim.uv.os_tmpdir(), 'roslyn_ls/logs'),
+				'--stdio',
+			},
 			settings = {
 				["csharp|inlay_hints"] = {
 					csharp_enable_inlay_hints_for_implicit_object_creation = true,
