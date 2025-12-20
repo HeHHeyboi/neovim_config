@@ -11,8 +11,8 @@ local M =
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
 		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'hyprls' }
 		if vim.uv.os_uname().sysname == "Windows_NT" then
-			-- enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp' }
-			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'clangd', 'pylsp' }
+			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp' }
+			-- enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'clangd', 'pylsp' }
 		end
 
 		vim.lsp.config('*', {

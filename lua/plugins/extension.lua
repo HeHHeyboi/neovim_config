@@ -10,7 +10,7 @@ return {
 		cond = function()
 			return not vim.wo.diff
 		end,
-		enabled = true,
+		enabled = false,
 		---@module 'roslyn.config'
 		---@type RoslynNvimConfig
 		opts = {
