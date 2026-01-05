@@ -1,5 +1,6 @@
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
+local trouble = require("trouble")
 require("config.inQuote")
 require("config.format")
 vim.keymap.del("n", "<leader>q")
@@ -150,7 +151,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gd", telescope.lsp_definitions)
 		map("gi", telescope.lsp_implementations)
 		map("go", telescope.lsp_type_definitions)
-		map("grr", telescope.lsp_references)
+		map("grr", function()
+			trouble.open("lsp_references")
+		end)
 
 		map("gs", function()
 			-- vim.lsp.buf.signature_help({ border = custom_border })
