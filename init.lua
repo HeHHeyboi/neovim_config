@@ -33,6 +33,7 @@ opt.list = true
 -- opt.sessionoptions = "buffers,folds,curdir"
 -- opt.listchars = { tab = "| " }
 opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
+-- opt.listchars = { tab = "┊ ", leadmultispace = "┊   " }
 -- opt.listchars = { tab = "┇ ", space = "" }
 
 -- NOTE: Set Theme

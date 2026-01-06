@@ -1,5 +1,3 @@
-local cmd = vim.cmd
-
 -- NOTE: Highlight LineNr for kanagawa
 -- cmd("hi CursorLine   cterm=NONE guibg=#292e3b guifg=NONE")
 -- 252a35, 2e3646, 2a313d, 282735,292e3b

@@ -29,6 +29,9 @@ local M =
 					hl.LineNrBelow = {
 						fg = LineNr_fg,
 					}
+					hl.Whitespace = {
+						fg = "#29293d"
+					}
 				end
 			})
 		end,
