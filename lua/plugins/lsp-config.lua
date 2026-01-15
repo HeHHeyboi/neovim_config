@@ -7,11 +7,10 @@ local M =
 	config = function()
 		-- local lspconfig = require("lspconfig")
 		local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
-		local util = require("lspconfig.util")
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
-		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'hyprls' }
+		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'hyprls', 'ts_ls' }
 		if vim.uv.os_uname().sysname == "Windows_NT" then
-			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'eslint' }
+			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'ts_ls' }
 			-- enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'clangd', 'pylsp' }
 		end
 
@@ -130,10 +129,10 @@ local M =
 		vim.lsp.config("clangd", {})
 		vim.lsp.config("cmake", {})
 		vim.lsp.config("hyprls", {})
-		vim.lsp.config("eslint", {})
+		vim.lsp.config("ts_ls", {})
 
 		vim.lsp.set_log_level("ERROR")
-		vim.lsp.enable(enable_lsp)
+		vim.lsp.enable(enable_lsp, true)
 	end
 }
 
