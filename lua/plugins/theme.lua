@@ -30,7 +30,7 @@ local M =
 						fg = LineNr_fg,
 					}
 					hl.Whitespace = {
-						fg = "#29293d"
+						fg = "#35354f"
 					}
 				end
 			})
