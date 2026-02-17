@@ -20,6 +20,11 @@ vim.diagnostic.config({
 	signs = true,
 	underline = true,
 })
+vim.filetype.add({
+	pattern = {
+		['.env.*'] = 'sh'
+	}
+})
 
 -- NOTE: vim options
 vim.g.mapleader = " "
