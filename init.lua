@@ -46,11 +46,11 @@ opt.listchars = { tab = "┆ " }
 -- cmd.colorscheme("onedark")
 -- cmd.colorscheme("tokyodark")
 -- cmd.colorscheme("nordic")
--- cmd.colorscheme("kanagawa") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "kanagawa-lotus"
 
 -- vim.g.ayucolor = "dark" -- "mirage" or "dark"
 -- cmd.colorscheme("ayu")
-cmd.colorscheme("tokyonight-night") -- NOTE:"tokyonight-night", "tokyonight-storm", "tokyonight-day", "tokyonight-moon"
+-- cmd.colorscheme("tokyonight-night") -- NOTE:"tokyonight-night", "tokyonight-storm", "tokyonight-day", "tokyonight-moon"
+cmd.colorscheme("kanagawa-dragon") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "kanagawa-lotus"
 
 cmd("set mouse=a")
 

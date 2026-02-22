@@ -5,5 +5,5 @@ else
 	require('config.autocmd')
 	require('config.neovide')
 	require('config.keymap')
-	require('config.colorscheme')
+	require('config.hightlight_config')
 end

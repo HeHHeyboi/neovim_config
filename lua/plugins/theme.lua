@@ -52,11 +52,19 @@ local M =
 			end,
 			colors = { -- add/modify theme and palette colors
 				theme = {
-					all = {
+					wave = {
 						ui = {
 							nontext = "#8aa7cf",
 							-- special = "#ff0000",
 							bg_p2 = "#313141",
+							--"#313141"
+						}
+					},
+					dragon = {
+						ui = {
+							nontext = "#c5c9c5",
+							-- special = "#ff0000",
+							-- bg_p2 = "#313141",
 							--"#313141"
 						}
 					}
