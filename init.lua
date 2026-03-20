@@ -7,11 +7,15 @@ vim.cmd("so " .. vimrc)
 vim.cmd("so " .. keymap)
 require("config")
 if vim.uv.os_uname().sysname == "Windows_NT" then
-	cmd("let &shell = 'nu'")
-	cmd("let &shellcmdflag = '--error-style plain -c'")
-	cmd("let &shellquote = \"\"")
-	cmd("let &shellxquote = \"\"")
-	cmd("set shellslash")
+	-- cmd("let &shell = 'nu'")
+	-- cmd("let &shellcmdflag = '--error-style plain -c'")
+	-- cmd("let &shellquote = \"\"")
+	-- cmd("let &shellxquote = \"\"")
+	-- cmd("set shellslash")
+	vim.opt.sh = 'nu'
+	vim.opt.shellcmdflag = '--error-style plain -c'
+	vim.opt.shellquote = ""
+	vim.opt.shellxquote = ""
 end
 -- vim.o.winborder = "rounded"
 
