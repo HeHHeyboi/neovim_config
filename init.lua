@@ -35,7 +35,8 @@ vim.g.mapleader = " "
 opt.smarttab = true
 opt.encoding = "UTF-8"
 opt.swapfile = false
-opt.cursorline = false
+opt.cursorline = true
+opt.cursorlineopt = "number"
 opt.wrap = false
 opt.sidescroll = 20
 opt.sidescrolloff = 10
@@ -54,7 +55,7 @@ opt.listchars = { tab = "┆ " }
 -- vim.g.ayucolor = "dark" -- "mirage" or "dark"
 -- cmd.colorscheme("ayu")
 -- cmd.colorscheme("tokyonight-night") -- NOTE:"tokyonight-night", "tokyonight-storm", "tokyonight-day", "tokyonight-moon"
-cmd.colorscheme("kanagawa-dragon") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "kanagawa-lotus"
+cmd.colorscheme("kanagawa-wave") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "kanagawa-lotus"
 
 cmd("set mouse=a")
 
