@@ -42,8 +42,8 @@ opt.sidescroll = 20
 opt.sidescrolloff = 10
 opt.list = true
 -- opt.listchars = { tab = "| " }
--- opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
-opt.listchars = { tab = "┆ " }
+opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
+-- opt.listchars = { tab = "┆ " }
 -- opt.listchars = { tab = "┊ ", leadmultispace = "┊   " }
 -- opt.listchars = { tab = "┇ ", space = "" }
 
