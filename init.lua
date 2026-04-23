@@ -40,7 +40,8 @@ opt.cursorlineopt = "number"
 opt.wrap = false
 opt.sidescroll = 20
 opt.sidescrolloff = 10
-opt.list = true
+opt.list = false
+-- opt.listchars = {}
 -- opt.listchars = { tab = "| " }
 opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
 -- opt.listchars = { tab = "┆ " }

@@ -44,7 +44,8 @@ local M = {
 							"--glob", "!**/.git/*",
 							"--glob", "!**/env/*",
 							"--glob", "!*.uid",
-							"--glob", "!*.meta" },
+							"--glob", "!*.meta",
+							"--glob", "!**/target/*" },
 					},
 					buffers = {
 						mappings = {

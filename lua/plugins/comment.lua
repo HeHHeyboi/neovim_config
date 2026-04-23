@@ -9,8 +9,7 @@ local M = {
 		---Whether the cursor should stay at its position
 		sticky = true,
 		---Lines to be ignored while (un)comment
-		ignore = nil,
-		---LHS of toggle mappings in NORMAL mode
+		ignore = "^$", ---LHS of toggle mappings in NORMAL mode
 		toggler = {
 			--Line-comment toggle keymap
 			-- line = '<C-k>',
