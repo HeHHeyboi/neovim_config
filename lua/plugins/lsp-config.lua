@@ -131,7 +131,7 @@ local M =
 		vim.lsp.config("hyprls", {})
 		vim.lsp.config("ts_ls", {})
 
-		vim.lsp.set_log_level("ERROR")
+		vim.lsp.log.set_level("ERROR")
 		vim.lsp.enable(enable_lsp, true)
 	end
 }

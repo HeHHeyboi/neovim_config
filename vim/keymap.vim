@@ -12,8 +12,8 @@ nnoremap <leader>q :q<CR>
 nnoremap <C-q> :bd<CR>
 "nnoremap bn :bnext<CR>
 "nnoremap bN :bprevious<CR>
-nnoremap g. :bnext<CR>
-nnoremap g, :bprevious<CR>
+" nnoremap g. :bnext<CR>
+" nnoremap g, :bprevious<CR>
 nnoremap <leader>ev :split ~/.vimrc<cr>
 nnoremap <leader>ei :split $MYVIMRC<cr>
 " nnoremap <leader>g :set operatorfunc=GrepOperator<cr>g@
