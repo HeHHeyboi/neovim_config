@@ -10,7 +10,7 @@ local M =
 		-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
 		local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'hyprls', 'ts_ls' }
 		if vim.uv.os_uname().sysname == "Windows_NT" then
-			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'ts_ls' }
+			enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'ts_ls', 'rust_analyzer' }
 			-- enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'clangd', 'pylsp' }
 		end
 
@@ -130,6 +130,7 @@ local M =
 		vim.lsp.config("cmake", {})
 		vim.lsp.config("hyprls", {})
 		vim.lsp.config("ts_ls", {})
+		vim.lsp.config("rust_analyzer", {})
 
 		vim.lsp.log.set_level("ERROR")
 		vim.lsp.enable(enable_lsp, true)
