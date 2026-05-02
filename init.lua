@@ -7,11 +7,6 @@ vim.cmd("so " .. vimrc)
 vim.cmd("so " .. keymap)
 require("config")
 if vim.uv.os_uname().sysname == "Windows_NT" then
-	-- cmd("let &shell = 'nu'")
-	-- cmd("let &shellcmdflag = '--error-style plain -c'")
-	-- cmd("let &shellquote = \"\"")
-	-- cmd("let &shellxquote = \"\"")
-	-- cmd("set shellslash")
 	vim.opt.sh = 'nu'
 	vim.opt.shellcmdflag = '--error-style plain -c'
 	vim.opt.shellquote = ""
@@ -73,7 +68,7 @@ opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldnestmax = 4
 -- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
--- Get godot jump when create or clikc script
+-- Get godot jump when create or click script
 local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })
 if #gdproj > 0 then
 	local addr = '/tmp/godot.pipe'
