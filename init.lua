@@ -7,12 +7,11 @@ vim.cmd("so " .. vimrc)
 vim.cmd("so " .. keymap)
 require("config")
 if vim.uv.os_uname().sysname == "Windows_NT" then
-<<<<<<< HEAD
 	vim.o.shell = 'nu'
 	vim.o.shellcmdflag = '--error-style plain -c'
 	vim.o.shellquote = ""
 	vim.o.shellxquote = ""
-	vim.o.shellredir = 'out>'
+	vim.o.shelltemp = false
 end
 -- vim.o.winborder = "rounded"
 
