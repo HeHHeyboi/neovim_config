@@ -13,6 +13,12 @@ if vim.uv.os_uname().sysname == "Windows_NT" then
 	vim.o.shellquote = ""
 	vim.o.shellxquote = ""
 	vim.o.shellredir = 'out>'
+=======
+	vim.opt.sh = 'nu'
+	vim.opt.shellcmdflag = '--error-style plain -c'
+	vim.opt.shellquote = ""
+	vim.opt.shellxquote = ""
+>>>>>>> ad43ce1e4780ab04f853f5b254c36afaf977dbb8
 end
 -- vim.o.winborder = "rounded"
 
