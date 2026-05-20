@@ -6,6 +6,7 @@ local keymap = vim.fn.stdpath("config") .. "/vim/keymap.vim"
 vim.cmd("so " .. vimrc)
 vim.cmd("so " .. keymap)
 require("config")
+require("vim._core.ui2").enable()
 if vim.uv.os_uname().sysname == "Windows_NT" then
 	vim.o.shell = 'nu'
 	vim.o.shellcmdflag = '--error-style plain -c'
