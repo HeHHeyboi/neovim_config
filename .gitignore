@@ -1,4 +1,6 @@
 *.json
 test.*
+Session.*
+session.*
 
 

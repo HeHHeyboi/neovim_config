@@ -58,7 +58,7 @@ cmd.colorscheme("kanagawa-wave") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "ka
 cmd("set mouse=a")
 
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- opt.foldtext = "foldtext() .. \" ...\""
 -- NOTE: if don't want to use nvim-ufo virtual_text try uncomment below
 opt.foldtext = ""

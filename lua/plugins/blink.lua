@@ -1,8 +1,10 @@
 local M = {
 	'saghen/blink.cmp',
-	dependencies = { 'rafamadriz/friendly-snippets' },
+	dependencies = { 'rafamadriz/friendly-snippets', 'saghen/blink.lib', },
+	build = function()
+		require('blink.cmp').build()
+	end,
 
-	version = '1.1.1',
 
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
@@ -30,10 +32,15 @@ local M = {
 				menu = {
 					auto_show = true
 				},
+				list = {
+					selection = {
+						preselect = false,
+						auto_insert = true,
+					}
+				},
 			},
 			keymap = {
-				preset = 'enter',
-				['<C-y>'] = { 'select_and_accept', 'fallback' }
+				preset = 'cmdline',
 			},
 		},
 
@@ -58,8 +65,8 @@ local M = {
 			},
 			list = {
 				selection = {
-					preselect = true,
-					auto_insert = false,
+					preselect = false,
+					auto_insert = true,
 				}
 			},
 			accept = {
@@ -81,7 +88,7 @@ local M = {
 		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
 		--
 		-- See the fuzzy documentation for more information
-		fuzzy = { implementation = "prefer_rust_with_warning" }
+		fuzzy = { implementation = "prefer_rust" }
 	},
 	opts_extend = { "sources.default" }
 }
