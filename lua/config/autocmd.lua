@@ -1,6 +1,6 @@
--- if vim.fn.argc() == 0 then
--- 	vim.cmd("Oil")
--- end
+if vim.fn.argc() == 0 then
+	vim.cmd("Oil")
+end
 
 require("config.format")
 local exclude_semantic = {}

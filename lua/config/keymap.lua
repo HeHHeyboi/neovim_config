@@ -1,6 +1,4 @@
 local keymap = vim.keymap.set
-local telescope = require("telescope.builtin")
--- local trouble = require("trouble")
 require("config.inQuote")
 require("config.format")
 vim.keymap.del("n", "<leader>q")
@@ -71,7 +69,14 @@ keymap("n", "<leader>ss", function()
 	local bufname = vim.fn.bufname("#")
 	vim.cmd("belowright split " .. bufname)
 end)
-local theme = require('telescope.themes').get_dropdown({})
+
+-- NOTE: Turn off plugin when in diffmode
+if vim.o.diff then
+	return
+end
+
+local telescope = require("telescope.builtin")
+local trouble = require("trouble")
 -- NOTE: Telescope
 keymap("n", "<C-p>", telescope.find_files, { desc = "Find find" })
 keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
@@ -151,7 +156,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gi", telescope.lsp_implementations)
 		map("go", telescope.lsp_type_definitions)
 		map("grr", function()
-			-- trouble.open("lsp_references")
+			if vim.o.diff then
+				return
+			end
+			trouble.open("lsp_references")
 		end)
 
 		map("gs", function()

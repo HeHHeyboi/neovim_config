@@ -11,8 +11,11 @@ local hooks = function(ev)
 
   if name == 'blink.cmp' and (kind == 'install' or kind == 'update') then
 	  if not ev.data.active then
+		  if kind == 'install' then
+			  vim.pack.add({ 'https://github.com/saghen/blink.lib'})
+			  vim.cmd.packadd("blink.lib")
+		  end
 		  vim.cmd.packadd("blink.cmp")
-		  vim.cmd.packadd("blink.lip")
 	  end
 	  require('blink.cmp').build():wait()
   end
