@@ -1,6 +1,6 @@
 local keymap = vim.keymap.set
 local telescope = require("telescope.builtin")
-local trouble = require("trouble")
+-- local trouble = require("trouble")
 require("config.inQuote")
 require("config.format")
 vim.keymap.del("n", "<leader>q")
@@ -71,19 +71,18 @@ keymap("n", "<leader>ss", function()
 	local bufname = vim.fn.bufname("#")
 	vim.cmd("belowright split " .. bufname)
 end)
--- local theme = require('telescope.themes').get_dropdown({})
+local theme = require('telescope.themes').get_dropdown({})
 -- NOTE: Telescope
 keymap("n", "<C-p>", telescope.find_files, { desc = "Find find" })
--- keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
+keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
 keymap("n", "<leader>fg", require("config.telescope.multigrep").live_multigrep, { desc = "Telescope Grep" })
--- keymap("n", "vb", telescope.buffers, { desc = "View Buffer" })
+keymap("n", "vb", telescope.buffers, { desc = "View Buffer" })
 keymap("n", "vb", require("config.telescope.buffer").list_buffers_ls_style, { desc = "View Buffer" })
 keymap("n", "vr", telescope.registers, { desc = "View Register" })
 keymap("n", "vm", telescope.marks, { desc = "View Mark" })
 keymap("n", "<A-m>", telescope.diagnostics, { desc = "Telescope Diagnostic" })
--- vim.keymap.del("n", "<leader>ds")
 keymap("n", "<leader>ds", telescope.lsp_document_symbols, { desc = "Telescope Document Symbols" })
--- keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, { desc = "Telescope Workspace symbols" })
+keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, { desc = "Telescope Workspace symbols" })
 
 
 -- NOTE: Trouble
@@ -152,7 +151,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gi", telescope.lsp_implementations)
 		map("go", telescope.lsp_type_definitions)
 		map("grr", function()
-			trouble.open("lsp_references")
+			-- trouble.open("lsp_references")
 		end)
 
 		map("gs", function()

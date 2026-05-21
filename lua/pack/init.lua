@@ -1,0 +1,5 @@
+require("pack.hooks_build")
+require("pack.theme")
+require("pack.telescope")
+require("pack.blink")
+require("pack.lsp-config")

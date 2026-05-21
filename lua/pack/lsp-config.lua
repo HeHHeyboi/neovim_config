@@ -1,0 +1,130 @@
+vim.pack.add({"https://github.com/neovim/nvim-lspconfig"})
+-- local lspconfig = require("lspconfig")
+local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
+-- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
+local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'hyprls', 'ts_ls' }
+if vim.uv.os_uname().sysname == "Windows_NT" then
+	enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'ts_ls', 'rust_analyzer' }
+	-- enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'clangd', 'pylsp' }
+end
+
+vim.lsp.config('*', {
+	capabilities = lsp_capabilities,
+})
+
+vim.lsp.config('ols', {
+	init_options = {
+		enable_snippets = true,
+		enable_semantic_tokens = true,
+		verbose = false,
+		checker_args = "-vet-unused-variables -vet-shadowing"
+	},
+})
+vim.lsp.config("gopls", {
+	settings = {
+		gopls = {
+			experimentalPostfixCompletions = true,
+			gofumpt = false,
+			templateExtensions = { ".html", ".tmpl" },
+			usePlaceholders = false,
+			semanticTokens = true,
+		}
+	}
+})
+
+vim.lsp.config("csharp_ls", {
+	root_marker = { ".git" }
+})
+vim.lsp.config("roslyn_ls", {
+	on_attach = function()
+		print("roslyn lsp server")
+	end,
+	cmd = {
+		'roslyn.cmd',
+		'--logLevel',
+		'Information',
+		'--extensionLogDirectory',
+		vim.fs.joinpath(vim.uv.os_tmpdir(), 'roslyn_ls/logs'),
+		'--stdio',
+	},
+	settings = {
+		["csharp|inlay_hints"] = {
+			csharp_enable_inlay_hints_for_implicit_object_creation = true,
+			csharp_enable_inlay_hints_for_implicit_variable_types = true,
+		},
+		["csharp|code_lens"] = {
+			dotnet_enable_references_code_lens = true,
+		},
+	},
+})
+-- NOTE: enable lsp in after/ftplugin/java.lua by nvim-jdtls
+-- vim.lsp.config("jdtls", {
+	-- })
+	-- vim.lsp.config("pylyzer", {})
+	vim.lsp.config("pylsp", {
+		settings = {
+			pylsp = {
+				plugins = {
+					pycodestyle = {
+						ignore = { 'W391', 'W191' },
+						maxLineLength = 100
+					},
+					yapf = {
+						enabled = true
+					},
+					autopep8 = {
+						enabled = false
+					}
+				}
+			}
+		},
+	})
+	vim.lsp.config("lua_ls", {
+		on_init = function(client)
+			local path = client.workspace_folders[1].name
+			if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
+				return
+			end
+
+			client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+				runtime = {
+					version = 'LuaJIT'
+				},
+				-- Make the server aware of Neovim runtime files
+				workspace = {
+					checkThirdParty = false,
+					library = {
+						vim.env.VIMRUNTIME
+						-- Depending on the usage, you might want to add additional paths here.
+						-- "${3rd}/luv/library"
+						-- "${3rd}/busted/library",
+					}
+					-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+					-- library = vim.api.nvim_get_runtime_file("", true)
+				}
+			})
+		end,
+		settings = {
+			Lua = {
+				completion = {
+					callSnippet = "Replace"
+				},
+				format = {
+					-- Enable code formatting
+					enable = true,
+				},
+				diagnostics = {
+					-- Get the server to recognize the vim global
+					globals = { "vim" }
+				},
+			}
+		},
+	})
+	vim.lsp.config("clangd", {})
+	vim.lsp.config("cmake", {})
+	vim.lsp.config("hyprls", {})
+	vim.lsp.config("ts_ls", {})
+	vim.lsp.config("rust_analyzer", {})
+
+	vim.lsp.log.set_level("ERROR")
+	vim.lsp.enable(enable_lsp, true)

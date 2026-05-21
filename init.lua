@@ -5,6 +5,7 @@ local vimrc = vim.fn.stdpath("config") .. "/config.vim"
 local keymap = vim.fn.stdpath("config") .. "/vim/keymap.vim"
 vim.cmd("so " .. vimrc)
 vim.cmd("so " .. keymap)
+require("pack")
 require("config")
 require("vim._core.ui2").enable()
 if vim.uv.os_uname().sysname == "Windows_NT" then
@@ -54,7 +55,7 @@ opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
 -- vim.g.ayucolor = "dark" -- "mirage" or "dark"
 -- cmd.colorscheme("ayu")
 -- cmd.colorscheme("tokyonight-night") -- NOTE:"tokyonight-night", "tokyonight-storm", "tokyonight-day", "tokyonight-moon"
-cmd.colorscheme("kanagawa-wave") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "kanagawa-lotus"
+cmd.colorscheme("kanagawa") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "kanagawa-lotus"
 
 cmd("set mouse=a")
 
