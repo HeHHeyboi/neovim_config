@@ -1,4 +1,6 @@
 if vim.fn.argc() == 0 then
+	local setup_oil = require("pack.oil")
+	setup_oil()
 	vim.cmd("Oil")
 end
 

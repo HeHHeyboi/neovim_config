@@ -75,19 +75,42 @@ if vim.o.diff then
 	return
 end
 
-local telescope = require("telescope.builtin")
+local setup_telescope = require("pack.telescope")
+local setup_oil = require("pack.oil")
 local trouble = require("trouble")
 -- NOTE: Telescope
-keymap("n", "<C-p>", telescope.find_files, { desc = "Find find" })
-keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
-keymap("n", "<leader>fg", require("config.telescope.multigrep").live_multigrep, { desc = "Telescope Grep" })
-keymap("n", "vb", telescope.buffers, { desc = "View Buffer" })
-keymap("n", "vb", require("config.telescope.buffer").list_buffers_ls_style, { desc = "View Buffer" })
-keymap("n", "vr", telescope.registers, { desc = "View Register" })
-keymap("n", "vm", telescope.marks, { desc = "View Mark" })
-keymap("n", "<A-m>", telescope.diagnostics, { desc = "Telescope Diagnostic" })
-keymap("n", "<leader>ds", telescope.lsp_document_symbols, { desc = "Telescope Document Symbols" })
-keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, { desc = "Telescope Workspace symbols" })
+keymap("n", "<C-p>", function()
+	setup_telescope()
+	require("telescope.builtin").find_files()
+end, { desc = "Find files" })
+keymap("n", "<leader>fg", function()
+	setup_telescope()
+	require("config.telescope.multigrep").live_multigrep()
+end, { desc = "Telescope Grep" })
+keymap("n", "vb", function()
+	setup_telescope()
+	require("config.telescope.buffer").list_buffers_ls_style()
+end, { desc = "View Buffer" })
+keymap("n", "vr", function()
+	setup_telescope()
+	require("telescope.builtin").registers()
+end, { desc = "View Register" })
+keymap("n", "vm", function()
+	setup_telescope()
+	require("telescope.builtin").marks()
+end, { desc = "View Mark" })
+keymap("n", "<A-m>", function()
+	setup_telescope()
+	require("telescope.builtin").diagnostics()
+end, { desc = "Telescope Diagnostic" })
+keymap("n", "<leader>ds", function()
+	setup_telescope()
+	require("telescope.builtin").lsp_document_symbols()
+end, { desc = "Telescope Document Symbols" })
+keymap("n", "<leader>ws", function()
+	setup_telescope()
+	require("telescope.builtin").lsp_dynamic_workspace_symbols()
+end, { desc = "Telescope Workspace symbols" })
 
 
 -- NOTE: Trouble
@@ -104,7 +127,10 @@ keymap("n", "<leader>td", ":TodoTrouble<cr>", { desc = "open Todo with Trouble" 
 -- end, {})
 
 -- NOTE: Oil.nvim
-keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+keymap("n", "-", function()
+	setup_oil()
+	vim.cmd("Oil")
+end, { desc = "Open parent directory" })
 
 -- NOTE: Format
 -- keymap("n", "<A-f>", function()
@@ -152,13 +178,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.diagnostic.jump({ count = -1, float = true })
 		end)
 		--Telescope
-		map("gd", telescope.lsp_definitions)
-		map("gi", telescope.lsp_implementations)
-		map("go", telescope.lsp_type_definitions)
+		map("gd", function()
+			setup_telescope()
+			require("telescope.builtin").lsp_definitions()
+		end)
+		map("gi", function()
+			setup_telescope()
+			require("telescope.builtin").lsp_implementations()
+		end)
+		map("go", function()
+			setup_telescope()
+			require("telescope.builtin").lsp_type_definitions()
+		end)
 		map("grr", function()
-			if vim.o.diff then
-				return
-			end
+			if vim.o.diff then return end
 			trouble.open("lsp_references")
 		end)
 

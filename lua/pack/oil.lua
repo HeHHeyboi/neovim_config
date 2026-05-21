@@ -3,7 +3,12 @@ vim.pack.add({
 	"https://github.com/nvim-tree/nvim-web-devicons",
 })
 
-require("oil").setup({
+local loaded = false
+return function()
+	if loaded then return end
+	loaded = true
+
+	require("oil").setup({
 	default_file_explorer = true,
 	view_options = {
 		show_hidden = true,
@@ -54,3 +59,4 @@ require("oil").setup({
 		["cd"] = { "actions.cd", desc = ":Change working directory", mode = "n" }
 	}
 })
+end
