@@ -3,7 +3,6 @@ vim.pack.add({
 	"https://github.com/folke/tokyonight.nvim",
 	"https://github.com/ayu-theme/ayu-vim",
 	"https://github.com/rebelot/kanagawa.nvim",
-	'https://github.com/AlexvZyl/nordic.nvim',
 	'https://github.com/navarasu/onedark.nvim',
 })
 -- NOTE: Tokyodark
