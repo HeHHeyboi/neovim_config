@@ -75,6 +75,11 @@ if vim.o.diff then
 	return
 end
 
+-- NOTE: Undo tree
+keymap('n', '<leader>u', function()
+	require("undotree").open()
+end, { noremap = true, silent = true })
+
 local telescope = require("telescope.builtin")
 local trouble = require("trouble")
 -- NOTE: Telescope

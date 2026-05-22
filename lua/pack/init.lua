@@ -3,6 +3,7 @@ require("pack.lualine")
 require("pack.theme")
 
 if not vim.o.diff then
+	vim.cmd("packadd nvim.undotree")
 	require("pack.blink")
 	require("pack.conform")
 	require("pack.harpoon")
