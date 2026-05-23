@@ -75,14 +75,17 @@ if vim.o.diff then
 	return
 end
 
+<<<<<<< HEAD
 local setup_telescope = require("pack.telescope")
 local setup_oil = require("pack.oil")
-
+=======
 -- NOTE: Undo tree
 keymap('n', '<leader>u', function()
 	require("undotree").open()
 end, { noremap = true, silent = true })
 
+local telescope = require("telescope.builtin")
+>>>>>>> vim-pack-migrate
 local trouble = require("trouble")
 -- NOTE: Telescope
 keymap("n", "<C-p>", function()
