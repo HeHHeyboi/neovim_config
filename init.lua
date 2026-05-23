@@ -30,7 +30,6 @@ vim.filetype.add({
 
 -- NOTE: vim options
 vim.g.mapleader = " "
--- require('vim._core.ui2').enable({})
 opt.smarttab = true
 opt.encoding = "UTF-8"
 opt.swapfile = false
