@@ -4,6 +4,7 @@ else
 	-- require('config.lazy')
 	require('config.autocmd')
 	-- require('config.neovide')
+	require('config.cmd')
 	require('config.keymap')
 	require('config.hightlight_config')
 end
