@@ -1,7 +1,7 @@
 vim.pack.add({
 	"https://github.com/tiagovla/tokyodark.nvim",
 	"https://github.com/folke/tokyonight.nvim",
-	"https://github.com/ayu-theme/ayu-vim",
+	-- "https://github.com/ayu-theme/ayu-vim",
 	"https://github.com/rebelot/kanagawa.nvim",
 	'https://github.com/navarasu/onedark.nvim',
 })

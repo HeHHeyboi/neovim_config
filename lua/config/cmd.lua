@@ -19,8 +19,7 @@ vim.api.nvim_create_user_command("Packlist", function(args)
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 	vim.bo[buf].modifiable = false
 	vim.bo[buf].filetype = "markdown"
-	vim.cmd("tabnew")
-	vim.api.nvim_win_set_buf(0, buf)
+	vim.cmd("tab sbuffer " .. buf)
 end, { desc = "Get all plugin" })
 
 local function get_plugin_name()
@@ -64,13 +63,20 @@ vim.api.nvim_create_user_command("Packdel", function(args)
 		return
 	else
 		local del_plugins = args.fargs
-		print("Delete Plugins" .. vim.inspect(del_plugins))
-		local plugins = get_plugin_name()
-		for _, del_plugin in ipairs(del_plugins) do
-			local is_contain = vim.tbl_contains(plugins, del_plugin)
-			if is_contain then
-				vim.pack.del({ del_plugin }, { force = true })
+		print("Delete Plugins " .. vim.inspect(del_plugins))
+		local plugin_set = {}
+		for _, name in ipairs(get_plugin_name()) do
+			plugin_set[name] = true
+		end
+
+		local valid = {}
+		for _, name in ipairs(del_plugins) do
+			if plugin_set[name] then
+				table.insert(valid, name)
 			end
+		end
+		if #valid > 0 then
+			vim.pack.del(valid, { force = true })
 		end
 	end
 end, { desc = "Delete plugin", nargs = "*", complete = get_plugin_name })
