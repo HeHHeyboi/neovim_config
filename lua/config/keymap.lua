@@ -84,7 +84,7 @@ local telescope = require("telescope.builtin")
 local trouble = require("trouble")
 -- NOTE: Telescope
 keymap("n", "<C-p>", telescope.find_files, { desc = "Find find" })
-keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
+-- keymap("n", "<leader>fg", telescope.live_grep, { desc = "Telescope Grep" })
 keymap("n", "<leader>fg", require("config.telescope.multigrep").live_multigrep, { desc = "Telescope Grep" })
 keymap("n", "vb", telescope.buffers, { desc = "View Buffer" })
 keymap("n", "vb", require("config.telescope.buffer").list_buffers_ls_style, { desc = "View Buffer" })
@@ -92,7 +92,7 @@ keymap("n", "vr", telescope.registers, { desc = "View Register" })
 keymap("n", "vm", telescope.marks, { desc = "View Mark" })
 keymap("n", "<A-m>", telescope.diagnostics, { desc = "Telescope Diagnostic" })
 keymap("n", "<leader>ds", telescope.lsp_document_symbols, { desc = "Telescope Document Symbols" })
-keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, { desc = "Telescope Workspace symbols" })
+-- keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, { desc = "Telescope Workspace symbols" })
 
 
 -- NOTE: Trouble
