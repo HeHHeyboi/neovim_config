@@ -1,7 +1,7 @@
 vim.pack.add({
-	'https://github.com/saghen/blink.lib', 
+	'https://github.com/saghen/blink.lib',
 	"https://github.com/saghen/blink.cmp",
-	'https://github.com/rafamadriz/friendly-snippets', 
+	'https://github.com/rafamadriz/friendly-snippets',
 })
 
 ---@module 'blink.cmp'
@@ -22,6 +22,7 @@ require("blink.cmp").setup({
 	keymap = {
 		preset = 'enter',
 		['<C-y>'] = { 'select_and_accept' },
+		['<CR>'] = { 'select_and_accept', 'fallback' },
 		['<C-d>'] = { 'show', 'show_documentation', 'hide_documentation' },
 	},
 	cmdline = {
