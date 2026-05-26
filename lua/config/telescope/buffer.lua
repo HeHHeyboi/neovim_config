@@ -31,10 +31,10 @@ local function list_buffers_ls_style(opts)
 		if vim.api.nvim_buf_is_loaded(buf) then
 			local name = vim.api.nvim_buf_get_name(buf)
 			local check_oil = string.find(name, "oil")
+			name = vim.fn.fnamemodify(name, ":~:.")
 			name = string.gsub(name, "\\", "/")
-			if name ~= "" and check_oil == nil then
-				name = vim.fn.fnamemodify(name, ":~:.")
-			else
+			local internal_buf = string.match(name, "%[(.-)%]")
+			if name == "" or check_oil ~= nil or internal_buf ~= nil then
 				goto continue
 			end
 			local flag = ""
