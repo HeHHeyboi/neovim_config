@@ -16,7 +16,7 @@ local hooks = function(ev)
 			end
 			vim.cmd.packadd("blink.cmp")
 		end
-		require('blink.cmp').build():wait()
+		require('blink.cmp').build():wait(60000)
 	end
 
 	-- If action relies on code from the plugin (like user command or
