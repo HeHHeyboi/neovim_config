@@ -1,6 +1,7 @@
 " source ~/.vimrc
 " let g:python3_host_prog = 'C:\Program Files\Python313\python'
 
+
 set relativenumber
 set number
 set ignorecase
