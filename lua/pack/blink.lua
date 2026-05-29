@@ -20,8 +20,8 @@ require("blink.cmp").setup({
 	--
 	-- See :h blink-cmp-config-keymap for defining your own keymap
 	keymap = {
-		preset = 'enter',
-		['<C-y>'] = { 'select_and_accept' },
+		preset = 'default',
+		-- ['<C-y>'] = { 'select_and_accept', 'fallback' },
 		['<CR>'] = { 'select_and_accept', 'fallback' },
 		['<C-d>'] = { 'show', 'show_documentation', 'hide_documentation' },
 	},
