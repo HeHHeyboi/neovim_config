@@ -28,6 +28,7 @@ vim.filetype.add({
 	}
 })
 
+
 -- NOTE: vim options
 vim.g.mapleader = " "
 opt.smarttab = true
