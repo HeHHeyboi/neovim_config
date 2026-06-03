@@ -3,6 +3,7 @@ local opt = vim.opt
 local cmd = vim.cmd
 local vimrc = vim.fn.stdpath("config") .. "/config.vim"
 local keymap = vim.fn.stdpath("config") .. "/vim/keymap.vim"
+vim.loader.enable(true)
 vim.cmd("so " .. vimrc)
 vim.cmd("so " .. keymap)
 require("pack")

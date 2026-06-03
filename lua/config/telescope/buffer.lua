@@ -30,11 +30,13 @@ local function list_buffers_ls_style(opts)
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
 		if vim.api.nvim_buf_is_loaded(buf) then
 			local name = vim.api.nvim_buf_get_name(buf)
+			local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
 			local check_oil = string.find(name, "oil")
 			name = vim.fn.fnamemodify(name, ":~:.")
 			name = string.gsub(name, "\\", "/")
 			local internal_buf = string.match(name, "%[(.-)%]")
-			if name == "" or check_oil ~= nil or internal_buf ~= nil then
+			local cmp_menu = string.match(ft, "^blink%-cmp")
+			if name == "" or ft == "" or check_oil ~= nil or internal_buf ~= nil or cmp_menu ~= nil then
 				goto continue
 			end
 			local flag = ""
