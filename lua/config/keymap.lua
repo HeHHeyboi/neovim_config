@@ -172,7 +172,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.lsp.buf.signature_help({ border = "rounded" })
 		end)
 		map("<F2>", vim.lsp.buf.rename)
-		map("<leader>ca", vim.lsp.buf.code_action)
+		map("g.", vim.lsp.buf.code_action)
 
 		keymap("i", "<C-s>", function()
 			vim.lsp.buf.signature_help({ border = "rounded" })
