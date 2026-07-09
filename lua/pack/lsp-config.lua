@@ -1,4 +1,4 @@
-vim.pack.add({"https://github.com/neovim/nvim-lspconfig"})
+vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
 -- local lspconfig = require("lspconfig")
 local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
 -- print(lsp_capabilities.textDocument.completion.completionItem.snippetSupport)
@@ -21,14 +21,12 @@ vim.lsp.config('ols', {
 	},
 })
 vim.lsp.config("gopls", {
-	settings = {
-		gopls = {
-			experimentalPostfixCompletions = true,
-			gofumpt = false,
-			templateExtensions = { ".html", ".tmpl" },
-			usePlaceholders = false,
-			semanticTokens = true,
-		}
+	init_options = {
+		experimentalPostfixCompletions = true,
+		gofumpt = false,
+		templateExtensions = { ".html", ".tmpl" },
+		usePlaceholders = false,
+		semanticTokens = true,
 	}
 })
 
@@ -59,72 +57,72 @@ vim.lsp.config("roslyn_ls", {
 })
 -- NOTE: enable lsp in after/ftplugin/java.lua by nvim-jdtls
 -- vim.lsp.config("jdtls", {
-	-- })
-	-- vim.lsp.config("pylyzer", {})
-	vim.lsp.config("pylsp", {
-		settings = {
-			pylsp = {
-				plugins = {
-					pycodestyle = {
-						ignore = { 'W391', 'W191' },
-						maxLineLength = 100
-					},
-					yapf = {
-						enabled = true
-					},
-					autopep8 = {
-						enabled = false
-					}
+-- })
+-- vim.lsp.config("pylyzer", {})
+vim.lsp.config("pylsp", {
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					ignore = { 'W391', 'W191' },
+					maxLineLength = 100
+				},
+				yapf = {
+					enabled = true
+				},
+				autopep8 = {
+					enabled = false
 				}
 			}
-		},
-	})
-	vim.lsp.config("lua_ls", {
-		on_init = function(client)
-			local path = client.workspace_folders[1].name
-			if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
-				return
-			end
+		}
+	},
+})
+vim.lsp.config("lua_ls", {
+	on_init = function(client)
+		local path = client.workspace_folders[1].name
+		if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
+			return
+		end
 
-			client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-				runtime = {
-					version = 'LuaJIT'
-				},
-				-- Make the server aware of Neovim runtime files
-				workspace = {
-					checkThirdParty = false,
-					library = {
-						vim.env.VIMRUNTIME
-						-- Depending on the usage, you might want to add additional paths here.
-						-- "${3rd}/luv/library"
-						-- "${3rd}/busted/library",
-					}
-					-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-					-- library = vim.api.nvim_get_runtime_file("", true)
+		client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+			runtime = {
+				version = 'LuaJIT'
+			},
+			-- Make the server aware of Neovim runtime files
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME
+					-- Depending on the usage, you might want to add additional paths here.
+					-- "${3rd}/luv/library"
+					-- "${3rd}/busted/library",
 				}
-			})
-		end,
-		settings = {
-			Lua = {
-				completion = {
-					callSnippet = "Replace"
-				},
-				format = {
-					-- Enable code formatting
-					enable = true,
-				},
-				diagnostics = {
-					-- Get the server to recognize the vim global
-					globals = { "vim" }
-				},
+				-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+				-- library = vim.api.nvim_get_runtime_file("", true)
 			}
-		},
-	})
-	vim.lsp.config("clangd", {})
-	vim.lsp.config("cmake", {})
-	vim.lsp.config("hyprls", {})
-	vim.lsp.config("ts_ls", {})
-	vim.lsp.config("rust_analyzer", {})
+		})
+	end,
+	settings = {
+		Lua = {
+			completion = {
+				callSnippet = "Replace"
+			},
+			format = {
+				-- Enable code formatting
+				enable = true,
+			},
+			diagnostics = {
+				-- Get the server to recognize the vim global
+				globals = { "vim" }
+			},
+		}
+	},
+})
+vim.lsp.config("clangd", {})
+vim.lsp.config("cmake", {})
+vim.lsp.config("hyprls", {})
+vim.lsp.config("ts_ls", {})
+vim.lsp.config("rust_analyzer", {})
 
-	vim.lsp.log.set_level("ERROR")
-	vim.lsp.enable(enable_lsp, true)
+vim.lsp.log.set_level("ERROR")
+vim.lsp.enable(enable_lsp, true)
