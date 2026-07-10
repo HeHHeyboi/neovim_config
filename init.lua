@@ -8,7 +8,9 @@ vim.cmd("so " .. vimrc)
 vim.cmd("so " .. keymap)
 require("pack")
 require("config")
-require("vim._core.ui2").enable()
+require("vim._core.ui2").enable({
+	enable = true
+})
 if vim.uv.os_uname().sysname == "Windows_NT" then
 	vim.o.shell = 'nu'
 	vim.o.shellcmdflag = '--error-style plain -c'
