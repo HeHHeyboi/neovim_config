@@ -13,6 +13,7 @@ vim.pack.add({
 
 require('nvim-autopairs').setup({
 	check_ts = true,
+	map_cr = true,
 })
 
 require('nvim-surround').setup({})
