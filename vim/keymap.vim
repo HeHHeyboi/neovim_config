@@ -91,8 +91,8 @@ function! YankOperator(type)
 endfunction
 nnoremap vr :register<CR>
 nnoremap vm :marks<CR>
-nnoremap H ^
-nnoremap L g_
+" nnoremap H ^
+" nnoremap L g_
 "nnoremap ' :execute "normal! '" .nr2char(getchar()). " zz"<cr>
 
 " }}}
@@ -112,8 +112,8 @@ vnoremap <Leader>y "+y
 vnoremap <Leader>p "+p 
 vnoremap <C-d> <C-d>zz
 vnoremap <C-u> <C-u>zz
-vnoremap H ^
-vnoremap L g_
+" vnoremap H ^
+" vnoremap L g_
 "}}}
 
 

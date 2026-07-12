@@ -41,7 +41,7 @@ keymap("o", "al'", function()
 	MoveToNextQuote("'", 'F', 'a')
 end, {})
 
-keymap("o", "L", "g_", {})
+keymap("o", "L", "$", {})
 keymap("o", "H", "^", {})
 
 -- NOTE: split buffer
