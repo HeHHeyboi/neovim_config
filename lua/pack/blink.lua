@@ -1,6 +1,6 @@
 vim.pack.add({
 	'https://github.com/saghen/blink.lib',
-	"https://github.com/saghen/blink.cmp",
+	{ src = "https://github.com/saghen/blink.cmp", version = "cfe100ccac24b0a622d7b9f04aa8c9f3e7624a16" },
 	'https://github.com/rafamadriz/friendly-snippets',
 })
 
@@ -74,7 +74,6 @@ require("blink.cmp").setup({
 	},
 
 	-- Default list of enabled providers defined so that you can extend it
-	--
 	-- elsewhere in your config, without redefining it, due to `opts_extend`
 	sources = {
 		default = { 'lsp', 'path', 'snippets', 'buffer' },
