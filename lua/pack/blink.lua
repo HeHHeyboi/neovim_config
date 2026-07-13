@@ -82,6 +82,38 @@ require("blink.cmp").setup({
 	-- elsewhere in your config, without redefining it, due to `opts_extend`
 	sources = {
 		default = { 'lsp', 'path', 'snippets', 'buffer' },
+		providers = {
+			lsp = {
+				name      = "LSP",
+				module    = "blink.cmp.sources.lsp",
+				fallbacks = {}, -- always show buffer
+			},
+			path = {
+				module = 'blink.cmp.sources.path',
+				score_offset = 3,
+				fallbacks = { 'buffer' },
+				opts = {
+					trailing_slash = true,
+					label_trailing_slash = true,
+					get_cwd = function(context) return vim.fn.expand(('#%d:p:h'):format(context.bufnr)) end,
+					show_hidden_files_by_default = false,
+					-- Treat `/path` as starting from the current working directory (cwd) instead of the root of your filesystem
+					ignore_root_slash = false,
+					-- Maximum number of files/directories to return. This limits memory use and responsiveness for very large folders.
+					max_entries = 100,
+				}
+			},
+
+			snippets = {
+				module = 'blink.cmp.sources.snippets',
+				score_offset = -1, -- receives a -3 from top level snippets.score_offset
+			},
+			buffer = {
+				name         = "Buffer",
+				module       = "blink.cmp.sources.buffer",
+				score_offset = -5
+			}
+		}
 	},
 	signature = { enabled = true, window = { border = 'rounded' } },
 

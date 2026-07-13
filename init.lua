@@ -73,6 +73,7 @@ opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldnestmax = 4
+
 -- cmd("highlight MatchParen guibg=white guifg=black gui=NONE")
 -- Get godot jump when create or click script
 local gdproj = vim.fs.find('project.godot', { path = vim.fn.getcwd(), upward = true })
