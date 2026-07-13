@@ -45,6 +45,11 @@ require("blink.cmp").setup({
 		},
 		keymap = {
 			preset = 'cmdline',
+			['<C-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
+			['<C-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
+			['<C-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
+			['<C-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
+			['<C-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
 		},
 	},
 
