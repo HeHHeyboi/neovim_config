@@ -24,6 +24,11 @@ require("blink.cmp").setup({
 		-- ['<C-y>'] = { 'select_and_accept', 'fallback' },
 		['<CR>'] = { 'select_and_accept', 'fallback' },
 		['<C-d>'] = { 'show', 'show_documentation', 'hide_documentation' },
+		['<C-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
+		['<C-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
+		['<C-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
+		['<C-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
+		['<C-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
 	},
 	cmdline = {
 		enabled = true,
