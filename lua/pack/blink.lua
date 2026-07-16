@@ -30,28 +30,6 @@ require("blink.cmp").setup({
 		['<C-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
 		['<C-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
 	},
-	cmdline = {
-		enabled = true,
-		completion = {
-			menu = {
-				auto_show = true
-			},
-			list = {
-				selection = {
-					preselect = false,
-					auto_insert = false,
-				}
-			},
-		},
-		keymap = {
-			preset = 'cmdline',
-			['<C-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
-			['<C-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
-			['<C-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
-			['<C-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
-			['<C-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
-		},
-	},
 
 	appearance = {
 		-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -75,12 +53,35 @@ require("blink.cmp").setup({
 		list = {
 			selection = {
 				preselect = false,
-				auto_insert = true,
+				auto_insert = false,
 			}
 		},
 		accept = {
 			auto_brackets = { enabled = false }
 		}
+	},
+
+	cmdline = {
+		enabled = true,
+		completion = {
+			menu = {
+				auto_show = true
+			},
+			list = {
+				selection = {
+					preselect = false,
+					auto_insert = false,
+				}
+			},
+		},
+		keymap = {
+			preset = 'cmdline',
+			['<C-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
+			['<C-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
+			['<C-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
+			['<C-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
+			['<C-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
+		},
 	},
 
 	-- Default list of enabled providers defined so that you can extend it
