@@ -8,20 +8,23 @@ vim.pack.add({
 -- NOTE: Tokyodark
 require("tokyodark").setup() -- calling setup is optional
 
+local CursorLineNr = "#ffc300"
+-- local CursorLineNr = "#fff8e0"
+-- local CursorLineNr = "#ffe799"
+-- local LineNr = "#8aa7cf"
+local LineNr = "#6d84a3"
+
 -- NOTE: Tokyonight
 require("tokyonight").setup({
 	on_highlights = function(hl, c)
-		local CursorLineNr_fg = "#ffc300"
-		-- local LineNr_fg = "#a9b1d6"
-		local LineNr_fg = "#8aa7cf"
 		hl.LineNr = {
-			fg = CursorLineNr_fg,
+			fg = CursorLineNr,
 		}
 		hl.LineNrAbove = {
-			fg = LineNr_fg,
+			fg = LineNr,
 		}
 		hl.LineNrBelow = {
-			fg = LineNr_fg,
+			fg = LineNr,
 		}
 		hl.Whitespace = {
 			fg = "#35354f"
@@ -39,8 +42,8 @@ require("onedark").setup({
 		["@comment"] = { fg = "#62697a" },
 		["@spell.odin"] = { fg = "#62697a" },
 		["@lsp.type.comment"] = { fg = "#575e6e" },
-		["CursorLineNr"] = { fg = "#ffc300" },
-		["LineNr"] = { fg = "#8aa7cf" },
+		["CursorLineNr"] = { fg = CursorLineNr },
+		["LineNr"] = { fg = LineNr },
 		["MatchParen"] = { fg = "#ffc300", bg = "NONE" },
 		["PMenu"] = { bg = "#17191c" }, -- "#212d40"
 		["NormalFloat"] = { bg = "#17191c" }, -- "#15181d","#131a25","#17191c"
@@ -62,6 +65,7 @@ require("kanagawa").setup({
 			["@lsp.type.modifier.java"]           = { link = "@keyword" },
 			["@lsp.typemod.class.readonly.java"]  = { link = "@type" },
 			["@lsp.typemod.property.public.java"] = { link = "@variable.member" },
+			["CursorLineNr"]                      = { fg = CursorLineNr, bold = true },
 			-- ["TelescopeSelection"]                = { bg = "#313141", link = "" }, -- "#2e3139"
 		}
 	end,
@@ -69,7 +73,8 @@ require("kanagawa").setup({
 		theme = {
 			wave = {
 				ui = {
-					nontext = "#8aa7cf",
+					nontext = LineNr,
+					-- bg_gutter = "#ffffff",
 					-- special = "#ff0000",
 					bg_p2 = "#313141",
 					--"#313141"
