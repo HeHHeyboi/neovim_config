@@ -43,6 +43,8 @@ opt.wrap = false
 opt.sidescroll = 20
 opt.sidescrolloff = 10
 opt.list = false
+-- opt.guicursor = "r-cr-o:hor20"
+opt.guicursor = ""
 -- opt.listchars = {}
 -- opt.listchars = { tab = "| " }
 opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
