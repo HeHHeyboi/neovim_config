@@ -5,6 +5,7 @@ local lsp_capabilities = require("blink-cmp").get_lsp_capabilities()
 local enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'hyprls', 'ts_ls' }
 if vim.uv.os_uname().sysname == "Windows_NT" then
 	enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'roslyn_ls', 'clangd', 'pylsp', 'ts_ls', 'rust_analyzer' }
+	-- enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'clangd', 'pylsp', 'ts_ls', 'rust_analyzer' }
 	-- enable_lsp = { 'gdscript', 'ols', 'lua_ls', 'gopls', 'clangd', 'pylsp' }
 end
 

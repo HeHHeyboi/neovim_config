@@ -1,4 +1,4 @@
-vim.pack.add({"https://github.com/numToStr/Comment.nvim"})
+vim.pack.add({ "https://github.com/numToStr/Comment.nvim" })
 require('Comment').setup({
 	---Add a space b/w comment and the line
 	padding = true,
@@ -43,3 +43,6 @@ require('Comment').setup({
 	---Function to call after (un)comment
 	post_hook = nil,
 })
+
+local ft = require("Comment.ft")
+ft.set("rust", { '//%s', '/*%s*/' })
