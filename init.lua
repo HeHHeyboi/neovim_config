@@ -53,14 +53,14 @@ opt.listchars = { tab = "┆ ", leadmultispace = "┆   " }
 -- opt.listchars = { tab = "┇ ", space = "" }
 
 -- NOTE: Set Theme
--- cmd.colorscheme("onedark")
+cmd.colorscheme("onedark")
 -- cmd.colorscheme("tokyodark")
 -- cmd.colorscheme("nordic")
 
--- vim.g.ayucolor = "dark" -- "mirage" or "dark"
+-- vim.g.ayucolor = "mirage" -- "mirage" or "dark"
 -- cmd.colorscheme("ayu")
 -- cmd.colorscheme("tokyonight-night") -- NOTE:"tokyonight-night", "tokyonight-storm", "tokyonight-day", "tokyonight-moon"
-cmd.colorscheme("kanagawa") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "kanagawa-lotus"
+-- cmd.colorscheme("kanagawa") -- NOTE:"kanagawa-dragon", "kanagawa-wave", "kanagawa-lotus"
 
 cmd("set mouse=a")
 

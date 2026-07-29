@@ -1,7 +1,7 @@
 vim.pack.add({
 	"https://github.com/tiagovla/tokyodark.nvim",
 	"https://github.com/folke/tokyonight.nvim",
-	-- "https://github.com/ayu-theme/ayu-vim",
+	"https://github.com/ayu-theme/ayu-vim",
 	"https://github.com/rebelot/kanagawa.nvim",
 	'https://github.com/navarasu/onedark.nvim',
 })
@@ -44,7 +44,8 @@ require("onedark").setup({
 		["@lsp.type.comment"] = { fg = "#575e6e" },
 		["CursorLineNr"] = { fg = CursorLineNr },
 		["LineNr"] = { fg = LineNr },
-		["MatchParen"] = { fg = "#ffc300", bg = "NONE" },
+		["MatchParen"] = { fg = "#000000", bg = "#ffc300" },
+		-- ["MatchParen"] = { fg = "#ffc300", bg = "NONE" },
 		["PMenu"] = { bg = "#17191c" }, -- "#212d40"
 		["NormalFloat"] = { bg = "#17191c" }, -- "#15181d","#131a25","#17191c"
 		["FloatBorder"] = { bg = "#17191c" },
