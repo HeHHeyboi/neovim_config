@@ -1,6 +1,6 @@
+require("pack.theme")
 require("pack.hooks_build")
 require("pack.lualine")
-require("pack.theme")
 
 if not vim.o.diff then
 	vim.cmd("packadd nvim.undotree")

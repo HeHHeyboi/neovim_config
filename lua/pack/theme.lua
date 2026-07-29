@@ -5,32 +5,11 @@ vim.pack.add({
 	"https://github.com/rebelot/kanagawa.nvim",
 	'https://github.com/navarasu/onedark.nvim',
 })
--- NOTE: Tokyodark
-require("tokyodark").setup() -- calling setup is optional
-
 local CursorLineNr = "#ffc300"
 -- local CursorLineNr = "#fff8e0"
 -- local CursorLineNr = "#ffe799"
 -- local LineNr = "#8aa7cf"
 local LineNr = "#6d84a3"
-
--- NOTE: Tokyonight
-require("tokyonight").setup({
-	on_highlights = function(hl, c)
-		hl.LineNr = {
-			fg = CursorLineNr,
-		}
-		hl.LineNrAbove = {
-			fg = LineNr,
-		}
-		hl.LineNrBelow = {
-			fg = LineNr,
-		}
-		hl.Whitespace = {
-			fg = "#35354f"
-		}
-	end
-})
 
 require("onedark").setup({
 	style = 'darker',                  -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
@@ -55,8 +34,33 @@ require("onedark").setup({
 		["DiagnosticVirtualTextWarn"] = { fg = "#e0af68" }, -- Muted gold for warnings
 		["DiagnosticVirtualTextInfo"] = { fg = "#4ec1d3" }, -- Muted teal for info
 		["DiagnosticVirtualTextHint"] = { fg = "#c769e2" },
+		["@lsp.mod.readonly"] = { fg = "#D19A66", fmt = 'bold' }
+		-- ["@lsp.mod.readonly"] = { fg = "#e0af68" }
 	}
 })
+require('onedark').load()
+-- NOTE: Tokyodark
+require("tokyodark").setup() -- calling setup is optional
+
+
+-- NOTE: Tokyonight
+require("tokyonight").setup({
+	on_highlights = function(hl, c)
+		hl.LineNr = {
+			fg = CursorLineNr,
+		}
+		hl.LineNrAbove = {
+			fg = LineNr,
+		}
+		hl.LineNrBelow = {
+			fg = LineNr,
+		}
+		hl.Whitespace = {
+			fg = "#35354f"
+		}
+	end
+})
+
 
 -- NOTE: Kanagawa
 require("kanagawa").setup({
