@@ -26,8 +26,14 @@ vim.diagnostic.config({
 	underline = true,
 })
 vim.filetype.add({
+	extension = {
+		lox = 'lox',
+		lx = 'lox',
+	},
 	pattern = {
-		['.env.*'] = 'sh'
+		['.env.*'] = 'sh',
+		['*.lx'] = 'lox',
+		['*.lox'] = 'lox',
 	}
 })
 
