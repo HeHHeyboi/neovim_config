@@ -11,9 +11,9 @@ local CursorLineNr = "#ffc300"
 -- local LineNr = "#8aa7cf"
 local LineNr = "#6d84a3"
 
-require("onedark").setup({
-	style = 'darker',                  -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-	highlights = {
+local onedark_hl = function()
+	-- vim.api.nvim_set_hl(0, "@lsp.typemod.function.readonly", { fg = 'Purple' })
+	return {
 		["CursorLine"] = { bg = "#2e3139" }, -- "#2e3139"
 		["Comment"] = { fg = "#62697a" }, -- "#575e6e"
 		["Conceal"] = { fg = "#ffffff" },
@@ -34,9 +34,14 @@ require("onedark").setup({
 		["DiagnosticVirtualTextWarn"] = { fg = "#e0af68" }, -- Muted gold for warnings
 		["DiagnosticVirtualTextInfo"] = { fg = "#4ec1d3" }, -- Muted teal for info
 		["DiagnosticVirtualTextHint"] = { fg = "#c769e2" },
-		["@lsp.mod.readonly"] = { fg = "#D19A66", fmt = 'bold' }
-		-- ["@lsp.mod.readonly"] = { fg = "#e0af68" }
+		["@lsp.mod.readonly"] = { fg = "#D19A66", fmt = 'bold' },
+		["@lsp.typemod.function.readonly"] = { link = "@function" }
 	}
+end
+
+require("onedark").setup({
+	style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+	highlights = onedark_hl()
 })
 require('onedark').load()
 -- NOTE: Tokyodark
@@ -45,6 +50,9 @@ require("tokyodark").setup() -- calling setup is optional
 
 -- NOTE: Tokyonight
 require("tokyonight").setup({
+	on_colors = function(colors)
+
+	end,
 	on_highlights = function(hl, c)
 		hl.LineNr = {
 			fg = CursorLineNr,
