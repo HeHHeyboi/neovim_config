@@ -91,7 +91,12 @@ keymap("n", "vb", require("config.telescope.buffer").list_buffers_ls_style, { de
 keymap("n", "vr", telescope.registers, { desc = "View Register" })
 keymap("n", "vm", telescope.marks, { desc = "View Mark" })
 keymap("n", "<A-m>", telescope.diagnostics, { desc = "Telescope Diagnostic" })
-keymap("n", "<leader>ds", telescope.lsp_document_symbols, { desc = "Telescope Document Symbols" })
+-- keymap("n", "<leader>ds", function()
+-- 	telescope.lsp_document_symbols()
+-- end, { desc = "Telescope Document Symbols" })
+keymap("n", "<leader>ds", function()
+	require("config.telescope.lsp_documents_symbol").lsp_document_symbols()
+end, { desc = "Telescope Document Symbols" })
 -- keymap("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, { desc = "Telescope Workspace symbols" })
 
 
