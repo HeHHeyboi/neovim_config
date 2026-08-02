@@ -3,7 +3,7 @@ vim.pack.add({
 	"https://github.com/folke/tokyonight.nvim",
 	"https://github.com/ayu-theme/ayu-vim",
 	"https://github.com/rebelot/kanagawa.nvim",
-	'https://github.com/navarasu/onedark.nvim',
+	{ src = 'https://github.com/navarasu/onedark.nvim', version = "93f0080d9757afaa7ee9e1ce268dd19f7460b235" },
 })
 local CursorLineNr = "#ffc300"
 -- local CursorLineNr = "#fff8e0"

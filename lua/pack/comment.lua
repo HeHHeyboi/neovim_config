@@ -1,4 +1,7 @@
 vim.pack.add({ "https://github.com/numToStr/Comment.nvim" })
+local ft = require("Comment.ft")
+ft.set("rust", { '//%s', '/*%s*/' })
+ft.set('lox', { '//%s', '/*%s*/' })
 require('Comment').setup({
 	---Add a space b/w comment and the line
 	padding = true,
@@ -39,10 +42,12 @@ require('Comment').setup({
 		extra = true,
 	},
 	---Function to call before (un)comment
-	pre_hook = nil,
-	---Function to call after (un)comment
+	pre_hook = function(ctx)
+		-- Comment.nvim's treesitter path crashes on Neovim 0.12 for
+		-- filetypes without a parser (e.g. lox). Fall back to the ft ta
+		local ok, parser = pcall(vim.treesitter.get_parser, 0)
+		if ok and parser then return nil end
+		return require('Comment.ft').get(vim.bo.filetype, ctx.ctype)
+	end, ---Function to call after (un)comment
 	post_hook = nil,
 })
-
-local ft = require("Comment.ft")
-ft.set("rust", { '//%s', '/*%s*/' })

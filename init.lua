@@ -4,10 +4,6 @@ local cmd = vim.cmd
 local vimrc = vim.fn.stdpath("config") .. "/config.vim"
 local keymap = vim.fn.stdpath("config") .. "/vim/keymap.vim"
 vim.loader.enable(true)
-vim.cmd("so " .. vimrc)
-vim.cmd("so " .. keymap)
-require("pack")
-require("config")
 require("vim._core.ui2").enable({
 	enable = true
 })
@@ -32,10 +28,13 @@ vim.filetype.add({
 	},
 	pattern = {
 		['.env.*'] = 'sh',
-		['*.lx'] = 'lox',
-		['*.lox'] = 'lox',
 	}
 })
+
+vim.cmd("so " .. vimrc)
+vim.cmd("so " .. keymap)
+require("pack")
+require("config")
 
 
 -- NOTE: vim options
