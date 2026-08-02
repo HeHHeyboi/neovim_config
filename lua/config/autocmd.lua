@@ -34,16 +34,16 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 	end
 })
 
--- vim.api.nvim_create_autocmd("ColorScheme", {
--- 	group = vim.api.nvim_create_augroup("Sematic Hightlight", {}),
--- 	desc = "LSP sematic hightlight",
--- 	callback = function(event)
--- 		local theme = vim.g.colors_name
--- 		if theme == "onedark" then
--- 			vim.api.nvim_set_hl(0, "@lsp.typemod.function.readonly", { link = "@function", fg = "#ffffff" })
--- 		end
--- 	end,
--- })
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = vim.api.nvim_create_augroup("Sematic Hightlight", {}),
+	desc = "LSP sematic hightlight",
+	callback = function(event)
+		local theme = vim.g.colors_name
+		if theme == "onedark" then
+			vim.api.nvim_set_hl(0, "@lsp.typemod.function.readonly", { link = "@function" })
+		end
+	end,
+})
 
 -- vim.api.nvim_create_autocmd("BufLeave", {
 -- 	pattern = "*",
