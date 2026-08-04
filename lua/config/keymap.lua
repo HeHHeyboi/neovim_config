@@ -70,6 +70,8 @@ keymap("n", "<leader>ss", function()
 	vim.cmd("belowright split " .. bufname)
 end)
 
+keymap("t", "<C-[>", "<C-\\><C-n>")
+
 -- NOTE: Turn off plugin when in diffmode
 if vim.o.diff then
 	return
