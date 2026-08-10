@@ -44,6 +44,7 @@ require("blink.cmp").setup({
 		keyword = { range = "prefix" },
 		menu = {
 			auto_show = true,
+			scrollbar = false,
 			draw = {
 				columns = {
 					{ "kind_icon", gap = 1 },
@@ -66,7 +67,8 @@ require("blink.cmp").setup({
 		enabled = true,
 		completion = {
 			menu = {
-				auto_show = true
+				scrollbar = false,
+				auto_show = true,
 			},
 			list = {
 				selection = {
