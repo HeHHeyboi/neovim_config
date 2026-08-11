@@ -119,7 +119,9 @@ vim.lsp.config("lua_ls", {
 		}
 	},
 })
-vim.lsp.config("clangd", {})
+vim.lsp.config("clangd", {
+	-- cmd = { 'clangd', '--function-arg-placeholders=0' }
+})
 vim.lsp.config("cmake", {})
 vim.lsp.config("hyprls", {})
 vim.lsp.config("ts_ls", {})
