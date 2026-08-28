@@ -1,7 +1,10 @@
 vim.pack.add({ "https://github.com/numToStr/Comment.nvim" })
+
 local ft = require("Comment.ft")
 ft.set("rust", { '//%s', '/*%s*/' })
 ft.set('lox', { '//%s', '/*%s*/' })
+ft.set('json', { '//%s' })
+
 require('Comment').setup({
 	---Add a space b/w comment and the line
 	padding = true,
