@@ -41,7 +41,7 @@ require("blink.cmp").setup({
 	-- (Default) Only show the documentation popup when manually triggered
 	completion = {
 		documentation = { auto_show = false },
-		keyword = { range = "prefix" },
+		-- keyword = { range = "full" },
 		menu = {
 			auto_show = true,
 			scrollbar = false,
