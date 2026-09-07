@@ -44,7 +44,9 @@ require("telescope").setup {
 				"--glob", "!**/env/*",
 				"--glob", "!*.uid",
 				"--glob", "!*.meta",
-				"--glob", "!**/target/*" },
+				"--glob", "!**/target/*",
+				"--glob", "!*.out"
+			},
 		},
 		buffers = {
 			mappings = {
