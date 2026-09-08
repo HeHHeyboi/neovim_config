@@ -66,13 +66,14 @@ vim.lsp.config("pylsp", {
 			plugins = {
 				pycodestyle = {
 					ignore = { 'W391', 'W191' },
-					maxLineLength = 100
+					maxLineLength = 130
 				},
 				yapf = {
-					enabled = true
+					enabled = false
 				},
 				autopep8 = {
-					enabled = false
+					enabled = true,
+					maxLineLength = 130,
 				}
 			}
 		}
