@@ -25,8 +25,13 @@ require("conform").setup({
 	formatters = {
 		csharpier = {
 			inherit = false,
-			command = "csharpier.cmd",
+			command = "csharpier",
 			args = { "format", "$FILENAME", "--write-stdout" },
+		},
+		["gdscript-formatter"] = {
+			inherit = false,
+			command = "gdscript-formatter",
+			args = { "--max-line-length", "120" },
 		}
 	}
 })
