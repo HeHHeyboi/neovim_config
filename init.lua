@@ -33,6 +33,7 @@ vim.filetype.add({
 
 vim.cmd("so " .. vimrc)
 vim.cmd("so " .. keymap)
+Transparent = false
 require("pack")
 require("config")
 

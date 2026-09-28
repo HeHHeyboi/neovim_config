@@ -14,7 +14,8 @@ local LineNr = "#6d84a3"
 
 local onedark_hl = function()
 	-- vim.api.nvim_set_hl(0, "@lsp.typemod.function.readonly", { fg = 'Purple' })
-	return {
+
+	local M = {
 		["CursorLine"] = { bg = "#2e3139" }, -- "#2e3139"
 		["Comment"] = { fg = "#62697a" }, -- "#575e6e"
 		["Conceal"] = { fg = "#ffffff" },
@@ -38,6 +39,12 @@ local onedark_hl = function()
 		["@lsp.mod.readonly"] = { fg = "#D19A66", fmt = 'bold' },
 		-- ["@lsp.typemod.function.readonly"] = { link = "@function" }
 	}
+	if Transparent then
+		M["Normal"] = { bg = "NONE", ctermbg = "NONE" }
+		M["NormalNC"] = { bg = "NONE", ctermbg = "NONE" }
+		M["EndOfBuffer"] = { bg = "NONE", ctermbg = "NONE" }
+	end
+	return M
 end
 
 require("onedark").setup({
@@ -52,7 +59,6 @@ require("tokyodark").setup() -- calling setup is optional
 -- NOTE: Tokyonight
 require("tokyonight").setup({
 	on_colors = function(colors)
-
 	end,
 	on_highlights = function(hl, c)
 		hl.LineNr = {
