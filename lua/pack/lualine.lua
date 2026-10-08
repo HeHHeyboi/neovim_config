@@ -41,7 +41,8 @@ require("lualine").setup({
 	sections = {
 		-- lualine_a = { 'mode' },
 		lualine_a = { mode },
-		lualine_b = { { 'branch', color = {} }, 'diff', 'diagnostics' },
+		-- lualine_b = { { 'branch', color = {} }, 'diff', 'diagnostics' },
+		lualine_b = { 'diff', 'diagnostics' },
 		-- lualine_c = { { "%f%m", color = { fg = '#ffffff', gui = 'bold' } } },
 		lualine_c = { { 'filename', file_staus = true, path = 1, color = { fg = '#ffffff', gui = '' } } },
 		lualine_x = { 'searchcount', 'fileformat' },
