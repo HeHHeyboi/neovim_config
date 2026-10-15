@@ -59,6 +59,8 @@ require("tokyodark").setup() -- calling setup is optional
 -- NOTE: Tokyonight
 require("tokyonight").setup({
 	on_colors = function(colors)
+		-- NOTE: block the kitty Transparent
+		-- colors.bg = "#1a1b27"
 	end,
 	on_highlights = function(hl, c)
 		hl.LineNr = {
@@ -73,6 +75,9 @@ require("tokyonight").setup({
 		hl.Whitespace = {
 			fg = "#35354f"
 		}
+		-- hl.Normal = {
+		-- 	bg = "#000000"
+		-- }
 	end
 })
 
