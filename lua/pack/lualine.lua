@@ -4,10 +4,10 @@ vim.pack.add({
 })
 
 local function line()
-	return [[Line:%l|%L]]
+	return [[%l|%L]]
 end
 local function col()
-	return [[Col:%c]]
+	return [[col:%c]]
 end
 local function mode()
 	local m = vim.fn.mode()
@@ -46,7 +46,8 @@ require("lualine").setup({
 		-- lualine_c = { { "%f%m", color = { fg = '#ffffff', gui = 'bold' } } },
 		lualine_c = { { 'filename', file_staus = true, path = 1, color = { fg = '#ffffff', gui = '' } } },
 		lualine_x = { 'searchcount', 'fileformat' },
-		lualine_y = { 'filetype', col },
+		-- lualine_y = { 'filetype', col },
+		lualine_y = { 'filetype' },
 		lualine_z = { line }
 	},
 	inactive_sections = {
@@ -54,7 +55,8 @@ require("lualine").setup({
 		lualine_b = {},
 		lualine_c = { 'filename', '%m' },
 		lualine_x = {}, --'location'
-		lualine_y = { col },
+		lualine_y = {},
+		-- lualine_y = { col },
 		lualine_z = { line }
 	},
 	tabline = {
