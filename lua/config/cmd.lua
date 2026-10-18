@@ -1,3 +1,26 @@
+local function get_plugin_name()
+	local plugins = vim.pack.get()
+	local names = {}
+	for _, plugin in ipairs(plugins) do
+		local name = plugin.spec.name
+		table.insert(names, name)
+	end
+	return names
+end
+
+local function get_inactive_plugin()
+	local plugins = vim.pack.get()
+	local names = {}
+	for _, plugin in ipairs(plugins) do
+		if not plugin.active then
+			local name = plugin.spec.name
+			table.insert(names, name)
+		end
+	end
+	return names
+end
+
+-- # NOTE: vim.pack
 vim.api.nvim_create_user_command("Packlist", function(args)
 	local plugins = vim.pack.get()
 	local lines = {}
@@ -22,27 +45,6 @@ vim.api.nvim_create_user_command("Packlist", function(args)
 	vim.cmd("tab sbuffer " .. buf)
 end, { desc = "Get all plugin" })
 
-local function get_plugin_name()
-	local plugins = vim.pack.get()
-	local names = {}
-	for _, plugin in ipairs(plugins) do
-		local name = plugin.spec.name
-		table.insert(names, name)
-	end
-	return names
-end
-
-local function get_inactive_plugin()
-	local plugins = vim.pack.get()
-	local names = {}
-	for _, plugin in ipairs(plugins) do
-		if not plugin.active then
-			local name = plugin.spec.name
-			table.insert(names, name)
-		end
-	end
-	return names
-end
 
 vim.api.nvim_create_user_command("Packupdate", function(args)
 	if #args.fargs == 0 then
@@ -80,3 +82,11 @@ vim.api.nvim_create_user_command("Packdel", function(args)
 		end
 	end
 end, { desc = "Delete plugin", nargs = "*", complete = get_plugin_name })
+
+-- NOTE: treesitter
+vim.api.nvim_create_user_command("TSEnable", function(args)
+	vim.treesitter.start()
+end, { desc = "Enable treesitter" })
+vim.api.nvim_create_user_command("TSDisable", function(args)
+	vim.treesitter.stop()
+end, { desc = "Disable treesitter" })
